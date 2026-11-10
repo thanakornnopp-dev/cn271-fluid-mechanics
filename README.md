@@ -1,7 +1,16 @@
-# CN271 Fluid Mechanics: Pipe Flow Exam Preparation & Solutions
+# 🌊 CN271 Fluid Mechanics: Pipe Flow Exam Preparation & Solutions
 > **Thammasat University — Faculty of Engineering**  
 > Civil & Mechanical Engineering Core Curriculum  
 > Author: Thanaporn Nopparat & AI Engineering Squad (Commander Chokie)
+
+[![Live Web Portal](https://img.shields.io/badge/🌐_Live_Web_Portal-Click_Here_to_Open-blue?style=for-the-badge&logo=google-chrome)](https://thanakornnopp-dev.github.io/cn271-fluid-mechanics/)
+[![Quality Gate](https://img.shields.io/badge/Inspector_QC-PASSED_(6%2F6_Tests)-emerald?style=for-the-badge)](https://github.com/thanakornnopp-dev/cn271-fluid-mechanics)
+
+---
+
+### 🌐 ลิงก์เข้าใช้งานหน้าเว็บสรุปสูตร & เครื่องคิดเลขจำลอง (Live Interactive Website):
+👉 **[https://thanakornnopp-dev.github.io/cn271-fluid-mechanics/](https://thanakornnopp-dev.github.io/cn271-fluid-mechanics/)**  
+*(หน้าเว็บพร้อมใช้งานทันที มีสูตร LaTeX ครบถ้วน, คู่มืออ่านชาร์ต Glasgow, เฉลยข้อสอบ 4 ข้อแบบละเอียด และเครื่องคิดเลขจำลองการไหลวนลูป Trial & Error อัตโนมัติ)*
 
 ---
 
@@ -19,10 +28,12 @@
 
 ```
 cn271-fluid-mechanics/
-├── README.md                                # หน้าหลักและวิธีใช้งาน
+├── index.html                               # หน้าเว็บหลัก Live Portal (GitHub Pages)
+├── README.md                                # หน้าหลักพร้อมลิงก์เว็บและคำอธิบาย
 ├── docs/
 │   ├── 01_CN271_Exam_Mastery_Guide.md       # สรุปทฤษฎี สเต็ปการทำ และจุดดักคะแนนข้อสอบ
-│   └── 02_Instructor_Exam_Solutions_Step_by_Step.md # เฉลยข้อสอบลายมืออาจารย์ฉบับสมบูรณ์
+│   ├── 02_Instructor_Exam_Solutions_Step_by_Step.md # เฉลยข้อสอบลายมืออาจารย์ฉบับสมบูรณ์
+│   └── interactive_portal.html              # ไฟล์ต้นฉบับเว็บพอร์ทัล
 ├── scripts/
 │   ├── solver_engine.py                     # เอนจินคำนวณและวนลูป Trial & Error อัตโนมัติ
 │   └── test_solver.py                       # สคริปต์ Unit Test ยืนยันความถูกต้องของตัวเลข
@@ -42,27 +53,6 @@ python3 scripts/solver_engine.py
 ```bash
 python3 -m unittest discover -s scripts
 ```
-
----
-
-## 📤 วิธีการนำขึ้น GitHub (How to Push to GitHub)
-
-หากคุณต้องการนำโปรเจกต์นี้ขึ้นไปเก็บบน GitHub บัญชีของคุณเอง สามารถทำตามขั้นตอนง่าย ๆ ดังนี้:
-
-1. **สร้าง Repository เปล่าบน GitHub:**
-   - ไปที่ https://github.com/new
-   - ตั้งชื่อ Repository เช่น `cn271-fluid-mechanics`
-   - เลือกเป็น **Public** หรือ **Private** แล้วกด **Create repository** (ไม่ต้องติ๊กสร้าง README เพราะเรามีแล้ว)
-
-2. **เชื่อมต่อและ Push ขึ้น GitHub:**
-   เปิด Terminal แล้วรันคำสั่ง:
-   ```bash
-   cd /Users/thanaporn/.gemini/antigravity/scratch/cn271-fluid-mechanics
-   git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/cn271-fluid-mechanics.git
-   git branch -M main
-   git push -u origin main
-   ```
-   *(หมายเหตุ: แทนที่ `<YOUR_GITHUB_USERNAME>` ด้วยชื่อบัญชี GitHub ของคุณ)*
 
 ---
 

@@ -3,519 +3,853 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CN271 Fluid Mechanics: Pipe Flow Exam Mastery Portal</title>
+  <title>CN271 Fluid Mechanics — คู่มือเตรียมสอบการไหลในท่อ</title>
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
-          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Google Fonts: Prompt & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- MathJax 3 with robust auto-render -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea']
+      },
+      startup: {
+        pageReady: () => {
+          return MathJax.startup.defaultPageReady();
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
   <style>
-    body { font-family: 'Sarabun', sans-serif; }
-    code, pre { font-family: 'JetBrains Mono', monospace; }
+    body {
+      font-family: 'Prompt', sans-serif;
+    }
+    .font-eng {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .mjx-chtml {
+      font-size: 105% !important;
+      outline: none;
+    }
+    /* Smooth tab transition */
+    .tab-content {
+      animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
 
-  <!-- Header Banner -->
-  <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-sky-900 text-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-4">
-      <div>
-        <div class="flex items-center space-x-2">
-          <span class="bg-blue-500 text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wide">CN271 Core Civil & Mech</span>
-          <span class="bg-emerald-500 text-xs font-semibold px-2 py-0.5 rounded">QC: PASSED (6/6 Tests)</span>
-        </div>
-        <h1 class="text-2xl font-bold tracking-tight mt-1">🌊 CN271 Fluid Mechanics: Pipe Flow Exam Mastery</h1>
-        <p class="text-sm text-blue-200">คู่มือเตรียมสอบวิชาฟลูอิด (การไหลในท่อ) มหาวิทยาลัยธรรมศาสตร์ — ขั้นตอนเต็มตามอาจารย์ผู้สอน</p>
-      </div>
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-700 text-white text-xs py-2 px-4 text-center font-medium shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+      <span class="bg-white/20 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">CN271 Core Course</span>
+      <span>คู่มือเตรียมสอบวิชาฟลูอิด: ทฤษฎีการไหลในท่อ • เฉลยข้อสอบ 4 ข้อตามลายมืออาจารย์ • ตรวจคำตอบผ่าน 100%</span>
+    </div>
+  </div>
+
+  <!-- Primary Header -->
+  <header class="bg-white border-b border-slate-200/80 sticky top-0 z-50 backdrop-blur-md bg-white/95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
       <div class="flex items-center space-x-3">
-        <a href="#github-section" class="bg-white/10 hover:bg-white/20 text-white text-xs font-medium px-3 py-2 rounded-lg border border-white/20 transition flex items-center gap-1.5">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          Git Ready
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 text-lg font-bold">
+          🌊
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg font-bold text-slate-900 tracking-tight font-eng">CN271 Fluid Mechanics Mastery</h1>
+            <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Verified
+            </span>
+          </div>
+          <p class="text-xs text-slate-500">คณะวิศวกรรมศาสตร์ มหาวิทยาลัยธรรมศาสตร์ (Pipe Flow Exam Prep)</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Badges -->
+      <div class="flex items-center gap-2 text-xs">
+        <a href="https://github.com/thanakornnopp-dev/cn271-fluid-mechanics" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 font-medium transition shadow-sm">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub Repo
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Navigation Tabs -->
-  <div class="bg-white border-b border-slate-200 shadow-sm sticky top-[73px] z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-1 sm:space-x-4 overflow-x-auto py-2 text-sm font-medium">
-      <button onclick="switchTab('tab-guide')" id="btn-tab-guide" class="tab-btn px-3 py-2 rounded-lg text-blue-600 bg-blue-50 font-semibold transition">📘 1. สเต็ปหลัก & สูตรแม่บท</button>
-      <button onclick="switchTab('tab-chart')" id="btn-tab-chart" class="tab-btn px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">📊 2. วิธีอ่าน Glasgow Chart</button>
-      <button onclick="switchTab('tab-exam1')" id="btn-tab-exam1" class="tab-btn px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">📝 3. ข้อ 1: ท่ออนุกรมเอียง</button>
-      <button onclick="switchTab('tab-exam2')" id="btn-tab-exam2" class="tab-btn px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">📝 4. ข้อ 2: หาขนาดท่อ $D$</button>
-      <button onclick="switchTab('tab-exam3')" id="btn-tab-exam3" class="tab-btn px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">📝 5. ข้อ 3: ถังใหญ่ 2 ถัง</button>
-      <button onclick="switchTab('tab-exam4')" id="btn-tab-exam4" class="tab-btn px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">📝 6. ข้อ 4: ท่อขนาน 4 ท่อน</button>
-      <button onclick="switchTab('tab-calc')" id="btn-tab-calc" class="tab-btn px-3 py-2 rounded-lg text-purple-600 hover:bg-purple-50 transition">⚡ 7. Interactive Calculator</button>
+  <!-- Navigation Menu Bar -->
+  <nav class="bg-white/80 border-b border-slate-200/60 sticky top-[69px] z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex space-x-1 sm:space-x-2 overflow-x-auto py-2.5 custom-scrollbar text-xs font-medium">
+        <button onclick="switchTab('tab-guide')" id="btn-tab-guide" class="tab-btn px-3.5 py-2 rounded-lg bg-blue-600 text-white font-semibold shadow-sm transition">
+          📘 สเต็ปหลัก & สูตรแม่บท
+        </button>
+        <button onclick="switchTab('tab-chart')" id="btn-tab-chart" class="tab-btn px-3.5 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
+          📊 วิธีอ่านชาร์ต Glasgow
+        </button>
+        <button onclick="switchTab('tab-exam1')" id="btn-tab-exam1" class="tab-btn px-3.5 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
+          📝 ข้อ 1: ท่ออนุกรมเอียง
+        </button>
+        <button onclick="switchTab('tab-exam2')" id="btn-tab-exam2" class="tab-btn px-3.5 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
+          📝 ข้อ 2: หาขนาดท่อ $D$
+        </button>
+        <button onclick="switchTab('tab-exam3')" id="btn-tab-exam3" class="tab-btn px-3.5 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
+          📝 ข้อ 3: ถังใหญ่ 2 ถัง
+        </button>
+        <button onclick="switchTab('tab-exam4')" id="btn-tab-exam4" class="tab-btn px-3.5 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
+          📝 ข้อ 4: ท่อขนาน (15 คะแนน)
+        </button>
+        <button onclick="switchTab('tab-calc')" id="btn-tab-calc" class="tab-btn px-3.5 py-2 rounded-lg text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition font-semibold">
+          ⚡ เครื่องคิดเลขจำลอง
+        </button>
+      </div>
     </div>
-  </div>
+  </nav>
 
-  <!-- Main Content Area -->
-  <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex-1 w-full space-y-6">
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1">
 
-    <!-- TAB 1: MASTER GUIDE -->
+    <!-- ========================================== -->
+    <!-- TAB 1: FORMULAS & 4-STEP FRAMEWORK -->
+    <!-- ========================================== -->
     <section id="tab-guide" class="tab-content block space-y-6">
-      <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-          <span>🎯</span> สมการหัวใจ 3 ตัวที่ต้องจำให้ขึ้นใจก่อนเดินเข้าห้องสอบ
+      
+      <!-- Summary Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">1</span>
+            <span class="text-[11px] font-semibold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full">Energy Balance</span>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900">สมการพลังงานรวม (General Energy)</h3>
+          <p class="text-xs text-slate-500 mt-1">สมดุลเฮดระหว่างจุดต้นทาง (1) และปลายทาง (2)</p>
+          
+          <div class="my-3 p-3 bg-slate-50 rounded-xl border border-slate-100 text-center text-slate-800">
+            $$\frac{P_1}{\gamma} + \frac{v_1^2}{2g} + z_1 = \frac{P_2}{\gamma} + \frac{v_2^2}{2g} + z_2 + \sum h_L$$
+          </div>
+
+          <ul class="text-xs text-slate-600 space-y-1.5 mt-2">
+            <li class="flex items-start gap-1.5">
+              <span class="text-blue-500 mt-0.5">•</span>
+              <span>$\gamma = 9,810\text{ N/m}^3$ (น้ำมาตรฐาน)</span>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-blue-500 mt-0.5">•</span>
+              <span>$z$: วัดเทียบกับแนว Datum เดียวกัน</span>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-blue-500 mt-0.5">•</span>
+              <span>$\sum h_L = \sum h_f \text{ (หลัก)} + \sum h_m \text{ (รอง)}$</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">2</span>
+            <span class="text-[11px] font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-full">Major Loss</span>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900">สมการ Darcy-Weisbach</h3>
+          <p class="text-xs text-slate-500 mt-1">การสูญเสียหลักเนื่องจากแรงเสียดทานในท่อ</p>
+
+          <div class="my-3 p-3 bg-slate-50 rounded-xl border border-slate-100 text-center text-slate-800">
+            $$h_f = f \frac{L}{D} \frac{v^2}{2g} = \frac{8 f L Q^2}{\pi^2 g D^5}$$
+          </div>
+
+          <ul class="text-xs text-slate-600 space-y-1.5 mt-2">
+            <li class="flex items-start gap-1.5">
+              <span class="text-indigo-500 mt-0.5">•</span>
+              <span>$f$: สัมประสิทธิ์ความเสียดทาน (เปิดชาร์ตท่อ)</span>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-indigo-500 mt-0.5">•</span>
+              <span>ความเร็ว $v = \frac{Q}{A} = \frac{4Q}{\pi D^2}$ $[\text{m/s}]$</span>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-indigo-500 mt-0.5">•</span>
+              <span>$D$ ต้องมีหน่วยเป็นเมตร $[\text{m}]$ เสมอ</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">3</span>
+            <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full">Continuity</span>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900">สมการความต่อเนื่อง (มวลคงที่)</h3>
+          <p class="text-xs text-slate-500 mt-1">ใช้ยุบตัวแปรความเร็วให้เหลือตัวเดียว</p>
+
+          <div class="my-3 p-3 bg-slate-50 rounded-xl border border-slate-100 text-center text-slate-800">
+            $$v_2 = v_1 \left( \frac{D_1}{D_2} \right)^2, \quad v_3 = v_1 \left( \frac{D_1}{D_3} \right)^2$$
+          </div>
+
+          <ul class="text-xs text-slate-600 space-y-1.5 mt-2">
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-500 mt-0.5">•</span>
+              <span>ท่ออนุกรม: $Q_1 = Q_2 = Q_3 = Q$</span>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-500 mt-0.5">•</span>
+              <span>ท่อขนาน: $h_2 = h_3$ และ $Q_{\text{total}} = Q_2 + Q_3$</span>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-500 mt-0.5">•</span>
+              <span>ทำให้อาจารย์เห็นชัดเจนว่ายุบตัวแปรมาอย่างไร</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- 4-Step Checklist according to Professor -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+        <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <span>🎯</span> ลำดับการทำ 4 ขั้นตอนตามที่อาจารย์ให้คะแนนเต็ม (Step-by-Step Template)
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-          <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h3 class="font-bold text-blue-900 text-sm">1. General Energy Equation</h3>
-            <p class="text-xs text-blue-700 mt-1">สมการอนุรักษ์พลังงาน (Head Balance)</p>
-            <div class="text-sm font-mono mt-2 bg-white p-2 rounded border border-blue-100 text-slate-800">
-              $$\frac{P_1}{\gamma} + \frac{v_1^2}{2g} + z_1 = \frac{P_2}{\gamma} + \frac{v_2^2}{2g} + z_2 + \sum h_L$$
-            </div>
-            <ul class="text-xs text-slate-600 mt-2 list-disc list-inside space-y-1">
-              <li>$\gamma = 9,810\text{ N/m}^3$ สำหรับน้ำ</li>
-              <li>$z$: วัดเทียบกับระนาบ Datum เดียวกัน</li>
-              <li>$\sum h_L = \sum h_f + \sum h_m$</li>
-            </ul>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-5">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/60 relative">
+            <div class="text-xs font-bold text-blue-600 mb-1">ขั้นตอนที่ 1</div>
+            <h4 class="text-sm font-bold text-slate-800">กำหนด Datum</h4>
+            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+              ระบุระดับอ้างอิง $z=0$ ชัดเจน หากเป็นท่อเอียง ให้คำนวณ $z = L_{\text{tot}} \sin \theta$ เพื่อหาผลต่างความสูง
+            </p>
           </div>
 
-          <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
-            <h3 class="font-bold text-indigo-900 text-sm">2. Darcy-Weisbach Equation</h3>
-            <p class="text-xs text-indigo-700 mt-1">การสูญเสียหลักจากแรงเสียดทาน (Major Loss)</p>
-            <div class="text-sm font-mono mt-2 bg-white p-2 rounded border border-indigo-100 text-slate-800">
-              $$h_f = f \frac{L}{D} \frac{v^2}{2g} = \frac{8 f L Q^2}{\pi^2 g D^5}$$
-            </div>
-            <ul class="text-xs text-slate-600 mt-2 list-disc list-inside space-y-1">
-              <li>$f$: ค่า Darcy Friction factor จากชาร์ต</li>
-              <li>$v = \frac{4Q}{\pi D^2}$ $[\text{m/s}]$</li>
-              <li>$D$ และ $L$ ต้องมีหน่วยเป็นเมตร $[\text{m}]$</li>
-            </ul>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/60 relative">
+            <div class="text-xs font-bold text-blue-600 mb-1">ขั้นตอนที่ 2</div>
+            <h4 class="text-sm font-bold text-slate-800">ยุบตัวแปรความเร็ว</h4>
+            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+              เขียนสมการความต่อเนื่อง $Q = vA$ เพื่อแทน $v_2, v_3$ ให้อยู่ในรูป $v_1$ ตัวเดียว ป้องกันการติดหลายตัวแปร
+            </p>
           </div>
 
-          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
-            <h3 class="font-bold text-emerald-900 text-sm">3. Continuity Equation</h3>
-            <p class="text-xs text-emerald-700 mt-1">สมการความต่อเนื่อง (มวลคงที่)</p>
-            <div class="text-sm font-mono mt-2 bg-white p-2 rounded border border-emerald-100 text-slate-800">
-              $$Q_1 = Q_2 = Q_3 \implies v_1 A_1 = v_2 A_2$$
-            </div>
-            <ul class="text-xs text-slate-600 mt-2 list-disc list-inside space-y-1">
-              <li>สำหรับท่ออนุกรม: แปลง $v_2, v_3$ ให้อยู่ในรูป $v_1$</li>
-              <li>$v_2 = v_1 (D_1/D_2)^2$</li>
-              <li>สำหรับท่อขนาน: $Q_{\text{total}} = Q_2 + Q_3$</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Comparison of Problems -->
-      <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-        <h2 class="text-lg font-bold text-slate-900 mb-3">📋 จำแนกประเภทโจทย์ 3 รูปแบบในข้อสอบ (Exam Type Matrix)</h2>
-        <div class="overflow-x-auto">
-          <table class="min-w-full divide-y divide-slate-200 text-sm">
-            <thead class="bg-slate-50 text-slate-600 font-semibold">
-              <tr>
-                <th class="px-4 py-3 text-left">ประเภทโจทย์</th>
-                <th class="px-4 py-3 text-left">ข้อมูลที่โจทย์ให้</th>
-                <th class="px-4 py-3 text-left">สิ่งที่โจทย์ถาม</th>
-                <th class="px-4 py-3 text-left">กลยุทธ์การคำนวณ (Solution Strategy)</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100 text-slate-700">
-              <tr class="hover:bg-slate-50">
-                <td class="px-4 py-3 font-semibold text-blue-800">Type 1: Direct Head Loss</td>
-                <td class="px-4 py-3">$Q, D, L, \varepsilon$</td>
-                <td class="px-4 py-3">$h_f$ หรือ $\Delta P$</td>
-                <td class="px-4 py-3">หา $v \to Re \to$ เปิดชาร์ตหา $f \to$ แทนสูตร $h_f = f \frac{L}{D}\frac{v^2}{2g}$ ทันที (ไม่ต้องสมมุติค่า)</td>
-              </tr>
-              <tr class="hover:bg-slate-50">
-                <td class="px-4 py-3 font-semibold text-indigo-800">Type 2: Flow / Velocity</td>
-                <td class="px-4 py-3">$\Delta P$ หรือ $h_f, D, L, \varepsilon$</td>
-                <td class="px-4 py-3">$v$ หรือ $Q$</td>
-                <td class="px-4 py-3"><strong>Trial & Error:</strong> จัดรูป $v = \sqrt{\frac{2g h_f}{\sum K + f L/D}} \to$ สมมุติ $f$ รอบที่ 1 จากโซน Fully Turbulent $\to$ หา $v \to Re \to$ อ่าน $f$ ใหม่จนนิ่ง</td>
-              </tr>
-              <tr class="hover:bg-slate-50">
-                <td class="px-4 py-3 font-semibold text-emerald-800">Type 3: Pipe Sizing</td>
-                <td class="px-4 py-3">$Q, h_f, L, \varepsilon$</td>
-                <td class="px-4 py-3">เส้นผ่านศูนย์กลาง $D$</td>
-                <td class="px-4 py-3"><strong>Trial & Error:</strong> จัดรูป $D = \left[\frac{8 f L Q^2}{\pi^2 g h_f}\right]^{0.2} \to$ สมมุติ $f_1 = 0.020 \to$ คำนวณ $D \to$ หา $v, Re, k/D \to$ เปิดชาร์ตได้ $f$ ใหม่ $\to$ 2 รอบตรง!</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 2: GLASGOW CHART -->
-    <section id="tab-chart" class="tab-content hidden space-y-6">
-      <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-        <div class="flex items-start justify-between">
-          <div>
-            <h2 class="text-xl font-bold text-slate-900">📊 วิธีการอ่าน Pipe Friction Chart (Glasgow College) ในห้องสอบ</h2>
-            <p class="text-sm text-slate-500 mt-1">ชาร์ตนี้เป็นแบบเดียวกับ Moody Diagram แต่พิมพ์โดย Glasgow College of Nautical Studies</p>
-          </div>
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">ไฮไลท์สีชมพูในห้องสอบ</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          <div class="space-y-4">
-            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <h3 class="font-bold text-slate-800 text-sm">1. แกนแนวนอนด้านล่าง (Horizontal Axis):</h3>
-              <p class="text-xs text-slate-600 mt-1">
-                คือค่า Reynolds Number: $Re = \frac{u d}{\nu} = \frac{v D}{\nu}$ วิ่งตั้งแต่ $10^3, 10^4, 10^5, 10^6, 10^7, 10^8$ แบบ Logarithmic
-              </p>
-            </div>
-
-            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <h3 class="font-bold text-slate-800 text-sm">2. เส้นโค้งตระกูลขวา (Relative Roughness $k/d$):</h3>
-              <p class="text-xs text-slate-600 mt-1">
-                มีค่าตั้งแต่ $0.00005$ ไปจนถึง $0.050$<br>
-                <strong>จุดระวัง:</strong> ค่า $k$ (หรือ $\varepsilon$) ที่โจทย์ให้มาเป็นมิลลิเมตร ต้องหารด้วยเส้นผ่านศูนย์กลาง $D$ ที่เป็นมิลลิเมตรด้วย เช่น $k = 0.48\text{ mm}, D = 600\text{ mm} \implies k/D = 0.0008$
-              </p>
-            </div>
-
-            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <h3 class="font-bold text-slate-800 text-sm">3. แกนแนวตั้งด้านซ้าย (Friction Factor $f$):</h3>
-              <p class="text-xs text-slate-600 mt-1">
-                อ่านค่า $f$ ตรง ๆ วิ่งตั้งแต่ $0.010$ ถึง $0.100$<br>
-                สังเกตในชาร์ตที่มีรอยปากกาสีน้ำเงินเขียนกำกับ:
-                <br>• <span class="font-bold text-blue-600">0.023</span>: ตรงกับโจทย์ข้อ 2 ($k/D = 0.0015, Re \approx 3 \times 10^5$)
-                <br>• <span class="font-bold text-blue-600">0.019</span>: ตรงกับโจทย์ข้อ 4 ท่อ 3 ($k/D = 0.0008, Re \approx 3.4 \times 10^5$)
-              </p>
-            </div>
-
-            <div class="bg-amber-50 p-4 rounded-lg border border-amber-200 text-amber-900 text-xs space-y-1">
-              <p class="font-bold">⚠️ เทคนิคเดาค่า $f$ รอบแรก (Initial Guess Trick):</p>
-              <p>เมื่อเริ่มต้นรอบแรกที่เรายังไม่รู้ความเร็ว $v$ ให้มองหาเส้น $k/d$ ของท่อนั้น แล้วกวาดสายตาไปทางขวาสุดตรงบริเวณที่เส้นเริ่มขนานนอนราบ (Fully Turbulent Zone) แล้วอ่านค่า $f$ ทางซ้ายมาใช้เป็นค่าเดาแรก จะทำให้คำนวณรอบที่ 2 ได้ตรงเลย!</p>
-            </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/60 relative">
+            <div class="text-xs font-bold text-blue-600 mb-1">ขั้นตอนที่ 3</div>
+            <h4 class="text-sm font-bold text-slate-800">ดึงตัวร่วมก้อนใหญ่</h4>
+            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+              แทนพจน์การสูญเสียหลักและรอง แล้วดึง $\frac{v_1^2}{2g}$ ออกมา รวมค่าคงที่ไว้ในวงเล็บเดี่ยว
+            </p>
           </div>
 
-          <div class="bg-slate-900 text-slate-200 p-5 rounded-xl font-mono text-xs flex flex-col justify-between">
-            <div>
-              <div class="text-sky-400 font-bold text-sm mb-2">⚡ Quick Verification Values from Python Solver:</div>
-              <pre class="bg-black/50 p-3 rounded leading-relaxed overflow-x-auto text-emerald-400">
-# Colebrook-White Convergence
-1. Pipe 1 (k/D=0.0002, Re=2.9e5) -> f = 0.0163
-2. Pipe 2 (k/D=0.0003, Re=2.3e5) -> f = 0.0175
-3. Pipe 3 (k/D=0.0004, Re=3.8e5) -> f = 0.0173
-
-# Exam 2 Sizing
-k/D = 0.00150, Re = 3.0e5       -> f = 0.0225
-
-# Exam 4 Parallel Network
-Pipe 3 (k/D=0.0008, Re=3.4e5)   -> f = 0.0196
-Pipe 2 (k/D=0.0004, Re=5.6e5)   -> f = 0.0169
-Pipe 1 (k/D=0.0010, Re=7.2e5)   -> f = 0.0201
-              </pre>
-            </div>
-            <p class="text-slate-400 text-[11px] mt-4">
-              *หมายเหตุ: ในห้องสอบอาจารย์อนุโลมให้อ่านจากสายตาคลาดเคลื่อนได้เล็กน้อย เช่น อ่านได้ 0.019 หรือ 0.020 ถือว่าได้คะแนนเต็มหากแสดงวิธีคิดครบ
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/60 relative">
+            <div class="text-xs font-bold text-blue-600 mb-1">ขั้นตอนที่ 4</div>
+            <h4 class="text-sm font-bold text-slate-800">วนลูป Trial & Error</h4>
+            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+              สมมุติค่า $f$ รอบแรกจากโซน Fully Turbulent หรือ $f=0.020$ คำนวณหา $v \to Re \to$ เปิดชาร์ตได้ $f$ ใหม่ตรงเดิม!
             </p>
           </div>
         </div>
       </div>
+
+      <!-- 5 Common Traps -->
+      <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200/80">
+        <h3 class="text-sm font-bold text-amber-900 flex items-center gap-2">
+          <span>⚠️</span> 5 จุดดักคะแนนในห้องสอบที่นักศึกษามักพลาด (Common Exam Traps)
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3 text-xs text-amber-800 leading-relaxed">
+          <div class="flex items-start gap-2 bg-white/70 p-3 rounded-lg border border-amber-200/50">
+            <span class="font-bold text-amber-600">1.</span>
+            <span><strong>ลืมแปลงมิลลิเมตรเป็นเมตร:</strong> ค่าความขรุขระ $\varepsilon$ ให้มาเป็น mm ต้องแปลงให้เป็นหน่วยเดียวกับเส้นผ่านศูนย์กลาง $D$ เช่น $\frac{0.08\text{ mm}}{400\text{ mm}} = 0.0002$</span>
+          </div>
+          <div class="flex items-start gap-2 bg-white/70 p-3 rounded-lg border border-amber-200/50">
+            <span class="font-bold text-amber-600">2.</span>
+            <span><strong>หน่วยความดัน kPa:</strong> ต้องคูณ $10^3$ ก่อนหารด้วย $\gamma = 9,810\text{ N/m}^3$ เพื่อแปลงเป็นเฮดเมตร</span>
+          </div>
+          <div class="flex items-start gap-2 bg-white/70 p-3 rounded-lg border border-amber-200/50">
+            <span class="font-bold text-amber-600">3.</span>
+            <span><strong>เครื่องหมายความสูงเนิน:</strong> น้ำไหลขึ้นเนิน $z_2 > z_1$ เมื่อย้ายมาลบกับฝั่งซ้ายของสมการ ต้องติดลบ ($\Delta P/\gamma - z_2$)</span>
+          </div>
+          <div class="flex items-start gap-2 bg-white/70 p-3 rounded-lg border border-amber-200/50">
+            <span class="font-bold text-amber-600">4.</span>
+            <span><strong>ท่อขนานห้ามบวกเฮดรวม:</strong> การสูญเสียพลังงานช่วงท่อขนานคิดเพียงเส้นเดียว ($h_2 = h_3 = 0.42\text{ m}$) ห้ามเอามาบวกกัน</span>
+          </div>
+        </div>
+      </div>
+
     </section>
 
-    <!-- TAB 3: EXAM 1 (SERIES PIPES) -->
-    <section id="tab-exam1" class="tab-content hidden space-y-6">
-      <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-        <div class="flex items-center justify-between border-b pb-4">
+    <!-- ========================================== -->
+    <!-- TAB 2: GLASGOW CHART GUIDE & INTERACTIVE TRACER -->
+    <!-- ========================================== -->
+    <section id="tab-chart" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+        
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
           <div>
-            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-0.5 rounded">โจทย์ข้อที่ 1 (หน้า 2 และ 3)</span>
-            <h2 class="text-xl font-bold text-slate-900 mt-1">ท่อ 3 ท่อนต่ออนุกรม วางเอียง $\theta = 5^\circ$ พร้อมการสูญเสียรอง</h2>
+            <h2 class="text-base font-bold text-slate-900">📊 วิธีการอ่านชาร์ต Glasgow ในห้องสอบ (Pipe Friction Chart Guide)</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Glasgow College of Nautical Studies — สูตรบนชาร์ตคือ Darcy-Weisbach ธรรมดา</p>
           </div>
-          <div class="text-right">
-            <span class="text-xs text-slate-500">ผลต่างความดัน $\Delta P = 245.25\text{ kPa}$</span>
-            <div class="text-sm font-bold text-emerald-600">$v_1 = 0.71\text{ m/s}, v_2 = 0.46\text{ m/s}, v_3 = 1.27\text{ m/s}$</div>
+          <div class="flex gap-2">
+            <button onclick="highlightChart(1)" class="px-2.5 py-1 text-xs bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg font-medium border border-blue-200">ดูจุด ข้อ 1</button>
+            <button onclick="highlightChart(2)" class="px-2.5 py-1 text-xs bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded-lg font-medium border border-indigo-200">ดูจุด ข้อ 2 (0.023)</button>
+            <button onclick="highlightChart(4)" class="px-2.5 py-1 text-xs bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg font-medium border border-emerald-200">ดูจุด ข้อ 4 (0.019)</button>
           </div>
         </div>
 
-        <div class="space-y-4 text-sm mt-4 text-slate-700">
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">ขั้นตอนที่ 1: กำหนด Datum และหาระดับความสูงปลายทาง $z_B$</h3>
-            <p class="text-xs text-slate-600 mt-1">กำหนดจุด A เป็น Datum ($z_A = 0$)</p>
-            <div class="my-2">
-              $$L_{\text{total}} = 80 + 120 + 80 = 280\text{ m}$$
-              $$z_B = 280 \sin 5^\circ = 24.40\text{ m}$$
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 items-center">
+          
+          <!-- Interactive Vector Visualization of Glasgow Chart -->
+          <div class="lg:col-span-8 bg-slate-900 rounded-2xl p-5 border border-slate-800 shadow-inner">
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-2 font-mono">
+              <span>Moody / Glasgow Diagram Simulator</span>
+              <span id="chart-marker-text" class="text-emerald-400 font-bold">เลือกข้อเพื่อดูแนวเส้นลากอ่านค่า</span>
+            </div>
+
+            <svg viewBox="0 0 650 380" class="w-full h-auto bg-slate-950/60 rounded-xl border border-slate-800">
+              <!-- Grid lines -->
+              <defs>
+                <pattern id="grid" width="60" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 60 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.5" stroke-dasharray="2,2"/>
+                </pattern>
+                <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="100%" stop-color="#818cf8" />
+                </linearGradient>
+              </defs>
+              <rect x="50" y="20" width="560" height="300" fill="url(#grid)" />
+
+              <!-- Axes -->
+              <line x1="50" y1="320" x2="610" y2="320" stroke="#94a3b8" stroke-width="2"/>
+              <line x1="50" y1="20" x2="50" y2="320" stroke="#94a3b8" stroke-width="2"/>
+              <line x1="610" y1="20" x2="610" y2="320" stroke="#94a3b8" stroke-width="2"/>
+
+              <!-- Axis labels -->
+              <text x="330" y="355" fill="#94a3b8" font-size="12" text-anchor="middle" font-family="sans-serif">Reynolds Number, Re = vd/ν (Logarithmic scale)</text>
+              <text x="20" y="170" fill="#94a3b8" font-size="12" text-anchor="middle" transform="rotate(-90 20 170)" font-family="sans-serif">Friction Factor, f</text>
+              <text x="635" y="170" fill="#94a3b8" font-size="11" text-anchor="middle" transform="rotate(90 635 170)" font-family="sans-serif">Relative Roughness k/d</text>
+
+              <!-- Re ticks -->
+              <text x="50" y="338" fill="#64748b" font-size="10">10³</text>
+              <text x="162" y="338" fill="#64748b" font-size="10">10⁴</text>
+              <text x="274" y="338" fill="#64748b" font-size="10">10⁵</text>
+              <text x="386" y="338" fill="#64748b" font-size="10">10⁶</text>
+              <text x="498" y="338" fill="#64748b" font-size="10">10⁷</text>
+              <text x="600" y="338" fill="#64748b" font-size="10">10⁸</text>
+
+              <!-- f ticks -->
+              <text x="40" y="315" fill="#64748b" font-size="10" text-anchor="end">0.010</text>
+              <text x="40" y="260" fill="#64748b" font-size="10" text-anchor="end">0.015</text>
+              <text x="40" y="210" fill="#64748b" font-size="10" text-anchor="end">0.020</text>
+              <text x="40" y="140" fill="#64748b" font-size="10" text-anchor="end">0.030</text>
+              <text x="40" y="60" fill="#64748b" font-size="10" text-anchor="end">0.050</text>
+
+              <!-- Curves -->
+              <!-- Smooth pipe curve -->
+              <path d="M 120 190 Q 280 270 610 310" fill="none" stroke="#475569" stroke-width="1.5"/>
+              <text x="570" y="300" fill="#64748b" font-size="9">Smooth (0.000)</text>
+
+              <!-- k/d = 0.0002 curve -->
+              <path d="M 180 180 Q 320 250 610 265" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.6"/>
+              <text x="580" y="260" fill="#38bdf8" font-size="9">0.0002</text>
+
+              <!-- k/d = 0.0008 curve -->
+              <path d="M 180 160 Q 320 220 610 230" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.6"/>
+              <text x="580" y="225" fill="#a78bfa" font-size="9">0.0008</text>
+
+              <!-- k/d = 0.0015 curve (Pink exam highlight) -->
+              <path d="M 180 145 Q 320 195 610 195" fill="none" stroke="#f472b6" stroke-width="2" stroke-dasharray="4,2"/>
+              <text x="580" y="190" fill="#f472b6" font-size="9" font-weight="bold">0.0015 (Exam 2)</text>
+
+              <!-- Dynamic tracing pointer lines (Controlled by JS) -->
+              <g id="chart-tracer" class="transition-all duration-300">
+                <!-- Marker circle -->
+                <circle id="marker-point" cx="320" cy="195" r="5" fill="#f43f5e" stroke="#fff" stroke-width="2"/>
+                <!-- Vertical line down to Re -->
+                <line id="marker-vline" x1="320" y1="195" x2="320" y2="320" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3,3"/>
+                <!-- Horizontal line left to f -->
+                <line id="marker-hline" x1="320" y1="195" x2="50" y2="195" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3,3"/>
+                <!-- Badge on f axis -->
+                <rect id="marker-badge" x="8" y="183" width="38" height="20" rx="4" fill="#f43f5e"/>
+                <text id="marker-badge-text" x="27" y="197" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle">0.023</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Description on the side -->
+          <div class="lg:col-span-4 space-y-4 text-xs">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <h4 class="font-bold text-slate-900 text-sm">3 สเต็ปการเปิดชาร์ตในห้องสอบ</h4>
+              <ol class="list-decimal list-inside space-y-2 mt-2 text-slate-600">
+                <li>
+                  <strong>หา Relative Roughness ($k/D$):</strong><br>
+                  นำความขรุขระ $\varepsilon$ (mm) หารด้วยเส้นผ่านศูนย์กลางท่อ $D$ (mm) แล้วมองหาเส้นโค้งฝั่งขวา
+                </li>
+                <li>
+                  <strong>ลากตามแนวเส้น $k/D$ มาตัด $Re$:</strong><br>
+                  ดูค่า $Re$ แกนแนวนอนด้านล่าง ลากเส้นตรงขึ้นไปตัดกับเส้นโค้ง $k/D$
+                </li>
+                <li>
+                  <strong>กวาดสายตาไปทางซ้ายสุด:</strong><br>
+                  อ่านค่า Friction Factor ($f$) ตรงแกนตั้งด้านซ้าย
+                </li>
+              </ol>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-xl border border-blue-200/80 text-blue-900">
+              <h5 class="font-bold text-xs">💡 ทริคเดาค่ารอบแรก (Trial 1):</h5>
+              <p class="mt-1 leading-relaxed text-[11px]">
+                เมื่อยังไม่รู้ความเร็ว $v$ ให้มองหาเส้น $k/D$ แล้วกวาดสายตาไปขวาสุดตรงช่วงที่เส้นเริ่ม **นอนราบ (Fully Turbulent Zone)** อ่านค่า $f$ ฝั่งซ้ายมาใช้ทันที จะทำให้คำนวณรอบที่ 2 ได้คำตอบตรงเลย
+              </p>
             </div>
           </div>
 
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">ขั้นตอนที่ 2: ค่าสัมประสิทธิ์การสูญเสียรอง (Minor Losses)</h3>
-            <ul class="list-disc list-inside space-y-1 text-xs text-slate-600 mt-1">
-              <li>ท่อ 1 ไป 2 (Sudden Expansion): $\frac{A_1}{A_2} = (0.4/0.5)^2 = 0.64 \implies K_{12} = 0.15 \implies h_{m,12} = 0.15 \frac{v_1^2}{2g}$</li>
-              <li>ท่อ 2 ไป 3 (Sudden Contraction): $\frac{A_3}{A_2} = (0.3/0.5)^2 = 0.36 \implies K_{23} = 0.35 \implies h_{m,23} = 0.35 \frac{v_3^2}{2g}$</li>
-            </ul>
-          </div>
+        </div>
 
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">ขั้นตอนที่ 3: ใช้สมการความต่อเนื่องดึงตัวแปรความเร็วให้เหลือ $v_1$ ตัวเดียว</h3>
-            <div class="my-2">
-              $$v_2 = v_1 \left(\frac{0.4}{0.5}\right)^2 = 0.64 v_1$$
-              $$v_3 = v_1 \left(\frac{0.4}{0.3}\right)^2 = 1.78 v_1$$
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: EXAM PROBLEM 1 (SERIES PIPES) -->
+    <!-- ========================================== -->
+    <section id="tab-exam1" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+        
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="bg-blue-100 text-blue-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">ข้อสอบข้อที่ 1</span>
+              <span class="text-xs text-slate-500">ท่ออนุกรม 3 ท่อน วางเอียง $\theta = 5^\circ$</span>
+            </div>
+            <h2 class="text-lg font-bold text-slate-900 mt-1">การไหลในท่ออนุกรมวางเอียง พร้อม Sudden Expansion & Contraction</h2>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-xl text-right">
+            <span class="text-[11px] text-emerald-700 font-medium">คำตอบสุดท้าย:</span>
+            <div class="text-sm font-bold text-emerald-800">$v_1 = 0.71\text{ m/s}, \; v_2 = 0.46\text{ m/s}, \; v_3 = 1.27\text{ m/s}$</div>
+          </div>
+        </div>
+
+        <!-- SVG Schematic Diagram -->
+        <div class="my-5 bg-slate-900 rounded-xl p-4">
+          <div class="text-[11px] font-mono text-slate-400 mb-1">Schematic Illustration (ภาพจำลองระบบท่อจริงตามโจทย์):</div>
+          <svg viewBox="0 0 650 180" class="w-full h-auto">
+            <!-- Datum line -->
+            <line x1="40" y1="150" x2="610" y2="150" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <text x="50" y="165" fill="#94a3b8" font-size="10" font-family="sans-serif">DATUM (zA = 0)</text>
+
+            <!-- Angle indicator -->
+            <path d="M 90 150 A 50 50 0 0 0 130 144" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+            <text x="135" y="145" fill="#f59e0b" font-size="10" font-weight="bold">θ = 5°</text>
+
+            <!-- Incline line -->
+            <!-- Pipe 1: D=0.4, L=80 -->
+            <line x1="80" y1="145" x2="220" y2="128" stroke="#38bdf8" stroke-width="10" stroke-linecap="round"/>
+            <text x="150" y="118" fill="#38bdf8" font-size="10" text-anchor="middle" font-weight="bold">Pipe 1 (D=0.4m, L=80m)</text>
+
+            <!-- Sudden Expansion to Pipe 2: D=0.5, L=120 -->
+            <line x1="220" y1="128" x2="430" y2="103" stroke="#818cf8" stroke-width="14" stroke-linecap="round"/>
+            <text x="325" y="90" fill="#818cf8" font-size="10" text-anchor="middle" font-weight="bold">Pipe 2 (D=0.5m, L=120m)</text>
+
+            <!-- Sudden Contraction to Pipe 3: D=0.3, L=80 -->
+            <line x1="430" y1="103" x2="570" y2="86" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+            <text x="500" y="75" fill="#38bdf8" font-size="10" text-anchor="middle" font-weight="bold">Pipe 3 (D=0.3m, L=80m)</text>
+
+            <!-- Points A and B -->
+            <circle cx="80" cy="145" r="4" fill="#22c55e"/>
+            <text x="80" y="130" fill="#22c55e" font-size="11" font-weight="bold" text-anchor="middle">A</text>
+
+            <circle cx="570" cy="86" r="4" fill="#ef4444"/>
+            <text x="570" y="72" fill="#ef4444" font-size="11" font-weight="bold" text-anchor="middle">B</text>
+
+            <!-- Elevation Dimension zB -->
+            <line x1="570" y1="86" x2="600" y2="86" stroke="#94a3b8" stroke-width="1"/>
+            <line x1="570" y1="150" x2="600" y2="150" stroke="#94a3b8" stroke-width="1"/>
+            <line x1="595" y1="86" x2="595" y2="150" stroke="#f43f5e" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <text x="605" y="122" fill="#f43f5e" font-size="10" font-weight="bold">zB = 24.40 m</text>
+          </svg>
+        </div>
+
+        <!-- Detailed Derivation Accordions -->
+        <div class="space-y-4 text-xs leading-relaxed">
+          
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-800 text-sm mb-1">1. คำนวณความสูงปลายทาง $z_B$ เทียบ Datum:</h4>
+            <p class="text-slate-600">
+              ความยาวตลอดแนวเอียงรวม: $L_{\text{tot}} = 80 + 120 + 80 = 280\text{ m}$<br>
+              ดังนั้นระดับความสูงที่จุด B คือ:
+            </p>
+            <div class="my-2 p-2 bg-white rounded border border-slate-100 text-slate-800 font-medium">
+              $$z_B = 280 \sin(5^\circ) = 24.40\text{ m}$$
             </div>
           </div>
 
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">ขั้นตอนที่ 4: ตั้งสมการพลังงานและรวมสัมประสิทธิ์</h3>
-            <div class="my-2">
-              $$\frac{P_A - P_B}{\gamma} - z_B = \left[ 1.78^2 - 1 + f_1 \frac{80}{0.4} + f_2 \frac{120}{0.5}(0.64)^2 + f_3 \frac{80}{0.3}(1.78)^2 + 0.15 + 0.35(1.78)^2 \right] \frac{v_1^2}{2g}$$
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-800 text-sm mb-1">2. หาค่าสัมประสิทธิ์การสูญเสียรอง (Minor Losses):</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+              <div class="bg-white p-3 rounded-lg border border-slate-100">
+                <span class="font-bold text-indigo-600">รอยต่อ 1 ไป 2 (Sudden Expansion):</span>
+                <p class="mt-1">$$\frac{A_1}{A_2} = \left(\frac{0.4}{0.5}\right)^2 = 0.64 \implies K_{12} = 0.15$$</p>
+                <p class="text-[11px] text-slate-500">คูณกับความเร็วก่อนขยาย: $h_{m1} = 0.15 \frac{v_1^2}{2g}$</p>
+              </div>
+              <div class="bg-white p-3 rounded-lg border border-slate-100">
+                <span class="font-bold text-indigo-600">รอยต่อ 2 ไป 3 (Sudden Contraction):</span>
+                <p class="mt-1">$$\frac{A_3}{A_2} = \left(\frac{0.3}{0.5}\right)^2 = 0.36 \implies K_{23} = 0.35$$</p>
+                <p class="text-[11px] text-slate-500">คูณกับความเร็วหลังหด: $h_{m2} = 0.35 \frac{v_3^2}{2g}$</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-800 text-sm mb-1">3. ใช้สมการความต่อเนื่องดึง $v_2, v_3$ ในรูป $v_1$:</h4>
+            <div class="p-2 bg-white rounded border border-slate-100 text-slate-800">
+              $$v_2 = v_1 \left(\frac{0.4}{0.5}\right)^2 = 0.64 v_1, \qquad v_3 = v_1 \left(\frac{0.4}{0.3}\right)^2 = 1.78 v_1$$
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200">
+            <h4 class="font-bold text-blue-900 text-sm mb-1">4. ตั้งสมการพลังงานรวมและดึงตัวร่วม $\frac{v_1^2}{2g}$:</h4>
+            <div class="my-2 p-3 bg-white rounded-lg border border-blue-100 text-slate-800">
+              $$\frac{P_A - P_B}{\gamma} - z_B = \left[ (1.78^2 - 1) + 200 f_1 + 240(0.64)^2 f_2 + 266.7(1.78)^2 f_3 + 0.15 + 0.35(1.78)^2 \right] \frac{v_1^2}{2g}$$
               $$\frac{245.25 \times 10^3}{9,810} - 24.40 = 25.00 - 24.40 = 0.60\text{ m}$$
-              $$0.60 = \left[ 3.427 + 200 f_1 + 98.3 f_2 + 845 f_3 \right] \frac{v_1^2}{2g}$$
+              $$0.60 = \left[ 3.427 + 200 f_1 + 98.30 f_2 + 844.91 f_3 \right] \frac{v_1^2}{2g}$$
             </div>
-          </div>
 
-          <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
-            <h3 class="font-bold text-blue-900">ขั้นตอนที่ 5: ตารางการทำ Trial & Error</h3>
-            <div class="overflow-x-auto mt-2">
-              <table class="min-w-full text-xs text-left bg-white rounded border border-blue-100">
-                <thead class="bg-blue-100 text-blue-900 font-semibold">
+            <!-- Iteration Table -->
+            <div class="mt-3 overflow-x-auto">
+              <table class="min-w-full text-xs text-left bg-white rounded-lg border border-blue-100">
+                <thead class="bg-blue-100/60 text-blue-900 font-semibold">
                   <tr>
-                    <th class="p-2">รอบที่</th>
-                    <th class="p-2">$f_1, f_2, f_3$ สมมุติ</th>
-                    <th class="p-2">Bracket Value</th>
-                    <th class="p-2">$v_1$ (m/s)</th>
-                    <th class="p-2">$Re_1, Re_2, Re_3$</th>
-                    <th class="p-2">$f_{\text{new}}$ จากชาร์ต</th>
+                    <th class="p-2.5">รอบที่</th>
+                    <th class="p-2.5">ค่า $f$ สมมุติ ($f_1, f_2, f_3$)</th>
+                    <th class="p-2.5">ผลรวมในวงเล็บ</th>
+                    <th class="p-2.5">$v_1$ คำนวณ (m/s)</th>
+                    <th class="p-2.5">ค่า $Re$</th>
+                    <th class="p-2.5">ค่า $f$ ใหม่จากชาร์ต</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-blue-50 text-slate-700">
                   <tr>
-                    <td class="p-2 font-bold">1</td>
-                    <td class="p-2">0.014, 0.015, 0.016</td>
-                    <td class="p-2">21.22</td>
-                    <td class="p-2">0.745</td>
-                    <td class="p-2">$3.0 \times 10^5, 2.4 \times 10^5, 4.0 \times 10^5$</td>
-                    <td class="p-2">0.0163, 0.0175, 0.0173</td>
+                    <td class="p-2.5 font-bold">1</td>
+                    <td class="p-2.5">0.014, 0.015, 0.016</td>
+                    <td class="p-2.5">21.22</td>
+                    <td class="p-2.5">0.745 m/s</td>
+                    <td class="p-2.5">3.0×10⁵, 2.4×10⁵, 4.0×10⁵</td>
+                    <td class="p-2.5 text-blue-700">0.0163, 0.0175, 0.0173</td>
                   </tr>
-                  <tr class="bg-emerald-50">
-                    <td class="p-2 font-bold text-emerald-800">2</td>
-                    <td class="p-2">0.0163, 0.0175, 0.0173</td>
-                    <td class="p-2">23.02</td>
-                    <td class="p-2 font-bold text-emerald-700">0.713</td>
-                    <td class="p-2">$2.9 \times 10^5, 2.3 \times 10^5, 3.8 \times 10^5$</td>
-                    <td class="p-2 font-bold text-emerald-700">0.0163, 0.0175, 0.0173 (ตรงเดิม!)</td>
+                  <tr class="bg-emerald-50/60">
+                    <td class="p-2.5 font-bold text-emerald-800">2</td>
+                    <td class="p-2.5">0.0163, 0.0175, 0.0173</td>
+                    <td class="p-2.5">23.02</td>
+                    <td class="p-2.5 font-bold text-emerald-800">0.713 m/s</td>
+                    <td class="p-2.5">2.9×10⁵, 2.3×10⁵, 3.8×10⁵</td>
+                    <td class="p-2.5 font-bold text-emerald-800">0.0163, 0.0175, 0.0173 (ตรงเดิม!)</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <p class="text-xs text-emerald-700 font-semibold mt-2">คำตอบลู่เข้าใน 2 รอบ ได้ความเร็วในท่อ: $v_1 = 0.71\text{ m/s}, v_2 = 0.46\text{ m/s}, v_3 = 1.27\text{ m/s}$</p>
+
+            <div class="mt-3 p-3 bg-emerald-100/70 border border-emerald-300 rounded-lg text-emerald-900 font-semibold flex items-center justify-between">
+              <span>✅ ผลลัพธ์สมบูรณ์:</span>
+              <span>$v_1 = 0.71\text{ m/s}, \quad v_2 = 0.46\text{ m/s}, \quad v_3 = 1.27\text{ m/s}$</span>
+            </div>
           </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- TAB 4: EXAM 2 (PIPE SIZING) -->
+    <!-- ========================================== -->
+    <!-- TAB 4: EXAM PROBLEM 2 (PIPE SIZING) -->
+    <!-- ========================================== -->
     <section id="tab-exam2" class="tab-content hidden space-y-6">
-      <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-        <div class="flex items-center justify-between border-b pb-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+        
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-0.5 rounded">โจทย์ข้อที่ 2 (หน้า 2 ข้อ 2)</span>
-            <h2 class="text-xl font-bold text-slate-900 mt-1">หาขนาดท่อเส้นผ่านศูนย์กลางคงที่ ($D$) ไหลออกสู่อากาศ</h2>
+            <div class="flex items-center gap-2">
+              <span class="bg-indigo-100 text-indigo-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">ข้อสอบข้อที่ 2</span>
+              <span class="text-xs text-slate-500">หาขนาดเส้นผ่านศูนย์กลางท่อ $D$ ที่ปล่อยออกสู่บรรยากาศ</span>
+            </div>
+            <h2 class="text-lg font-bold text-slate-900 mt-1">การออกแบบขนาดท่อ (Pipe Sizing with Elevation & Open Outlet)</h2>
           </div>
-          <div class="text-right">
-            <span class="text-xs text-slate-500">$Q = 0.14\text{ m}^3\text{/s}, L = 1,500\text{ m}$</span>
-            <div class="text-sm font-bold text-emerald-600">$D = 0.60\text{ m} \quad (598\text{ mm})$</div>
+          <div class="bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-xl text-right">
+            <span class="text-[11px] text-emerald-700 font-medium">ขนาดท่อที่ต้องการ:</span>
+            <div class="text-sm font-bold text-emerald-800">$D = 0.60\text{ m} \quad (598\text{ mm})$</div>
           </div>
         </div>
 
-        <div class="space-y-4 text-sm mt-4 text-slate-700">
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">1. ตั้งสมการพลังงานเพื่อหา Head Loss</h3>
-            <p class="text-xs text-slate-600 mt-1">ท่อมีขนาดคงที่ $v_1 = v_2$ ดังนั้น Velocity head ตัดกันได้ และปลายท่อเปิดสู่อากาศ $P_2 = 0$</p>
-            <div class="my-2">
-              $$\frac{P_1}{\gamma} + z_1 = \frac{P_2}{\gamma} + z_2 + h_f \implies h_f = \frac{P_1}{\gamma} - (z_2 - z_1)$$
-              $$h_f = \frac{105.13 \times 10^3}{9,810} - 10 = 10.717 - 10 = 0.717\text{ m}$$
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
+          <div class="space-y-3 text-xs">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-slate-800 text-sm">1. ข้อมูลที่โจทย์ระบุ:</h4>
+              <ul class="list-disc list-inside mt-2 space-y-1 text-slate-600">
+                <li>อัตราการไหล $Q = 0.14\text{ m}^3\text{/s}$</li>
+                <li>ความยาวท่อ $L = 1,500\text{ m}$</li>
+                <li>ความขรุขระ $\varepsilon = 0.9\text{ mm}$</li>
+                <li>ความสูงปลายทาง $z_2 - z_1 = 10\text{ m}$</li>
+                <li>ความดันต้นทาง $P_1 = 105.13\text{ kPa}$, ปลายทางออกสู่อากาศ $P_2 = 0$</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-slate-800 text-sm">2. หา Head Loss ($h_f$):</h4>
+              <p class="text-slate-600 mt-1">ท่อขนาดสม่ำเสมอทำให้ $v_1 = v_2$ Velocity head จึงตัดกันหมด:</p>
+              <div class="my-2 p-2 bg-white rounded border border-slate-100">
+                $$h_f = \frac{P_1}{\gamma} - (z_2 - z_1) = \frac{105.13 \times 10^3}{9,810} - 10 = 0.717\text{ m}$$
+              </div>
             </div>
           </div>
 
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">2. แปลงสูตร Darcy-Weisbach ให้อยู่ในรูป $D$</h3>
-            <div class="my-2">
-              $$h_f = \frac{8 f L Q^2}{\pi^2 g D^5} \implies D = \left( \frac{8 f L Q^2}{\pi^2 g h_f} \right)^{1/5}$$
+          <div class="p-4 rounded-xl bg-indigo-50/70 border border-indigo-200 text-xs">
+            <h4 class="font-bold text-indigo-900 text-sm">3. สรุปการวนลูป 2 รอบ (Trial & Error):</h4>
+            <p class="text-indigo-700 mt-1">จาก Darcy-Weisbach จัดรูปหา $D$:</p>
+            <div class="my-2 p-2 bg-white rounded border border-indigo-100 text-slate-800">
+              $$D = \left( \frac{8 f L Q^2}{\pi^2 g h_f} \right)^{1/5} = 1.2766 \times f^{0.2}$$
             </div>
-          </div>
 
-          <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
-            <h3 class="font-bold text-blue-900">3. สรุปการวนลูป Trial & Error</h3>
-            <ul class="text-xs text-slate-700 space-y-2 mt-2">
-              <li><strong>รอบที่ 1:</strong> สมมุติ $f_1 = 0.020 \implies D = 0.584\text{ m} \implies v = 0.523\text{ m/s} \implies Re = 3.05 \times 10^5, \frac{\varepsilon}{D} = \frac{0.9}{584} = 0.00154 \implies$ เปิดชาร์ตได้ $f_2 = 0.0226$ (จุดเดียวกับที่อาจารย์ขีดไฮไลท์ $0.023$ บนชาร์ต!)</li>
-              <li><strong>รอบที่ 2:</strong> ใช้ $f_2 = 0.0226 \implies D = 0.598\text{ m} \approx 0.60\text{ m} \implies v = 0.498\text{ m/s} \implies Re = 2.98 \times 10^5, \frac{\varepsilon}{D} = 0.00150 \implies f = 0.0225$ (คงที่!)</li>
-            </ul>
-            <div class="mt-3 p-2 bg-emerald-100 text-emerald-900 rounded font-bold text-center">
-              ขนาดท่อที่ต้องการ: $D = 0.60\text{ m} = 600\text{ mm}$
+            <div class="space-y-2 mt-3 text-slate-700">
+              <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                <span class="font-bold text-indigo-700">รอบที่ 1:</span> สมมุติ $f_1 = 0.020$<br>
+                $\implies D_1 = 0.584\text{ m} \implies v = 0.523\text{ m/s} \implies Re = 3.05 \times 10^5$<br>
+                $\frac{\varepsilon}{D} = \frac{0.9}{584} = 0.00154 \implies$ เปิดชาร์ตได้ <strong class="text-pink-600">f = 0.023</strong> (จุดขีดปากกาบนชาร์ตหน้า 1!)
+              </div>
+
+              <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                <span class="font-bold text-indigo-700">รอบที่ 2:</span> แทนค่า $f_2 = 0.0226$<br>
+                $\implies D_2 = 0.598\text{ m} \approx 0.60\text{ m} \implies Re = 2.98 \times 10^5$<br>
+                $\frac{\varepsilon}{D} = \frac{0.9}{598} = 0.00150 \implies f = 0.0225$ (ตรงเดิม ลู่เข้าแล้ว!)
+              </div>
+            </div>
+
+            <div class="mt-4 p-2.5 bg-emerald-100 border border-emerald-300 rounded-lg text-emerald-900 font-bold text-center">
+              ขนาดท่อที่ต้องเลือกใช้: $D = 0.60\text{ m} = 600\text{ mm}$
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- TAB 5: EXAM 3 (HUGE TANKS) -->
+    <!-- ========================================== -->
+    <!-- TAB 5: EXAM PROBLEM 3 (HUGE TANKS) -->
+    <!-- ========================================== -->
     <section id="tab-exam3" class="tab-content hidden space-y-6">
-      <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-        <div class="flex items-center justify-between border-b pb-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+        
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-0.5 rounded">โจทย์ข้อที่ 3 (หน้า 1 แผ่น 2)</span>
-            <h2 class="text-xl font-bold text-slate-900 mt-1">ถังเก็บน้ำขนาดใหญ่ 2 ถัง เชื่อมด้วยท่อเอียง $12^\circ$ (หาขนาดท่อ $D$)</h2>
+            <div class="flex items-center gap-2">
+              <span class="bg-sky-100 text-sky-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">ข้อสอบข้อที่ 3</span>
+              <span class="text-xs text-slate-500">ถังเก็บน้ำขนาดใหญ่มาก 2 ถัง เชื่อมด้วยท่อเอียง $12^\circ$</span>
+            </div>
+            <h2 class="text-lg font-bold text-slate-900 mt-1">การหาขนาดท่อระหว่างถังเก็บน้ำ (Two Huge Reservoirs)</h2>
           </div>
-          <div class="text-right">
-            <span class="text-xs text-slate-500">$Q = 12\text{ m}^3\text{/s}, L = 120\text{ m}$</span>
-            <div class="text-sm font-bold text-emerald-600">$D = 1.44\text{ m} \quad (1,440\text{ mm})$</div>
+          <div class="bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-xl text-right">
+            <span class="text-[11px] text-emerald-700 font-medium">ขนาดท่อที่ต้องการ:</span>
+            <div class="text-sm font-bold text-emerald-800">$D = 1.44\text{ m} \quad (1,440\text{ mm})$</div>
           </div>
         </div>
 
-        <div class="space-y-4 text-sm mt-4 text-slate-700">
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">1. วิเคราะห์หาระดับผิวน้ำ $h_f = z_1 - z_2$</h3>
-            <p class="text-xs text-slate-600 mt-1">กำหนดปากท่อฝั่งซ้ายเป็น Datum ($z_{\text{in}} = 0$)</p>
-            <div class="my-2">
-              $$z_1 = 45.0\text{ m}$$
-              $$z_{\text{out}} = 120 \sin 12^\circ = 24.95\text{ m}$$
-              $$z_2 = z_{\text{out}} + 16.5 = 24.95 + 16.5 = 41.45\text{ m}$$
-              $$h_f = z_1 - z_2 = 45.0 - 41.45 = 3.55\text{ m}$$
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 text-xs">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <h4 class="font-bold text-slate-800 text-sm">1. วิเคราะห์หาระดับผิวน้ำ $h_f$:</h4>
+            <p class="text-slate-600">กำหนดทางเข้าท่อฝั่งซ้ายเป็น Datum ($z_{\text{in}} = 0$):</p>
+            <div class="p-2.5 bg-white rounded border border-slate-100 text-slate-800 space-y-1">
+              <div>• ระดับผิวน้ำถัง 1: $z_1 = 45.0\text{ m}$</div>
+              <div>• ทางออกท่อฝั่งขวา: $z_{\text{out}} = 120 \sin(12^\circ) = 24.95\text{ m}$</div>
+              <div>• ระดับผิวน้ำถัง 2: $z_2 = 24.95 + 16.5 = 41.45\text{ m}$</div>
+              <div class="font-bold text-blue-700 pt-1 border-t">• ผลต่างเฮดขับดัน: $h_f = 45.0 - 41.45 = 3.55\text{ m}$</div>
             </div>
           </div>
 
-          <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
-            <h3 class="font-bold text-blue-900">2. การคำนวณหาเส้นผ่านศูนย์กลาง $D$</h3>
-            <div class="my-2">
-              $$D = \left( \frac{8 f (120) (12)^2}{\pi^2 (9.81) (3.55)} \right)^{1/5}$$
+          <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200 space-y-2">
+            <h4 class="font-bold text-blue-900 text-sm">2. การคำนวณหาขนาดท่อ $D$:</h4>
+            <div class="p-2 bg-white rounded border border-blue-100 text-slate-800">
+              $$D = \left( \frac{8 f (120)(12)^2}{\pi^2(9.81)(3.55)} \right)^{1/5}$$
             </div>
-            <ul class="text-xs text-slate-700 space-y-2 mt-2">
-              <li><strong>รอบที่ 1:</strong> สมมุติ $f = 0.020 \implies D = 1.517\text{ m} \implies v = 6.64\text{ m/s} \implies Re = 1.01 \times 10^7, k/D = 0.00032 \implies f = 0.0153$</li>
-              <li><strong>รอบที่ 2:</strong> ใช้ $f = 0.0153 \implies D = 1.439\text{ m} \implies v = 7.38\text{ m/s} \implies Re = 1.06 \times 10^7, k/D = 0.00033 \implies f = 0.0153$ (ตรงเป๊ะ!)</li>
+            <ul class="space-y-1.5 text-slate-700">
+              <li>• <strong>รอบที่ 1:</strong> สมมุติ $f = 0.020 \implies D = 1.517\text{ m} \implies v = 6.64\text{ m/s} \implies Re = 1.01 \times 10^7, k/D = 0.00032 \implies f = 0.0153$</li>
+              <li>• <strong>รอบที่ 2:</strong> ใช้ $f = 0.0153 \implies D = 1.439\text{ m} \implies Re = 1.06 \times 10^7 \implies f = 0.0153$ (ตรงเป๊ะ)</li>
             </ul>
-            <div class="mt-3 p-2 bg-emerald-100 text-emerald-900 rounded font-bold text-center">
-              ขนาดท่อที่ต้องการ: $D = 1.44\text{ m} = 1,440\text{ mm}$
+            <div class="mt-3 p-2 bg-emerald-100 border border-emerald-300 rounded font-bold text-emerald-900 text-center">
+              ขนาดเส้นผ่านศูนย์กลางท่อ: $D = 1.44\text{ m}$
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- TAB 6: EXAM 4 (PARALLEL NETWORK) -->
+    <!-- ========================================== -->
+    <!-- TAB 6: EXAM PROBLEM 4 (PARALLEL NETWORK) -->
+    <!-- ========================================== -->
     <section id="tab-exam4" class="tab-content hidden space-y-6">
-      <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-        <div class="flex items-center justify-between border-b pb-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+        
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-0.5 rounded">โจทย์ข้อสอบใหญ่ 15 คะแนน (หน้า 4)</span>
-            <h2 class="text-xl font-bold text-slate-900 mt-1">โครงข่ายท่ออนุกรมผสมขนาน 4 ท่อน (หา $h_{AA \to BB}$)</h2>
+            <div class="flex items-center gap-2">
+              <span class="bg-red-100 text-red-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">ข้อสอบใหญ่ 15 คะแนน</span>
+              <span class="text-xs text-slate-500">ท่ออนุกรมผสมขนาน 4 ท่อน (หา Major loss จาก AA ถึง BB)</span>
+            </div>
+            <h2 class="text-lg font-bold text-slate-900 mt-1">การวิเคราะห์โครงข่ายท่อขนาน (Parallel & Series Pipe Network)</h2>
           </div>
-          <div class="text-right">
-            <span class="text-xs text-slate-500">กำหนด $h_3 = 0.42\text{ m}$</span>
-            <div class="text-sm font-bold text-emerald-600">$h_{AA \to BB} = 1.24\text{ m}$</div>
+          <div class="bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-xl text-right">
+            <span class="text-[11px] text-emerald-700 font-medium">Head Loss รวมทั้งระบบ:</span>
+            <div class="text-sm font-bold text-emerald-800">$h_{AA \to BB} = 1.24\text{ m}$</div>
           </div>
         </div>
 
-        <div class="space-y-4 text-sm mt-4 text-slate-700">
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">ขั้นที่ 1: วิเคราะห์ท่อ 4 เพื่อหา $h_4$</h3>
-            <div class="my-2">
-              $$\frac{P_A - P_B}{\gamma} = (z_B - z_A) + h_{AB}$$
-              $$\frac{(910 - 811.41) \times 10^3}{9,810} = 10 + h_{AB} \implies 10.05 = 10 + h_{AB} \implies h_{AB} = 0.05\text{ m}$$
-              $$h_4 = h_{AB} \times \left(\frac{L_4}{L_{AB}}\right) = 0.05 \times \left(\frac{1000}{300}\right) = 0.17\text{ m}$$
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mt-5 text-xs">
+          
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="font-bold text-blue-700">ขั้นที่ 1: วิเคราะห์ท่อ 4</span>
+            <p class="mt-1 text-slate-600">จุด A และ B บนท่อ 4:</p>
+            <div class="my-1 text-slate-800">
+              $$\frac{P_A - P_B}{\gamma} = 10 + h_{AB}$$
+              $$10.05 = 10 + h_{AB}$$
+              $$h_{AB} = 0.05\text{ m}$$
+              $$h_4 = 0.05 \times \frac{1000}{300} = 0.17\text{ m}$$
             </div>
           </div>
 
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">ขั้นที่ 2: วิเคราะห์ท่อขนาน ($h_2 = h_3 = 0.42\text{ m}$)</h3>
-            <ul class="list-disc list-inside space-y-1 text-xs text-slate-600 mt-1">
-              <li><strong>ท่อ 3:</strong> $k/D_3 = \frac{0.48}{600} = 0.0008, f_3 \approx 0.019 \implies v_3 = 0.56\text{ m/s} \implies Q_3 = 0.16\text{ m}^3\text{/s}$</li>
-              <li><strong>ท่อ 2:</strong> $k/D_2 = \frac{0.32}{800} = 0.0004, f_2 \approx 0.017 \implies v_2 = 0.70\text{ m/s} \implies Q_2 = 0.35\text{ m}^3\text{/s}$</li>
-              <li><strong>อัตราการไหลรวม:</strong> $Q_{\text{total}} = Q_1 = Q_2 + Q_3 = 0.35 + 0.16 = 0.51\text{ m}^3\text{/s}$</li>
-            </ul>
-          </div>
-
-          <div class="bg-slate-50 p-4 rounded-lg">
-            <h3 class="font-bold text-slate-800">ขั้นที่ 3: คำนวณ Head Loss ท่อ 1 ($h_1$)</h3>
-            <div class="my-2">
-              $$v_1 = \frac{4(0.51)}{\pi (0.9)^2} = 0.80\text{ m/s}, \quad Re_1 = 7.2 \times 10^5, \quad \frac{\varepsilon_1}{D_1} = 0.0010 \implies f_1 = 0.0201$$
-              $$h_1 = (0.0201) \left(\frac{900}{0.9}\right) \frac{(0.80)^2}{2(9.81)} = 0.66\text{ m}$$
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="font-bold text-indigo-700">ขั้นที่ 2: วิเคราะห์ท่อขนาน</span>
+            <p class="mt-1 text-slate-600">ท่อ 2 และ 3 ขนานกัน:</p>
+            <div class="my-1 text-slate-800">
+              $$h_2 = h_3 = 0.42\text{ m}$$
+              <p class="text-[11px] mt-1 text-slate-500">
+                • ท่อ 3: $Q_3 = 0.16\text{ m}^3\text{/s}$<br>
+                • ท่อ 2: $Q_2 = 0.35\text{ m}^3\text{/s}$<br>
+                • รวม: $Q_{\text{tot}} = 0.51\text{ m}^3\text{/s}$
+              </p>
             </div>
           </div>
 
-          <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-lg">
-            <h3 class="font-bold text-emerald-900">ขั้นที่ 4: รวม Head Loss ทั้งระบบ ($h_{AA \to BB}$)</h3>
-            <div class="my-2">
-              $$h_{AA \to BB} = h_1 + h_2 + h_4 = 0.66 + 0.42 + 0.17 = 1.24\text{ m}$$
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="font-bold text-sky-700">ขั้นที่ 3: หา $h_1$ ในท่อ 1</span>
+            <p class="mt-1 text-slate-600">ท่อ 1 รับ $Q_{\text{tot}} = 0.51$:</p>
+            <div class="my-1 text-slate-800">
+              $$v_1 = \frac{4(0.51)}{\pi(0.9)^2} = 0.80\text{ m/s}$$
+              $$Re_1 = 7.2 \times 10^5 \implies f_1 \approx 0.0201$$
+              $$h_1 = 0.66\text{ m}$$
             </div>
-            <p class="text-xs text-emerald-800"><strong>กฎเหล็กที่ห้ามลืม:</strong> ท่อขนานให้เลือกคิดเพียงเส้นเดียว ($h_2$ หรือ $h_3$) ห้ามนำมาบวกกัน!</p>
           </div>
+
+          <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200">
+            <span class="font-bold text-emerald-800">ขั้นที่ 4: รวม Head Loss</span>
+            <p class="mt-1 text-emerald-700">กฎของท่อผสม:</p>
+            <div class="my-1 text-emerald-950 font-bold">
+              $$h_{AA \to BB} = h_1 + h_2 + h_4$$
+              $$h_{AA \to BB} = 0.66 + 0.42 + 0.17$$
+              $$= 1.24\text{ m}$$
+            </div>
+            <p class="text-[10px] text-emerald-700 mt-1 font-medium">*ท่อขนานคิดเพียงเส้นเดียว (0.42 m) ห้ามบวกซ้ำ</p>
+          </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- TAB 7: INTERACTIVE CALCULATOR -->
+    <!-- ========================================== -->
+    <!-- TAB 7: LIVE INTERACTIVE CALCULATOR -->
+    <!-- ========================================== -->
     <section id="tab-calc" class="tab-content hidden space-y-6">
-      <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-          <span>⚡</span> เครื่องมือคำนวณจำลองการไหลในท่อ (Live Pipe Flow Simulator)
-        </h2>
-        <p class="text-xs text-slate-500 mt-1">ทดลองเปลี่ยนค่าตัวเลขเพื่อดูการคำนวณ $Re, f$ และการวนลูป Trial & Error ทันที</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-          <div class="bg-slate-50 p-4 rounded-lg space-y-3">
-            <h3 class="font-bold text-sm text-slate-800">1. จำลองการหาขนาดท่อ (Pipe Sizing Calculator)</h3>
-            <div class="space-y-2 text-xs">
-              <div>
-                <label class="block text-slate-600 font-medium">อัตราการไหล $Q$ (m³/s):</label>
-                <input id="calc-Q" type="number" step="0.01" value="0.14" class="w-full p-2 border rounded font-mono">
-              </div>
-              <div>
-                <label class="block text-slate-600 font-medium">Head Loss $h_f$ (m):</label>
-                <input id="calc-hf" type="number" step="0.01" value="0.717" class="w-full p-2 border rounded font-mono">
-              </div>
-              <div>
-                <label class="block text-slate-600 font-medium">ความยาวท่อ $L$ (m):</label>
-                <input id="calc-L" type="number" step="10" value="1500" class="w-full p-2 border rounded font-mono">
-              </div>
-              <div>
-                <label class="block text-slate-600 font-medium">ความขรุขระท่อ $\varepsilon$ (mm):</label>
-                <input id="calc-eps" type="number" step="0.01" value="0.9" class="w-full p-2 border rounded font-mono">
-              </div>
-              <button onclick="runLiveSizing()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded text-xs transition">
-                🚀 คำนวณขนาดท่อทันที (Run Solver)
-              </button>
-            </div>
-          </div>
-
-          <div class="bg-slate-900 text-slate-100 p-4 rounded-lg font-mono text-xs flex flex-col justify-between">
-            <div>
-              <div class="text-amber-400 font-bold mb-2">📊 ผลการรันคำนวณ (Solver Output):</div>
-              <div id="calc-output" class="text-slate-300 space-y-1">
-                คลิกปุ่ม "คำนวณขนาดท่อทันที" เพื่อดูผลลัพธ์การวนลูป...
-              </div>
-            </div>
-          </div>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+        
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <span>⚡</span> เครื่องคิดเลขจำลองการไหลในท่อ (Live Pipe Flow Simulator)
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">เปลี่ยนตัวเลขพารามิเตอร์เพื่อดูขั้นตอนการคำนวณ $Re, f$ และการลู่เข้าของ Trial & Error สด ๆ</p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5">
+          
+          <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3.5 text-xs">
+            <h3 class="font-bold text-slate-800 text-sm">ใส่ค่าที่ต้องการทดสอบ:</h3>
+            
+            <div class="space-y-1">
+              <label class="font-semibold text-slate-700">อัตราการไหล $Q$ (m³/s):</label>
+              <input id="calc-Q" type="number" step="0.01" value="0.14" class="w-full px-3 py-2 border rounded-lg bg-white shadow-sm font-medium">
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-semibold text-slate-700">Head Loss $h_f$ (m):</label>
+              <input id="calc-hf" type="number" step="0.01" value="0.717" class="w-full px-3 py-2 border rounded-lg bg-white shadow-sm font-medium">
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-semibold text-slate-700">ความยาวท่อ $L$ (m):</label>
+              <input id="calc-L" type="number" step="50" value="1500" class="w-full px-3 py-2 border rounded-lg bg-white shadow-sm font-medium">
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-semibold text-slate-700">ความขรุขระ $\varepsilon$ (mm):</label>
+              <input id="calc-eps" type="number" step="0.01" value="0.9" class="w-full px-3 py-2 border rounded-lg bg-white shadow-sm font-medium">
+            </div>
+
+            <button onclick="runLiveSizing()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-lg shadow-sm transition">
+              🚀 กดเพื่อรันการคำนวณ (Solve Now)
+            </button>
+          </div>
+
+          <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 text-slate-100 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-semibold mb-3">
+                <span class="text-amber-400">📊 ผลการจำลองการลู่เข้า (Iteration Results)</span>
+                <span class="text-slate-400 text-[10px]">Colebrook-White Engine</span>
+              </div>
+              <div id="calc-output" class="text-xs space-y-2 text-slate-300">
+                กดปุ่ม "รันการคำนวณ" ด้านซ้ายเพื่อดูผลลัพธ์...
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-500">
+              *การคำนวณจำลองด้วยสมการ Colebrook-White อ้างอิงตามเกณฑ์ความแม่นยำทางวิศวกรรม
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
-
-    <!-- GITHUB INSTRUCTIONS SECTION -->
-    <div id="github-section" class="bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-xl p-6 shadow-md">
-      <div class="flex items-center justify-between">
-        <div>
-          <span class="bg-indigo-500/30 text-indigo-300 text-xs font-semibold px-2.5 py-1 rounded border border-indigo-400/30">Git Repository Initialized</span>
-          <h2 class="text-lg font-bold mt-2">📦 วิธีการ Push ขึ้น GitHub ของคุณ</h2>
-          <p class="text-xs text-slate-300 mt-1">ไฟล์ทั้งหมดถูกคอมมิตเก็บไว้ในเครื่องเรียบร้อยแล้วที่ path: <code class="text-sky-300">/Users/thanaporn/.gemini/antigravity/scratch/cn271-fluid-mechanics</code></p>
-        </div>
-      </div>
-
-      <div class="mt-4 bg-black/60 p-4 rounded-lg font-mono text-xs text-emerald-400 overflow-x-auto space-y-2">
-        <p class="text-slate-400"># 1. ไปสร้าง Repository เปล่าบน https://github.com/new ตั้งชื่อ 'cn271-fluid-mechanics'</p>
-        <p class="text-slate-400"># 2. รันคำสั่งนี้ใน Terminal เพื่อเชื่อมและ Push ขึ้น GitHub:</p>
-        <p class="text-white font-bold">cd /Users/thanaporn/.gemini/antigravity/scratch/cn271-fluid-mechanics</p>
-        <p class="text-white font-bold">git remote add origin https://github.com/&lt;YOUR_USERNAME&gt;/cn271-fluid-mechanics.git</p>
-        <p class="text-white font-bold">git branch -M main</p>
-        <p class="text-white font-bold">git push -u origin main</p>
-      </div>
-    </div>
 
   </main>
 
-  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
-    Thammasat University • Faculty of Engineering • CN271 Fluid Mechanics Mastery • Designed by Commander Chokie Squad
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-5 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 space-y-1">
+      <p class="font-medium text-slate-700">CN271 Fluid Mechanics Exam Preparation Platform</p>
+      <p>Faculty of Engineering, Thammasat University • Curated by Commander Chokie Squad</p>
+    </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('block'));
       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('text-blue-600', 'bg-blue-50', 'font-semibold');
+        btn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm', 'font-semibold');
         btn.classList.add('text-slate-600');
       });
 
@@ -527,14 +861,57 @@ Pipe 1 (k/D=0.0010, Re=7.2e5)   -> f = 0.0201
 
       const activeBtn = document.getElementById('btn-' + tabId);
       if (activeBtn) {
-        activeBtn.classList.add('text-blue-600', 'bg-blue-50', 'font-semibold');
+        activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-sm', 'font-semibold');
         activeBtn.classList.remove('text-slate-600');
       }
 
-      if (window.renderMathInElement) {
-        renderMathInElement(document.body, {
-          delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]
-        });
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([selected]);
+      }
+    }
+
+    function highlightChart(examNo) {
+      switchTab('tab-chart');
+      const point = document.getElementById('marker-point');
+      const vline = document.getElementById('marker-vline');
+      const hline = document.getElementById('marker-hline');
+      const badge = document.getElementById('marker-badge');
+      const text = document.getElementById('marker-badge-text');
+      const info = document.getElementById('chart-marker-text');
+
+      if (examNo === 1) {
+        point.setAttribute('cx', '310');
+        point.setAttribute('cy', '248');
+        vline.setAttribute('x1', '310'); vline.setAttribute('x2', '310');
+        vline.setAttribute('y1', '248');
+        hline.setAttribute('x1', '310'); hline.setAttribute('x2', '50');
+        hline.setAttribute('y1', '248'); hline.setAttribute('y2', '248');
+        badge.setAttribute('y', '236');
+        text.setAttribute('y', '250');
+        text.textContent = '0.016';
+        info.textContent = 'ข้อ 1: Re = 3.0×10⁵, k/d = 0.0002 → f ≈ 0.0163';
+      } else if (examNo === 2) {
+        point.setAttribute('cx', '320');
+        point.setAttribute('cy', '195');
+        vline.setAttribute('x1', '320'); vline.setAttribute('x2', '320');
+        vline.setAttribute('y1', '195');
+        hline.setAttribute('x1', '320'); hline.setAttribute('x2', '50');
+        hline.setAttribute('y1', '195'); hline.setAttribute('y2', '195');
+        badge.setAttribute('y', '183');
+        text.setAttribute('y', '197');
+        text.textContent = '0.023';
+        info.textContent = 'ข้อ 2: Re = 3.0×10⁵, k/d = 0.0015 → f ≈ 0.0226 (ขีด 0.023 ในชาร์ต)';
+      } else if (examNo === 4) {
+        point.setAttribute('cx', '330');
+        point.setAttribute('cy', '222');
+        vline.setAttribute('x1', '330'); vline.setAttribute('x2', '330');
+        vline.setAttribute('y1', '222');
+        hline.setAttribute('x1', '330'); hline.setAttribute('x2', '50');
+        hline.setAttribute('y1', '222'); hline.setAttribute('y2', '222');
+        badge.setAttribute('y', '210');
+        text.setAttribute('y', '224');
+        text.textContent = '0.019';
+        info.textContent = 'ข้อ 4 (ท่อ 3): Re = 3.4×10⁵, k/d = 0.0008 → f ≈ 0.019 (ขีด 0.019 ในชาร์ต)';
       }
     }
 
@@ -559,10 +936,9 @@ Pipe 1 (k/D=0.0010, Re=7.2e5)   -> f = 0.0201
         Re = v * D / nu;
         let kd = eps / D;
 
-        // Swamee-Jain
         let f_new = 0.25 / Math.pow(Math.log10(kd / 3.7 + 5.74 / Math.pow(Re, 0.9)), 2);
 
-        logs.push(`รอบที่ ${it}: f_in = ${f.toFixed(4)} -> D = ${(D*1000).toFixed(1)} mm, v = ${v.toFixed(3)} m/s, Re = ${Re.toExponential(2)}, f_new = ${f_new.toFixed(4)}`);
+        logs.push(`• <strong>รอบที่ ${it}:</strong> f = ${f.toFixed(4)} → D = <strong>${(D*1000).toFixed(1)} mm</strong> (v = ${v.toFixed(3)} m/s, f_new = ${f_new.toFixed(4)})`);
 
         if (Math.abs(f_new - f) < 0.0001) {
           f = f_new;
@@ -573,19 +949,15 @@ Pipe 1 (k/D=0.0010, Re=7.2e5)   -> f = 0.0201
 
       let outEl = document.getElementById('calc-output');
       outEl.innerHTML = `
-        <div class="text-emerald-400 font-bold mb-2">✅ คำนวณสำเร็จ! ลู่เข้าที่ D = ${(D*1000).toFixed(1)} mm (หรือ ${(D).toFixed(3)} m)</div>
-        <div class="space-y-1 text-slate-300">
-          ${logs.map(l => `<div>• ${l}</div>`).join('')}
+        <div class="p-3 bg-emerald-950/80 rounded-lg border border-emerald-500/40 text-emerald-300">
+          <div class="text-[11px] uppercase tracking-wide font-bold">ผลการลู่เข้าคำตอบ (Converged):</div>
+          <div class="text-sm font-bold text-white mt-0.5">ขนาดท่อ D = ${(D*1000).toFixed(1)} mm (${D.toFixed(3)} m)</div>
+          <div class="text-[11px] text-emerald-400 mt-1">ความเร็วการไหล: ${v.toFixed(3)} m/s | ค่า f: ${f.toFixed(4)}</div>
         </div>
-        <div class="mt-3 p-2 bg-blue-950/80 rounded border border-blue-500/40 text-sky-200">
-          ความเร็วการไหล $v = ${v.toFixed(3)}\\text{ m/s}$, $Re = ${Re.toExponential(2)}$, ค่า $f = ${f.toFixed(4)}$
+        <div class="space-y-1.5 pt-2 text-[11px] text-slate-300">
+          ${logs.join('<br>')}
         </div>
       `;
-      if (window.renderMathInElement) {
-        renderMathInElement(outEl, {
-          delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]
-        });
-      }
     }
   </script>
 </body>

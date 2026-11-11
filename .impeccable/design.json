@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T00:00:00Z",
+  "title": "Design System: วย 271 บทที่ 5 Pipe Flow Revision",
+  "extensions": {
+    "colorMeta": {
+      "sheet": { "role": "neutral", "displayName": "Cool Sheet", "canonical": "#fbfcfc", "tonalRamp": ["#14181c", "#2a2f35", "#51585f", "#7d848b", "#a9afb5", "#cdd1d5", "#e4e7ea", "#fbfcfc"] },
+      "desk": { "role": "neutral", "displayName": "Desk Grey", "canonical": "#e4e7ea", "tonalRamp": ["#0b0d0f", "#22262a", "#454b51", "#6e757b", "#9aa0a6", "#bec3c8", "#d4d8dc", "#e4e7ea"] },
+      "graphite-ink": { "role": "neutral", "displayName": "Graphite Ink", "canonical": "#1b1f24", "tonalRamp": ["#1b1f24", "#2f353b", "#444c56", "#68707a", "#8c949d", "#b0b6bd", "#d0d4d9", "#eceef0"] },
+      "pen-blue": { "role": "primary", "displayName": "Pen Blue", "canonical": "#1a46c8", "tonalRamp": ["#0e2670", "#133391", "#1a46c8", "#4568d6", "#6f8be0", "#98adea", "#c4d0f3", "#eaf0ff"] },
+      "pen-red": { "role": "secondary", "displayName": "Pen Red", "canonical": "#bf2a21", "tonalRamp": ["#5e1511", "#8a1f19", "#bf2a21", "#d0554d", "#de7c76", "#eaa5a1", "#f5cfcc", "#fdeceb"] },
+      "pen-violet": { "role": "tertiary", "displayName": "Pen Violet", "canonical": "#6535b0", "tonalRamp": ["#2f1858", "#46257d", "#6535b0", "#8160c1", "#9f87d0", "#bfadde", "#dccff0", "#f1ebfb"] }
+    },
+    "typographyMeta": {
+      "title": { "displayName": "Title", "purpose": "Sheet title inside the title block." },
+      "headline": { "displayName": "Headline", "purpose": "h3 sub-headings within a sheet." },
+      "section": { "displayName": "Section", "purpose": "h2 section headings under a 2px rule." },
+      "step": { "displayName": "Step", "purpose": "Numbered step headings, tinted by pen tone." },
+      "body": { "displayName": "Body", "purpose": "Thai reading text, max 72ch." },
+      "label": { "displayName": "Label", "purpose": "Title-block captions, table heads, tags; untracked." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "sheet-in", "value": "280ms cubic-bezier(.2,.7,.2,1)", "purpose": "Sheet fades in and rises 6px on change; disabled under reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "wide", "value": "1040px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Title Block",
+      "kind": "custom",
+      "refersTo": "sheet",
+      "description": "Opens every sheet: title, type, status, sheet n/N.",
+      "html": "<div class=\"ds-tb\"><div class=\"ds-title\"><small>หัวข้อ</small><b>Q1 ท่ออนุกรม</b></div><div><small>ประเภท</small><b>Type A</b></div><div><small>แผ่นที่</small><b>1 / 14</b></div></div>",
+      "css": ".ds-tb{display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid #1b1f24;font-family:'Chakra Petch',Sarabun,sans-serif;background:var(--sheet,#fbfcfc);color:#1b1f24}.ds-tb>div{padding:8px 14px 9px;border-top:1px solid #1b1f24;min-width:0}.ds-tb .ds-title{grid-column:1/-1}.ds-tb small{display:block;font-size:13px;color:#444c56;line-height:1.5;font-weight:500}.ds-tb b{display:block;font-size:15px;font-weight:600;line-height:1.45}.ds-tb .ds-title b{font-size:26px;font-weight:700;line-height:1.3}"
+    },
+    {
+      "name": "Run Button",
+      "kind": "button",
+      "refersTo": "button-run",
+      "description": "Graphite fill action, turns pen blue on hover.",
+      "html": "<button class=\"ds-run\">คำนวณ</button>",
+      "css": ".ds-run{min-height:50px;padding:0 24px;border:2px solid #1b1f24;border-radius:0;background:#1b1f24;color:#fbfcfc;font:700 16px 'Chakra Petch',Sarabun,sans-serif;cursor:pointer}.ds-run:hover{background:#1a46c8;border-color:#1a46c8}.ds-run:focus-visible{outline:2px solid #1a46c8;outline-offset:2px}"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "sheet",
+      "description": "Square 46px input with blue values.",
+      "html": "<label class=\"ds-field\">Q (L/s)<input value=\"12.5\"></label>",
+      "css": ".ds-field{display:block;font:600 13px/1.4 'Chakra Petch',Sarabun,sans-serif;color:#444c56}.ds-field input{display:block;width:100%;min-height:46px;margin-top:2px;padding:0 10px;background:#fbfcfc;color:#1a46c8;border:1px solid #1b1f24;border-radius:0;font:600 17px 'Chakra Petch',Sarabun,sans-serif}.ds-field input:focus-visible{outline:2px solid #1a46c8;outline-offset:2px}"
+    },
+    {
+      "name": "Trap Note",
+      "kind": "card",
+      "refersTo": "note-trap",
+      "description": "Red-bordered warning on a red wash; check (violet) and hint (blue) variants share the shape.",
+      "html": "<div class=\"ds-note\"><b>จุดดัก</b><p>ใช้ D เป็นเมตร ไม่ใช่ มม.</p></div>",
+      "css": ".ds-note{border:1px solid #bf2a21;background:#fdeceb;padding:10px 14px;max-width:72ch;font:400 17px/1.8 Sarabun,sans-serif;color:#1b1f24}.ds-note>b{display:block;font:700 14px 'Chakra Petch',Sarabun,sans-serif;color:#bf2a21;margin-bottom:2px}.ds-note p{margin:0}"
+    },
+    {
+      "name": "Answer Box",
+      "kind": "custom",
+      "refersTo": "answer-box",
+      "description": "2px red box with the final result, double-underlined.",
+      "html": "<div class=\"ds-answer\"><b>คำตอบ</b><p class=\"ds-big\">Q = 12.5 L/s</p></div>",
+      "css": ".ds-answer{border:2px solid #bf2a21;padding:12px 16px 14px;background:#fbfcfc;max-width:72ch}.ds-answer>b{display:block;font:700 14px 'Chakra Petch',Sarabun,sans-serif;color:#bf2a21}.ds-answer p{margin:0;font-weight:700}.ds-big{font:700 26px/1.45 'Chakra Petch',Sarabun,sans-serif;color:#bf2a21;text-decoration:underline double;text-underline-offset:6px;text-decoration-thickness:1.5px}"
+    },
+    {
+      "name": "Step",
+      "kind": "custom",
+      "refersTo": "step-number",
+      "description": "Circled step number with a pen-toned heading.",
+      "html": "<div class=\"ds-step\"><span class=\"ds-n\">1</span><div><div class=\"ds-st\">แทนค่าที่โจทย์ให้</div><p>V = Q / A</p></div></div>",
+      "css": ".ds-step{display:grid;grid-template-columns:38px 1fr;gap:0 12px;padding:14px 0 6px;border-top:1px solid rgba(27,31,36,.22);font:400 17px/1.8 Sarabun,sans-serif;color:#1b1f24}.ds-n{width:34px;height:34px;border:1.6px solid #1b1f24;border-radius:50%;display:grid;place-items:center;font:700 14px 'Chakra Petch',sans-serif;margin-top:2px}.ds-st{font:700 16.5px/1.55 'Chakra Petch',Sarabun,sans-serif;color:#1a46c8;margin-top:4px}.ds-step p{margin:0}"
+    },
+    {
+      "name": "Revision Table",
+      "kind": "custom",
+      "refersTo": "table-head",
+      "description": "Framed table with blue-wash head; revision numbers in red.",
+      "html": "<div class=\"ds-tbl\"><table><tr><th>#</th><th>จุดดัก</th></tr><tr><td class=\"ds-r\">R1</td><td>หน่วยความหนืด</td></tr></table></div>",
+      "css": ".ds-tbl{border:1px solid #1b1f24;overflow-x:auto}.ds-tbl table{border-collapse:collapse;width:100%;font:400 15.5px/1.55 Sarabun,sans-serif;color:#1b1f24}.ds-tbl th,.ds-tbl td{padding:8px 12px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(27,31,36,.22)}.ds-tbl th{font:700 13px 'Chakra Petch',sans-serif;background:#eaf0ff;border-bottom:1px solid #1b1f24;white-space:nowrap}.ds-r{font:700 14px 'Chakra Petch',sans-serif;color:#bf2a21;width:3.2em}"
+    },
+    {
+      "name": "Index Row",
+      "kind": "nav",
+      "refersTo": "sheet",
+      "description": "Sheet list row; current row gets a 1.5px blue inset ring on blue wash.",
+      "html": "<a class=\"ds-idx\" href=\"#\"><span class=\"ds-nn\">Q1</span><span>ท่ออนุกรม<small>Type A</small></span><svg class=\"ds-ok\" viewBox=\"0 0 24 24\" width=\"18\" height=\"18\"><path d=\"M4 12l5 5L20 6\"/></svg></a>",
+      "css": ".ds-idx{display:grid;grid-template-columns:4.4em 1fr 1.6em;gap:8px;align-items:baseline;padding:11px 16px;text-decoration:none;color:#1b1f24;border-top:1px solid rgba(27,31,36,.22);line-height:1.45;font-family:Sarabun,sans-serif}.ds-idx:hover,.ds-idx:focus-visible{background:#eaf0ff;outline:none}.ds-nn{font:600 13px 'Chakra Petch',sans-serif;color:#444c56}.ds-idx small{display:block;color:#444c56;font-size:13.5px}.ds-ok{stroke:#6535b0;fill:none;stroke-width:2.2;stroke-linecap:square;stroke-linejoin:miter}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Drawing Sheet",
+    "overview": "Every problem is one engineering drawing sheet, not a card in a feed. A sheet has a double border, a title block (title, type, status, sheet n/N), numbered working steps, a boxed answer and a revision table that lists the traps. The page reads like paper the professor handed over: graphite ink on cool white (no cream), hairline and 1.5-2px linework, square corners, and nothing decorative that a draughtsman would not draw.\n\nMeaning comes only from three pen inks lifted from the professor's handwriting: blue for given values and substitution, red for the key result and traps, violet for checks. Each ink has a pale wash used only behind notes and table heads. Density is high but airy in the line (17px Sarabun at 1.8) because the reader is a student revising on a phone the night before a quiz.",
+    "keyCharacteristics": [
+      "Cool white sheet on a grey desk; thin double border on wide screens (2px border plus 1px outline offset 5px).",
+      "Square corners everywhere; the only round shape is the numbered step circle.",
+      "Flat: no shadows, depth by linework and the desk/sheet tonal step.",
+      "Tabular numerals globally; Chakra Petch for the title block, labels and step headings, Sarabun for reading.",
+      "Dark mode is the same sheet inverted, with lighter pen inks for contrast."
+    ],
+    "rules": [
+      { "name": "The Three Pens Rule", "body": "Blue, red and violet each mean one thing (given, result/trap, check). A color is never used for emphasis that does not match its meaning.", "section": "colors" },
+      { "name": "The No-Cream Rule", "body": "The sheet is cool white; warm paper tones are not part of this world.", "section": "colors" },
+      { "name": "The Tabular Rule", "body": "Numerals are tabular in all text and tables so columns of working align.", "section": "typography" },
+      { "name": "The Thai Untracked Rule", "body": "No letter-spacing on Thai labels. The only tracking in the build is 0.02em on the Latin course name in the top bar.", "section": "typography" },
+      { "name": "The Linework Rule", "body": "Hierarchy comes from line weight (hairline, 1px, 2px), not from shadow or fill.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use blue for given/substitution, red for results and traps, violet for checks, and nothing else for emphasis.",
+      "Do build hierarchy with line weight (hairline, 1px, 2px) on square corners.",
+      "Do keep Thai labels untracked at 13px or larger and use Chakra Petch for title-block text and headings.",
+      "Do keep interactive targets at least 40px high and give every control the 2px blue focus outline.",
+      "Do swap to the paired dark values through the custom properties, never hard-coded colors."
+    ],
+    "donts": [
+      "Don't use shadows, rounded cards or cream paper tones.",
+      "Don't use the three inks as decoration or on large fills; only washes sit behind notes and table heads.",
+      "Don't fall back to the generic docs-site arrangement (left tree, centered article, accent-colored links) on phone; the sheet and title block lead.",
+      "Don't add icon glyphs or emoji; icons are inline SVG with square caps."
+    ]
+  }
+}

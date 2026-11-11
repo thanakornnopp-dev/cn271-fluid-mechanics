@@ -1,5 +1,5 @@
 """
-CN271 Fluid Mechanics - Comprehensive Exam Solver Engine
+CN271 Fluid Mechanics - Complete Problems 1 to 8 Solver Engine
 Faculty of Engineering, Thammasat University
 """
 
@@ -26,26 +26,8 @@ def calc_friction_factor(Re: float, relative_roughness: float, max_iter: int = 5
     return f
 
 
-def solve_submarine_model() -> Dict[str, float]:
-    """
-    Submarine Model Testing:
-    Prototype: v_p = 8 m/s, rho_p = 1036 kg/m^3, mu_p = 0.0012 N s/m^2. Scale = 1:100 (D_p/D_m = 100).
-    Model: rho_m = 1000 kg/m^3, mu_m = 0.001 N s/m^2. Drag force on model F_m = 200 N.
-    Find v_m and prototype drag F_p.
-    """
-    v_p = 8.0
-    scale_ratio = 100.0  # D_p / D_m
-    rho_p, mu_p = 1036.0, 0.0012
-    rho_m, mu_m = 1000.0, 0.0010
-    v_m = v_p * scale_ratio * (rho_p / rho_m) * (mu_m / mu_p)
-    
-    F_m = 200.0
-    F_p = F_m * (rho_p / rho_m) * ((v_p / v_m) ** 2) * (scale_ratio ** 2)
-    return {"v_m": v_m, "F_p": F_p}
-
-
-def solve_example_1() -> Dict[str, Any]:
-    """Ex 1: D = 0.1 m, v = 0.1 m/s, mu = 1e-3, rho = 1000."""
+def solve_problem_1() -> Dict[str, Any]:
+    """Problem 1 (Ex 1): D = 0.1 m, v = 0.1 m/s, mu = 1e-3, rho = 1000."""
     D = 0.1
     v = 0.1
     mu = 1e-3
@@ -56,8 +38,8 @@ def solve_example_1() -> Dict[str, Any]:
     return {"Re": Re, "is_turbulent": is_turbulent, "v_max_laminar": v_max_laminar}
 
 
-def solve_example_2() -> Dict[str, Any]:
-    """Ex 2: D = 0.08 m, v = 0.02 m/s, mu = 1e-3, rho = 1000."""
+def solve_problem_2() -> Dict[str, Any]:
+    """Problem 2 (Ex 2): D = 0.08 m, v = 0.02 m/s, mu = 1e-3, rho = 1000."""
     D = 0.08
     v = 0.02
     mu = 1e-3
@@ -82,9 +64,9 @@ def solve_example_2() -> Dict[str, Any]:
     }
 
 
-def solve_example_3() -> Dict[str, Any]:
+def solve_problem_3() -> Dict[str, Any]:
     """
-    Ex 3: Q = 0.1 m^3/s.
+    Problem 3 (Ex 3): Q = 0.1 m^3/s.
     Point 1: D1 = 0.1 m, P1 = 100 kPa, z1 = 0 m
     Point 2: D2 = 0.2 m, P2 = 50 kPa, z2 = 3 m
     Point 3: D3 = 0.3 m, P3 = 20 kPa, z3 = 1 m
@@ -105,6 +87,49 @@ def solve_example_3() -> Dict[str, Any]:
         "H1": H1, "H2": H2, "H3": H3,
         "hL_12": hL_12, "hL_23": hL_23
     }
+
+
+def solve_problem_4() -> Dict[str, Any]:
+    """
+    Problem 4: Q = 0.1 m^3/s, D = 0.2 m, L = 600 m, eps = 0.4 mm, mu = 1e-3.
+    Two elbows K_L = 0.5 each.
+    """
+    Q = 0.1
+    D = 0.2
+    L = 600.0
+    eps = 0.4e-3
+    v = Q / (math.pi * (D ** 2) / 4.0)  # 3.183 m/s
+    v_head = (v ** 2) / (2.0 * G)  # 0.5165 m
+    Re = v * D / NU_WATER  # 6.37e5
+    kd = eps / D  # 0.0020
+    f = calc_friction_factor(Re, kd)  # ~0.0237
+    hf = f * (L / D) * v_head  # 36.74 m
+    hm = (0.5 + 0.5) * v_head  # 0.52 m
+    hL = hf + hm  # 37.25 m
+    return {"v": v, "v_head": v_head, "Re": Re, "kd": kd, "f": f, "hf": hf, "hm": hm, "hL": hL}
+
+
+def solve_problem_5() -> Dict[str, Any]:
+    """
+    Problem 5: D = 0.6 m, v = 2.0 m/s, P2 >= 10 kPa, L = 120 m, eps = 3 mm, dz = 20 m.
+    Two elbows K_L = 0.3 each. Find min P1.
+    """
+    D = 0.6
+    v = 2.0
+    v_head = (v ** 2) / (2.0 * G)  # 0.2039 m
+    L = 120.0
+    eps = 3.0e-3
+    dz = 20.0
+    P2 = 10.0e3
+    Re = v * D / NU_WATER  # 1.20e6
+    kd = eps / D  # 0.0050
+    f = calc_friction_factor(Re, kd)  # ~0.0304
+    hf = f * (L / D) * v_head  # 1.24 m
+    hm = (0.3 + 0.3) * v_head  # 0.12 m
+    hL = hf + hm  # 1.36 m
+    P1_head = (P2 / GAMMA_WATER) + dz + hL  # 22.38 m
+    P1 = P1_head * GAMMA_WATER  # 219.58 kPa
+    return {"v": v, "Re": Re, "kd": kd, "f": f, "hf": hf, "hm": hm, "hL": hL, "P1_head": P1_head, "P1_kPa": P1 / 1000.0}
 
 
 def solve_problem_6_velocity() -> Dict[str, Any]:
@@ -152,34 +177,3 @@ def solve_problem_8_sizing() -> Dict[str, Any]:
     Re = v * D / NU_WATER
     kd = eps / D
     return {"f": f, "D": D, "v": v, "Re": Re, "kd": kd}
-
-
-def solve_problem_9_series_horizontal() -> Dict[str, Any]:
-    """
-    Problem 9: Three pipes in series horizontal. hL = 25 m.
-    Pipe 1: L1=100 m, D1=0.08 m, eps1=0.24 mm
-    Pipe 2: L2=200 m, D2=0.06 m, eps2=0.12 mm
-    Pipe 3: L3=50 m, D3=0.04 m, eps3=0.20 mm
-    """
-    f1, f2, f3 = 0.028, 0.0255, 0.031
-    bracket = (
-        f1 * (100.0 * (0.5625 ** 2) / 0.08)
-        + f2 * (200.0 / 0.06)
-        + f3 * (50.0 * (2.25 ** 2) / 0.04)
-        + 0.24
-        + 0.27 * (2.25 ** 2)
-    )
-    v2 = math.sqrt(2 * G * 25.0 / bracket)  # 1.29 m/s
-    v1 = 0.5625 * v2  # 0.73 m/s
-    v3 = 2.25 * v2  # 2.91 m/s
-    Q = v2 * math.pi * (0.06 ** 2) / 4.0  # 3.65e-3 m^3/s
-    Re1 = v1 * 0.08 / NU_WATER
-    Re2 = v2 * 0.06 / NU_WATER
-    Re3 = v3 * 0.04 / NU_WATER
-    return {
-        "f1": f1, "f2": f2, "f3": f3,
-        "bracket": bracket,
-        "v1": v1, "v2": v2, "v3": v3,
-        "Q": Q,
-        "Re1": Re1, "Re2": Re2, "Re3": Re3
-    }

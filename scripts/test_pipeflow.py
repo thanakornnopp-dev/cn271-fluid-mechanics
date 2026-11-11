@@ -92,17 +92,32 @@ class FrictionFactor(unittest.TestCase):
 
 
 class SiteMatchesSolver(unittest.TestCase):
-    """คำตอบสุดท้ายที่พิมพ์ในหน้าเว็บต้องเป็นค่าเดียวกับตัวคำนวณ"""
+    """คำตอบสุดท้ายที่พิมพ์ในหน้าเว็บ (index.html) ต้องเป็นค่าเดียวกับตัวคำนวณ"""
 
     @classmethod
     def setUpClass(cls):
-        cls.text = "".join(
-            f.read_text(encoding="utf-8") for f in (ROOT / "assets").glob("*.js"))
+        cls.text = (ROOT / "index.html").read_text(encoding="utf-8")
 
     def test_answers_present(self):
         for needle in ("0.77", "2.51", "0.36", "219.6", "9.84", "5.47", "36.7",
-                       "0.713", "1.24", "0.388", "0.541", "0.0237"):
+                       "0.713", "1.24", "3.64", "0.0149", "0.0237", "0.54", "0.388"):
             self.assertIn(needle, self.text, needle)
+
+    def test_all_pages_present(self):
+        for pid in ("sum", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "ea", "eb",
+                    "q9", "q10", "q11", "q12", "q13", "calc", "ref"):
+            self.assertIn('<section id="%s">' % pid, self.text, pid)
+
+    def test_each_problem_has_exam_and_detail(self):
+        for pid in ("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "ea", "eb",
+                    "q9", "q10", "q11", "q12", "q13"):
+            part = self.text.split('<section id="%s">' % pid, 1)[1].split("</section>", 1)[0]
+            self.assertIn('class="exam"', part, pid)
+            self.assertIn('class="detail"', part, pid)
+
+    def test_no_katex_breaking_unicode(self):
+        # จุดกลาง (·) ใน \text{...} ทำให้ KaTeX ขึ้นตัวแดง \cdotp
+        self.assertEqual(re.findall(r"\\text\{[^}]*\u00b7[^}]*\}", self.text), [])
 
     def test_removed_unverified_problems(self):
         self.assertNotIn("105.13", self.text)

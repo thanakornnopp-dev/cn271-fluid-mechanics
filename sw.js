@@ -1,8 +1,7 @@
 /* เก็บหน้าเว็บ ฟอนต์ และ KaTeX ไว้ในเครื่อง เปิดครั้งเดียวตอนมีเน็ต แล้วอ่านออฟไลน์ได้ */
-const CACHE = "pf-v1";
+const CACHE = "pf-v2";
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["./", "index.html", "assets/style.css", "assets/app.js",
-    "assets/cheat.js", "assets/main.js", "assets/exam.js", "assets/extra.js", "assets/tools.js"])).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["./", "index.html", "assets/style.css", "assets/app.js", "assets/calc.js"])).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", (e) => {
   e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));

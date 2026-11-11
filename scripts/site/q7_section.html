@@ -1,0 +1,92 @@
+<section id="q7">
+<h2 class="prob"><span class="tag">ข้อ 7</span>ถังน้ำสูง 15 m ท่อขึ้นเนิน ปล่อยออกสู่อากาศ: หา v <em class="star">อาจารย์เขียนว่า "ลุ้นข้อสอบแน่"</em></h2>
+<div class="stmt"><p> ท่อยาว \(L=100\) m เส้นผ่านศูนย์กลาง \(D=15\) cm ทำจาก Asphalted Cast Iron (\(\varepsilon=0.12\) mm) ต่อจากถังน้ำขนาดใหญ่ดังรูป ผิวน้ำในถัง (จุด 1) สูงกว่าระดับปากท่อ 15 m ปลายท่อ (จุด 2) สูงกว่าระดับปากท่อ 10 m และปล่อยน้ำออกสู่อากาศ ปากท่อมี \(K_L=1\) ข้องอแต่ละตัวมี \(K_L=0.3\) (2 ตัว) จงหาความเร็วของน้ำในท่อ กำหนด \(\nu=10^{-6}\) m²/s</p></div>
+<figure>
+<svg viewBox="0 0 640 300" role="img" aria-label="ถังน้ำสูง 15 เมตร ท่อยกขึ้นสูง 10 เมตร ปล่อยสู่อากาศ">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+<line x1="20" y1="250" x2="560" y2="250" stroke="var(--ink)" stroke-dasharray="6 5"/><text x="395" y="272" font-size="15">ระดับอ้างอิง (datum) = ระดับปากท่อ</text>
+<rect x="30" y="40" width="80" height="210" fill="var(--water)" stroke="var(--navy)" stroke-width="2"/>
+<path d="M30 40h80" stroke="var(--navy)" stroke-width="3"/><path d="M118 36l10 -12 10 12z" fill="none" stroke="var(--blue)" stroke-width="2"/><text x="30" y="30" font-size="16" fill="var(--navy)">ถังขนาดใหญ่</text>
+<path d="M110 250H320Q330 250 330 240V122Q330 110 342 110H520" fill="none" stroke="var(--navy)" stroke-width="7"/>
+<path d="M526 100l24-9M528 110h28M526 120l24 9" stroke="var(--red)" stroke-width="2" fill="none"/>
+<circle cx="150" cy="58" r="11" fill="var(--bg)" stroke="var(--ink)"/><text x="145.5" y="63" font-size="14">1</text>
+<circle cx="510" cy="86" r="11" fill="var(--bg)" stroke="var(--ink)"/><text x="505.5" y="91" font-size="14">2</text>
+<line x1="68" y1="44" x2="68" y2="246" stroke="var(--red)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="74" y="200" font-size="16" fill="var(--red)">15 m</text>
+<line x1="560" y1="114" x2="560" y2="246" stroke="var(--blue)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="566" y="190" font-size="16" fill="var(--blue)">10 m</text>
+<line x1="606" y1="44" x2="606" y2="110" stroke="var(--green)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="580" y="82" font-size="16" fill="var(--green)" text-anchor="end">5 m</text>
+<path d="M110 40H606" stroke="var(--green)" stroke-dasharray="3 4"/><path d="M342 110H606" stroke="var(--green)" stroke-dasharray="3 4"/>
+<text x="125" y="226" font-size="15" fill="var(--green)" dy="-18">K = 1</text><text x="268" y="236" font-size="15" fill="var(--green)" dy="-22" transform="translate(0,0)">K = 0.3</text><text x="345" y="100" font-size="15" fill="var(--green)">K = 0.3</text>
+<text x="135" y="276" font-size="15" fill="var(--navy)">ท่อ L = 100 m, D = 15 cm</text>
+</svg>
+<figcaption>รูปที่ 1 ระบบถังน้ำ ท่อยกสูง และจุดปล่อยน้ำสู่อากาศ (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam">
+<div class="row"><div class="lab">ข้อมูล</div><div class="given">$$L=100\ \text{m},\quad D=0.15\ \text{m},\quad \varepsilon=0.12\ \text{mm}$$$$\nu=10^{-6}\ \text{m}^2/\text{s},\quad \textstyle\sum K_L=1+0.3+0.3=1.6$$$$\frac{\varepsilon}{D}=\frac{0.12}{150}=0.0008$$</div></div>
+<div class="row"><div class="lab">สมการพลังงาน<br>ผิวน้ำ (1) → ปลายท่อ (2)</div><div>$$\frac{P_1}{\gamma}+\frac{v_1^2}{2g}+z_1=\frac{P_2}{\gamma}+\frac{v_2^2}{2g}+z_2+h_L$$$$h_L=f\frac{L}{D}\frac{v^2}{2g}+\sum K_L\frac{v^2}{2g}$$</div></div>
+<div class="row"><div class="lab">แทนค่า<br>(P₁ = P₂ = 0, v₁ ≈ 0, v₂ = v)</div><div>$$15+0+0=0+\frac{v^2}{2g}+10+f\,\frac{100}{0.15}\,\frac{v^2}{2g}+1.6\,\frac{v^2}{2g}$$</div></div>
+<div class="row"><div class="lab">จัดรูป</div><div>$$15-10=\Big[\,1+f\,\frac{100}{0.15}+1.6\,\Big]\frac{v^2}{2g}$$$$5=\Big[\,2.6+666.7\,f\,\Big]\frac{v^2}{2g}\qquad\star$$</div></div>
+<div class="row"><div class="lab">เดา f รอบที่ 1</div><div>$$\begin{aligned}& f=0.020\quad \ \\ & \Rightarrow\ v=\sqrt{\frac{2(9.81)(5)}{2.6+666.7(0.020)}}=2.48\ \text{m/s}\end{aligned}$$$$Re=\frac{vD}{\nu}=\frac{2.48(0.15)}{10^{-6}}=3.7\times10^{5}$$$$\begin{aligned}& \frac{\varepsilon}{D}=0.0008\quad \ \\ & \Rightarrow\ f_{\text{Moody}}=0.0195\ \ \htmlClass{no}{\neq 0.020\ \ (\text{No})}\end{aligned}$$</div></div>
+<div class="row"><div class="lab">เดา f รอบที่ 2</div><div>$$\begin{aligned}& f=0.0195\quad \ \\ & \Rightarrow\ v=\sqrt{\frac{2(9.81)(5)}{2.6+666.7(0.0195)}}=2.51\ \text{m/s}\end{aligned}$$$$Re=\frac{2.51(0.15)}{10^{-6}}=3.8\times10^{5}$$$$\begin{aligned}& \frac{\varepsilon}{D}=0.0008\quad \ \\ & \Rightarrow\ f_{\text{Moody}}=0.0195\ \ \htmlClass{ok}{=0.0195\ \ (\text{OK})}\end{aligned}$$</div></div>
+<div class="row"><div class="lab">ตอบ</div><div><span class="fin">\(v\approx 2.51\ \text{m/s}\)</span></div></div>
+</div>
+
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> โจทย์ต้องการ <b>ความเร็ว \(v\)</b> เราเขียนห่วงโซ่ของสิ่งที่ต้องรู้ย้อนจากคำถามไปหาข้อมูลที่โจทย์ให้</p>
+<div class="plan">
+<p><b class="l">ขั้นที่ 1:</b> หา \(v\) จาก<b>สมการพลังงาน</b>ระหว่างผิวน้ำในถังกับปลายท่อ ซึ่ง \(v\) ปรากฏในพจน์ความสูญเสียทุกพจน์ (\(v^2/2g\))</p>
+<p><b class="l">ขั้นที่ 2:</b> พจน์ความเสียดทานต้องใช้ \(f\) แต่ \(f\) ขึ้นกับ \(Re=vD/\nu\) ซึ่งต้องรู้ \(v\) อยู่แล้ว จึงเกิดวงวน ต้อง<b>เดา \(f\)</b> แล้วทำซ้ำ</p>
+<p><b class="l">ขั้นที่ 3:</b> ทำซ้ำจน \(f\) ที่เดากับ \(f\) ที่ได้จากชาร์ต/Colebrook ตรงกัน แล้วตรวจสอบพลังงานที่ใช้ไปรวมเป็น 5 m</p>
+</div>
+
+<h4>ขั้นที่ 1: เขียนสมการพลังงานจากผิวน้ำ (จุด 1) ไปปลายท่อ (จุด 2)</h4>
+<p>กำหนดให้จุด 1 อยู่ที่ผิวน้ำในถัง จุด 2 อยู่ที่ปลายท่อ และใช้สมการพลังงานแบบมีการสูญเสีย</p>
+$$\frac{P_1}{\gamma}+\frac{v_1^2}{2g}+z_1=\frac{P_2}{\gamma}+\frac{v_2^2}{2g}+z_2+h_L\tag{1}$$
+<p>ความสูญเสียรวมประกอบด้วย major loss ตามความยาวท่อ (Darcy-Weisbach) และ minor loss ที่ปากท่อกับข้องอ</p>
+$$h_L=f\,\frac{L}{D}\,\frac{v^2}{2g}+\sum K_L\,\frac{v^2}{2g}\tag{2}$$
+<p>พิจารณาแต่ละพจน์ในสมการที่ (1) ผิวน้ำและปลายท่อสัมผัสอากาศ จึงมี \(P_1=P_2=0\) (ความดันเกจ) ถังมีขนาดใหญ่มาก \(v_1\approx0\) น้ำออกจากท่อด้วยความเร็ว \(v_2=v\) และผิวน้ำสูงกว่าปลายท่อ \(z_1-z_2=15-10=5\) m จึงได้</p>
+$$z_1-z_2=\frac{v^2}{2g}+h_L\tag{3}$$
+<p>แทน (2) ลงใน (3) และดึง \(v^2/2g\) ออกเป็นตัวร่วม</p>
+$$5=\left[\,1+f\,\frac{L}{D}+\sum K_L\right]\frac{v^2}{2g}\tag{4}$$
+<p>เลข 1 ในวงเล็บมาจาก<b>พลังงานจลน์ที่ปลายท่อ</b> (ปล่อยสู่อากาศ \(v_2\neq0\)) แทนค่า \(L/D=100/0.15=666.7\) และ \(\sum K_L=1+0.3+0.3=1.6\)</p>
+$$5=\left[\,2.6+666.7\,f\right]\frac{v^2}{2g}\ \Longrightarrow\ v=\sqrt{\frac{2g(5)}{2.6+666.7\,f}}=\sqrt{\frac{98.1}{2.6+666.7\,f}}\tag{5}$$
+
+<h4>ขั้นที่ 2: ค่า \(f\) ขึ้นกับ \(Re\) และความขรุขระสัมพัทธ์ (เกิดวงวน)</h4>
+<p>สมการที่ (5) ยังหา \(v\) ไม่ได้ เพราะ \(f\) ในสมการขึ้นกับ \(v\) ผ่านเลขเรย์โนลด์ส</p>
+$$Re=\frac{vD}{\nu}=\frac{v\,(0.15)}{10^{-6}}\tag{6}$$
+$$\frac{\varepsilon}{D}=\frac{0.12\ \text{mm}}{150\ \text{mm}}=0.0008\tag{7}$$
+<p>จาก \(Re\) และ \(\varepsilon/D\) ค่า \(f\) หาได้จากชาร์ต Glasgow/Moody หรือสมการ Colebrook</p>
+$$\frac{1}{\sqrt f}=-2\log_{10}\!\left(\frac{\varepsilon/D}{3.7}+\frac{2.51}{Re\sqrt f}\right)\tag{8}$$
+<p>ดังนั้น \(v\to Re\to f\to v\) ต้องวนซ้ำ เริ่มโดยเดา \(f\) ค่าหนึ่งแล้วดูว่าผลย้อนกลับมาเท่าเดิมหรือไม่</p>
+
+<h4>ขั้นที่ 3: วนซ้ำจนค่า \(f\) ลู่เข้า</h4>
+<p><b>รอบที่ 1:</b> เดา \(f=0.020\) แทนใน (5) แล้วหา \(Re\) จาก (6)</p>
+$$\begin{aligned}& v=\sqrt{\frac{98.1}{2.6+666.7(0.020)}}=\sqrt{\frac{98.1}{15.93}}=2.48\ \text{m/s} \\ & Re=3.7\times10^{5}\end{aligned}\tag{9}$$
+<p>ที่ \(Re=3.7\times10^5\) และ \(\varepsilon/D=0.0008\) ได้ \(f=0.0195\) ไม่เท่ากับที่เดา จึงทำรอบที่ 2</p>
+<p><b>รอบที่ 2:</b> ใช้ \(f=0.0195\)</p>
+$$\begin{aligned}& v=\sqrt{\frac{98.1}{2.6+666.7(0.0195)}}=\sqrt{\frac{98.1}{15.60}}=2.51\ \text{m/s} \\ & Re=3.8\times10^{5}\end{aligned}\tag{10}$$
+<p>ที่ \(Re=3.8\times10^5\) ได้ \(f=0.0195\) เท่ากับที่เดา ค่าลู่เข้าแล้ว</p>
+<div class="tw"><table>
+<caption>ตารางที่ 1 ผลการวนซ้ำ</caption>
+<thead><tr><th>รอบ</th><th>\(f\) ที่เดา</th><th>\(v\) (m/s)</th><th>\(Re\)</th><th>\(f\) จากชาร์ต</th><th>ผล</th></tr></thead>
+<tbody><tr><td>1</td><td>0.0200</td><td>2.48</td><td>\(3.7\times10^5\)</td><td>0.0195</td><td>ไม่ตรง</td></tr>
+<tr><td>2</td><td>0.0195</td><td>2.51</td><td>\(3.8\times10^5\)</td><td>0.0195</td><td>ตรง</td></tr></tbody></table></div>
+
+<h4>ตรวจสอบ: พลังงาน 5 m ถูกใช้ไปที่ไหนบ้าง</h4>
+<p>แทน \(v=2.51\) m/s (\(v^2/2g=0.321\) m) กลับในสมการที่ (4) ต้องได้ 5 m</p>
+$$\underbrace{0.321}_{\text{พลังงานจลน์ปลายท่อ}}+\underbrace{(0.0195)(666.7)(0.321)}_{\text{major loss}=4.17}+\underbrace{(1.6)(0.321)}_{\text{minor loss}=0.51}=5.01\ \text{m}\approx5\ \text{m}\tag{11}$$
+<figure>
+<svg viewBox="0 0 640 120" role="img" aria-label="แท่งสัดส่วนพลังงาน 5 เมตร">
+<rect x="70" y="40" width="32" height="34" fill="var(--green)"/><rect x="102" y="40" width="417" height="34" fill="var(--blue)"/><rect x="519" y="40" width="51" height="34" fill="var(--red)"/>
+<rect x="70" y="40" width="500" height="34" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="86" y="32" text-anchor="middle" font-size="15" fill="var(--green)">0.32</text><text x="310" y="63" text-anchor="middle" font-size="17" fill="var(--bg)">major loss 4.17 m</text><text x="545" y="32" text-anchor="middle" font-size="15" fill="var(--red)">0.51</text>
+<text x="86" y="98" text-anchor="middle" font-size="14" fill="var(--green)">v²/2g</text><text x="545" y="98" text-anchor="middle" font-size="14" fill="var(--red)">minor</text>
+<line x1="70" y1="108" x2="570" y2="108" stroke="var(--ink)"/><text x="320" y="118" text-anchor="middle" font-size="14">รวม 5.00 m = z₁ − z₂</text>
+</svg><figcaption>รูปที่ 2 สัดส่วนที่ผลต่างระดับ 5 m ถูกใช้ไป (วาดตามมาตราส่วน)</figcaption></figure>
+
+<p><b>สรุปเพื่อหาคำตอบ:</b> ความเร็วที่ทำให้สมการพลังงานสมดุลคือ \(v=2.51\) m/s อัตราการไหลคือ</p>
+$$Q=vA=2.51\cdot\frac{\pi(0.15)^2}{4}=0.044\ \text{m}^3/\text{s}\tag{12}$$
+<p class="ans">คำตอบที่ถูกต้องคือ: \(v\approx2.51\) m/s (\(f=0.0195\), \(Re\approx3.8\times10^5\))</p>
+<p><b>หมายเหตุ:</b> ถ้าลืมพลังงานจลน์ที่ปลายท่อ (เลข 1 ในสมการที่ (4)) จะได้ \(v\approx2.59\) m/s ซึ่งสูงเกินจริง ตรวจด้วยโปรแกรม Colebrook-White ได้ \(v=2.506\) m/s</p>
+
+</section>

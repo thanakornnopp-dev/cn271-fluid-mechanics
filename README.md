@@ -1,66 +1,52 @@
-# 🌊 CN271 Fluid Mechanics: Pipe Flow Exam Preparation & Solutions
-> **Thammasat University — Faculty of Engineering**  
-> Civil & Mechanical Engineering Core Curriculum  
-> Author: Thanaporn Nopparat & AI Engineering Squad (Commander Chokie)
+# วย 271 บทที่ 5 การไหลในท่อ: สรุปสอบ
 
-[![Live Web Portal](https://img.shields.io/badge/🌐_Live_Web_Portal-Click_Here_to_Open-blue?style=for-the-badge&logo=google-chrome)](https://thanakornnopp-dev.github.io/cn271-fluid-mechanics/)
-[![Quality Gate](https://img.shields.io/badge/Inspector_QC-PASSED_(6%2F6_Tests)-emerald?style=for-the-badge)](https://github.com/thanakornnopp-dev/cn271-fluid-mechanics)
+เว็บสรุปวิธีทำและเฉลยทีละบรรทัด สำหรับเตรียมสอบย่อยเรื่อง Flow in Pipe วิชากลศาสตร์ของไหลสำหรับวิศวกรโยธา (อาจารย์สุนิสา สมิทธการ) มหาวิทยาลัยธรรมศาสตร์
 
----
+**เปิดอ่าน:** https://thanakornnopp-dev.github.io/cn271-fluid-mechanics/
 
-### 🌐 ลิงก์เข้าใช้งานหน้าเว็บสรุปสูตร & เครื่องคิดเลขจำลอง (Live Interactive Website):
-👉 **[https://thanakornnopp-dev.github.io/cn271-fluid-mechanics/](https://thanakornnopp-dev.github.io/cn271-fluid-mechanics/)**  
-*(หน้าเว็บพร้อมใช้งานทันที มีสูตร LaTeX ครบถ้วน, คู่มืออ่านชาร์ต Glasgow, เฉลยข้อสอบ 4 ข้อแบบละเอียด และเครื่องคิดเลขจำลองการไหลวนลูป Trial & Error อัตโนมัติ)*
+## มีอะไรในเว็บ (แต่ละอย่างคือ 1 แผ่น)
 
----
+| ส่วน | เนื้อหา |
+|---|---|
+| สรุปวิธีทำ หน้าเดียว | แยกโจทย์ Type 1 / 2 / 3 และท่อต่อกัน, สมการที่ต้องเขียน, ลำดับเขียนในห้องสอบ, ค่า f ที่ควรเดารอบแรก, ตาราง K, จุดดัก |
+| ข้อสอบหลัก ข้อ 1–8 | ตัวอย่างบทที่ 5 ข้อ 1–8 เฉลยตามลำดับของอาจารย์ มีโหมดฝึก (ซ่อนวิธีทำ แตะทีละขั้น) |
+| โจทย์ 15 คะแนน A, B | ท่ออนุกรมวางเอียง 5° และโครงข่ายท่อ 4 เส้น (แบบข้อสอบที่อาจารย์แจก) |
+| เสริม ข้อ 9–13 | ฝึกเพิ่ม (นอกขอบเขตที่เพื่อนบอกว่าจะออก) |
+| เครื่องมือ | เครื่องคิดเลขเดา f วนจนลู่เข้า, ตารางศัพท์ไทย–อังกฤษ, วิธีอ่านชาร์ต |
 
-## 📌 Repository Overview (ภาพรวมคลังเอกสารและโค้ด)
+แต่ละแผ่นมี **Title block** บอกแหล่งที่มา: *เฉลยอาจารย์* (มีลายมือ/รูปกระดานในไฟล์ของอาจารย์), *เฉลยทีม ตรวจด้วยโปรแกรม*, หรือ *โจทย์ข้อมูลไม่ครบ* (ข้อ 11) ดูแผ่นที่ติ๊ก "ทำแล้ว" ได้ในสารบัญ (เก็บในเครื่องของคุณเอง)
 
-คลังนี้จัดทำขึ้นเป็นพิเศษเพื่อเตรียมตัวสอบวิชา **CN271 Fluid Mechanics (กลศาสตร์ของไหล)** ในหัวข้อ **Flow in Closed Conduits / Pipe Networks (การไหลในท่อและโครงข่ายท่อ)** โดยรวบรวม:
-1. **สูตร First Principles และ Step-by-Step Algorithms** ครบทุกรูปแบบโจทย์ (หา $h_f$, หา $Q/v$, หาขนาดท่อ $D$, ท่ออนุกรมเอียง, ท่อขนาน)
-2. **เฉลยข้อสอบจริงฉบับเต็มบรรทัดต่อบรรทัด** ตามวิธีเขียนและรูปแบบที่อาจารย์ผู้สอนต้องการในห้องสอบ
-3. **Python Solver & Verification Engine** สำหรับคำนวณและตรวจสอบตัวเลขด้วยสมการ Colebrook-White และ Darcy-Weisbach 100%
-4. **Unit Test Suite** ตรวจสอบสมดุลพลังงานและความต่อเนื่อง (Conservation of Mass & Energy)
+## ตรวจตัวเลข
 
----
+ทุกคำตอบคำนวณซ้ำด้วย Colebrook-White ใน `scripts/pipeflow.py` และมี unit test ว่าตัวเลขในเว็บตรงกัน:
 
-## 🗂 โครงสร้างไฟล์ใน Repository (Directory Structure)
-
-```
-cn271-fluid-mechanics/
-├── index.html                               # หน้าเว็บหลัก Live Portal (GitHub Pages)
-├── README.md                                # หน้าหลักพร้อมลิงก์เว็บและคำอธิบาย
-├── docs/
-│   ├── 01_CN271_Exam_Mastery_Guide.md       # สรุปทฤษฎี สเต็ปการทำ และจุดดักคะแนนข้อสอบ
-│   ├── 02_Instructor_Exam_Solutions_Step_by_Step.md # เฉลยข้อสอบลายมืออาจารย์ฉบับสมบูรณ์
-│   └── interactive_portal.html              # ไฟล์ต้นฉบับเว็บพอร์ทัล
-├── scripts/
-│   ├── solver_engine.py                     # เอนจินคำนวณและวนลูป Trial & Error อัตโนมัติ
-│   └── test_solver.py                       # สคริปต์ Unit Test ยืนยันความถูกต้องของตัวเลข
-└── solve_all.py                             # สคริปต์รันคำนวณสรุปโจทย์ทั้งหมด
-```
-
----
-
-## 🚀 วิธีการรันสคริปต์คำนวณ (How to Run)
-
-### 1. รันเอนจินคำนวณโจทย์ข้อสอบทั้งหมด:
-```bash
-python3 scripts/solver_engine.py
-```
-
-### 2. รันการทดสอบ Unit Test (Verification Gates):
 ```bash
 python3 -m unittest discover -s scripts
 ```
 
----
+ค่า f ที่อ่านจากชาร์ตในห้องสอบอาจต่างจาก Colebrook เล็กน้อย (ไม่เกิน ~2%) คะแนนให้ตามวิธีทำ
 
-## 📊 ตารางสรุปผลลัพธ์ข้อสอบ (Summary of Exam Results)
+## โครงสร้างไฟล์
 
-| ข้อสอบ | หัวข้อโจทย์ | ข้อมูลตั้งต้น | คำตอบสุดท้าย | หน่วย |
-| :---: | :--- | :--- | :--- | :---: |
-| **1** | ท่ออนุกรม 3 ท่อน วางเอียง $\theta = 5^\circ$ พร้อม Expansion & Contraction | $\Delta P = 245.25\text{ kPa}, \nu = 10^{-6}$ | $v_1 = 0.713, v_2 = 0.456, v_3 = 1.269$ | $\text{m/s}$ |
-| **2** | ท่อขนาดสม่ำเสมอปล่อยสู่อากาศ สูงขึ้น $10\text{ m}$ ($L=1500\text{ m}$) | $Q = 0.14\text{ m}^3\text{/s}, P_1 = 105.13\text{ kPa}$ | $D = 0.60\text{ m} \quad (598\text{ mm})$ | $\text{m}$ |
-| **3** | ถังขนาดใหญ่ 2 ถัง เชื่อมด้วยท่อเอียง $12^\circ$ ($L=120\text{ m}$) | $Q = 12\text{ m}^3\text{/s}, h_f = 3.55\text{ m}$ | $D = 1.44\text{ m} \quad (1439\text{ mm})$ | $\text{m}$ |
-| **4** | โครงข่ายท่ออนุกรม-ขนาน 4 ท่อน (15 คะแนน) | $h_3 = 0.42\text{ m}, P_A = 910, P_B = 811.41\text{ kPa}$ | $h_{AA \to BB} = 1.24\text{ m}$ | $\text{m}$ |
+```
+index.html            เปลือกหน้าเว็บ
+assets/style.css      หน้าตา (ธีมแผ่นแบบวิศวกรรม, สว่าง/มืดตามเครื่อง)
+assets/app.js         เปลี่ยนแผ่น สารบัญ โหมดฝึก
+assets/cheat.js       แผ่นสรุปวิธีทำ
+assets/main.js        ข้อ 1–8
+assets/exam.js        โจทย์ 15 คะแนน A, B
+assets/extra.js       ข้อ 9–13
+assets/tools.js       เครื่องคิดเลข และตารางอ้างอิง
+scripts/pipeflow.py   ตัวคำนวณ + test_pipeflow.py
+PRODUCT.md, DESIGN.md บันทึกเป้าหมายและระบบการออกแบบของเว็บ
+```
+
+แก้เนื้อหา: แก้ไฟล์ `assets/*.js` แล้วรัน test ถ้าเปลี่ยนคำตอบ เปิดดูในเครื่องด้วย `python3 -m http.server` แล้วเข้า http://localhost:8000
+
+## ที่มาและสิ่งที่เปลี่ยน
+
+- เนื้อหาต้นทางและข้อสอบมาจากไฟล์ของอาจารย์ (ch5.pdf, ฟลูอิด บท5.pdf, allprobsfluid) ไม่ได้อยู่ใน repo นี้
+- ผู้จัดทำเดิม: Thanaporn Nopparat · ปรับปรุงโดยเพื่อนร่วมวิชา
+- ปรับปรุงครั้งนี้: ออกแบบเว็บใหม่ทั้งหมด (อ่านบนมือถือเป็นหลัก), แก้ตัวเลขข้อ 4 ที่ขัดกันเอง, เพิ่มข้อ 9–13 และโจทย์ 15 คะแนน, เพิ่มเครื่องคิดเลขและ test
+- เอาออก: โจทย์ "ข้อสอบชุดที่ 2 และ 3" (ท่อ L = 1,500 m และถัง 2 ใบเอียง 12°) เพราะไม่อยู่ในไฟล์ของอาจารย์ที่มี ถ้ามีต้นฉบับ เพิ่มกลับได้ใน `assets/exam.js`
+- เอาออก: ป้าย "QC passed" ที่เป็นภาพนิ่ง และข้อความที่อ้างว่าตรงกับอาจารย์ 100%

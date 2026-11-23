@@ -1,0 +1,658 @@
+<section id="ch5">
+  <header class="top">
+    <p class="kick">เนื้อหาและเฉลยละเอียดตามระเบียบอาจารย์ (ข้อ 1-8 เต็งหนึ่งออกสอบ)</p>
+    <h1>บทที่ 5: การไหลในท่อและการสูญเสียพลังงาน (Flow in Pipes)</h1>
+    <p class="sub">สมการดาร์ซี-ไวส์บาค · แผนภูมิ Moody · การคำนวณแบบวนรอบ (Type I, II, III) · ท่ออนุกรม &amp; ท่อขนาน</p>
+    <p class="by">CN 271 กลศาสตร์ของไหลสำหรับวิศวกรโยธา · มหาวิทยาลัยธรรมศาสตร์</p>
+    <p class="pracnote">โหมดฝึกเปิดอยู่: ซ่อนวิธีทำไว้ แตะแต่ละขั้นเพื่อดู (ลองเขียนเองก่อน) กดปุ่ม "ฝึก" อีกครั้งเพื่อปิด</p>
+  </header>
+
+  <h2 class="prob"><span class="tag">บทที่ 5</span>การไหลในท่อและการสูญเสียพลังงาน (Major &amp; Minor Losses)</h2>
+  <div class="stmt">
+    <p>บทที่ 5 เป็นบทหลักที่มีเนื้อหาและการคำนวณเข้มข้นที่สุดในวิชา CN 271 มีโจทย์ตัวอย่างทั้งหมด 13 ข้อ โดยเฉพาะ <b>ข้อ 1 ถึงข้อ 8 และข้อสอบอัตนัย 15 คะแนน A, B</b> เป็นข้อสอบเต็งหนึ่งที่อาจารย์นำมาออกสอบทุกภาคการศึกษา</p>
+  </div>
+
+  <div class="jump">
+    <a href="#ch5-theory">ก. ทฤษฎีและวิธีวนรอบ 3 แบบ</a>
+    <a href="#ch5-q1">ข้อ 1 ชนิดการไหล Re</a>
+    <a href="#ch5-q2">ข้อ 2 การกระจายความเร็ว</a>
+    <a href="#ch5-q3">ข้อ 3 ท่อสามขนาดต่างระดับ</a>
+    <a href="#ch5-q4">ข้อ 4 ข้องอ 2 ตัว</a>
+    <a href="#ch5-q5">ข้อ 5 ยกระดับ 20 m</a>
+    <a href="#ch5-q6">ข้อ 6 สูบน้ำขึ้นเขา</a>
+    <a href="#ch5-q7">ข้อ 7 อัตราไหลถังน้ำ (วนลูป)</a>
+    <a href="#ch5-q8">ข้อ 8 ออกแบบขนาดท่อ (วนลูป)</a>
+    <a href="#ch5-qa">ข้อสอบ A ท่ออนุกรมเอียง 5° (15 คะแนน)</a>
+    <a href="#ch5-qb">ข้อสอบ B โครงข่ายท่อขนาน (15 คะแนน)</a>
+    <a href="#ch5-extra">ข้อ 9-13 โจทย์ฝึกเพิ่มเติม</a>
+  </div>
+
+  <h3 class="grp" id="ch5-theory">ก. ทฤษฎีการคำนวณและขั้นตอนการวนรอบ 3 แบบ (Type I, II, III)</h3>
+  <div class="plan">
+    <p><b class="l">สมการพลังงานรวม (Energy Equation):</b>
+    2397rac{P_1}{\gamma} + z_1 + rac{v_1^2}{2g} + h_p = rac{P_2}{\gamma} + z_2 + rac{v_2^2}{2g} + h_t + h_L	ag{5.1}2397</p>
+    <p><b class="l">การสูญเสียพลังงานหลัก (Major Loss):</b> ใช้สมการดาร์ซี-ไวส์บาค (Darcy-Weisbach):
+    2397h_f = f rac{L}{D} rac{v^2}{2g} = rac{8 f L Q^2}{\pi^2 g D^5}	ag{5.2}2397</p>
+    <p><b class="l">การสูญเสียพลังงานรอง (Minor Loss):</b>
+    2397h_m = K_L rac{v^2}{2g}	ag{5.3}2397</p>
+    <p><b class="l">สมการ Colebrook-White สำหรับคำนวณค่า \(f\):</b>
+    2397rac{1}{\sqrt{f}} = -2 \log_{10} \left( rac{arepsilon / D}{3.7} + rac{2.51}{Re \sqrt{f}} ight)	ag{5.4}2397</p>
+    <p><b class="l">การจำแนกประเภทโจทย์ 3 แบบ:</b><br>
+    • <b>Type I (รู้ขนาด รู้การไหล หาการสูญเสีย):</b> ทราบ \(D, Q, L, arepsilon\) คำนวณ \(Re\) และ \(arepsilon/D\) เปิด Moody Chart หา \(f\) แล้วแทนค่าในสมการตรงๆ ได้ทันที<br>
+    • <b>Type II (รู้ขนาด รู้เฮดสูญเสีย หาอัตราไหล \(Q\) หรือความเร็ว \(v\)):</b> ไม่ทราบ \(v\) จึงไม่ทราบ \(Re\) ต้องใช้วิธีสมมุติค่า \(f\) (เช่น สมมุติ \(f = 0.02\)) คำนวณ \(v\) แล้วหา \(Re\) นำไปเปิดหากลุ่มใหม่ วนรอบจนค่า \(f\) ลู่เข้า (ตัวอย่างข้อ 7)<br>
+    • <b>Type III (รู้เฮดสูญเสีย รู้อัตราไหล ออกแบบหาขนาดเส้นผ่านศูนย์กลาง \(D\)):</b> ต้องสมมุติค่า \(f\) คำนวณ \(D\) แล้วตรวจสอบ \(Re\) และ \(arepsilon/D\) วนรอบจนค่า \(D\) นิ่ง (ตัวอย่างข้อ 8)
+    </p>
+  </div>
+<div id="ch5-q1" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 1</span>Laminar หรือ Turbulent? และความเร็วสูงสุดที่ยังเป็น Laminar</h2>
+<div class="stmt"><p>น้ำไหลในท่อเส้นผ่านศูนย์กลาง 10 cm ด้วยความเร็ว 0.1 m/s ความหนืดสัมบูรณ์ \(\mu=10^{-3}\) N·s/m² จงหาว่าการไหลเป็นแบบ Laminar หรือ Turbulent ถ้าเป็น Turbulent ความเร็วสูงสุดที่ทำให้เป็น Laminar เท่าไร</p></div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$D=0.1\ \text{m},\quad v=0.1\ \text{m/s}$$$$\mu=10^{-3}\ \text{N}\!\cdot\!\text{s/m}^2,\quad \rho=1000\ \text{kg/m}^3$$</div></div><div class="row"><div class="lab">Reynolds number</div><div class="">$$Re=\frac{\rho vD}{\mu}=\frac{(1000)(0.1)(0.1)}{10^{-3}}=10{,}000$$$$Re>4000\ \Rightarrow\ \text{Turbulent}$$</div></div><div class="row"><div class="lab">v สูงสุดของ Laminar<br>(ตั้ง Re = 2000)</div><div class="">$$2000=\frac{(1000)\,v\,(0.1)}{10^{-3}}\ \Rightarrow\ v=\frac{2000}{10^{5}}=0.02\ \text{m/s}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">Turbulent (\(Re=10{,}000\)), \(v_{max}=0.02\ \text{m/s}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> โจทย์ถามชนิดการไหล ซึ่งตัดสินด้วยเลขเรย์โนลด์ส \(Re\) เราจึงคิดย้อนว่าต้องรู้ \(Re\) แล้วเทียบกับเกณฑ์ ส่วนข้อถามที่สองคือแก้สมการ \(Re\) ย้อนกลับหา \(v\)</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> เขียนนิยามของ \(Re\) และเกณฑ์ตัดสินชนิดการไหล</p><p><b class="l">ขั้นที่ 2:</b> คำนวณ \(Re\) จากข้อมูลที่ให้ แล้วเทียบเกณฑ์</p><p><b class="l">ขั้นที่ 3:</b> ตั้ง \(Re=2000\) แล้วแก้หา \(v\) ที่ขอบของ Laminar</p></div>
+<h4>ขั้นที่ 1: นิยามของ Reynolds number และเกณฑ์</h4>
+<p>เลขเรย์โนลด์สเป็นอัตราส่วนของแรงเฉื่อยต่อแรงหนืด ไม่มีหน่วย</p>
+$$Re=\frac{\rho vD}{\mu}\tag{1}$$
+$$Re<2000:\ \text{Laminar},\qquad 2000\le Re\le4000:\ \text{Transitional},\qquad Re>4000:\ \text{Turbulent}\tag{2}$$
+<h4>ขั้นที่ 2: คำนวณ Re จากข้อมูลโจทย์</h4>
+<p>แทน \(\rho=1000\) kg/m³ (น้ำ), \(v=0.1\) m/s, \(D=0.1\) m และ \(\mu=10^{-3}\) N·s/m² ลงใน (1)</p>
+$$Re=\frac{(1000)(0.1)(0.1)}{10^{-3}}=\frac{10}{10^{-3}}=10{,}000\tag{3}$$
+<p>เนื่องจาก \(Re=10{,}000>4000\) การไหลเป็นแบบ <b>Turbulent</b></p>
+<h4>ขั้นที่ 3: ความเร็วสูงสุดที่ยังเป็น Laminar</h4>
+<p>ขอบบนของ Laminar คือ \(Re=2000\) ตั้ง (1) เท่ากับค่านี้แล้วแก้หา \(v\)</p>
+$$2000=\frac{(1000)\,v\,(0.1)}{10^{-3}}=10^{5}\,v\tag{4}$$
+$$v_{max}=\frac{2000}{10^{5}}=0.02\ \text{m/s}\tag{5}$$
+<p><b>ตรวจสอบ:</b> แทน \(v=0.02\) m/s กลับใน (1) ได้ \(Re=2000\) พอดี และความเร็วจริง 0.1 m/s เป็น 5 เท่าของค่านี้ จึงเป็น Turbulent สอดคล้องกัน</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(Re=10{,}000\) (Turbulent) และ \(v_{max}=0.02\) m/s</p>
+</div>
+<div id="ch5-q2" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 2</span>ความดันลด ΔP ในท่อราบ: Laminar เทียบกับ Turbulent</h2>
+<div class="stmt"><p>น้ำไหลในท่อเส้นผ่านศูนย์กลาง 8 cm ด้วยความเร็วเฉลี่ย 0.02 m/s (ก) จงหาว่าไหลแบบ Laminar หรือ Turbulent (ข) จงหาความดันที่ลดลงในระยะ 0.5 m (ค) ถ้าท่อเป็นพลาสติก (\(\varepsilon=0.12\) mm) จงหาความดันที่ลดลงในระยะ 0.1 m เมื่อความเร็วเพิ่มเป็น 1 m/s</p></div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$D=0.08\ \text{m},\quad \mu=10^{-3}\ \text{N}\!\cdot\!\text{s/m}^2,\quad \rho=1000\ \text{kg/m}^3$$</div></div><div class="row"><div class="lab">(ก) Re</div><div class="">$$Re=\frac{\rho vD}{\mu}=\frac{(1000)(0.02)(0.08)}{10^{-3}}=1600<2000\ \Rightarrow\ \text{Laminar}$$</div></div><div class="row"><div class="lab">(ข) สมการพลังงาน<br>ท่อราบ ขนาดคงที่</div><div class="">$$\frac{P_1}{\gamma}+\frac{v^2}{2g}+z=\frac{P_2}{\gamma}+\frac{v^2}{2g}+z+h_L\ \Rightarrow\ \frac{\Delta P}{\gamma}=f\frac{L}{D}\frac{v^2}{2g}$$$$\Delta P=f\,\frac{L}{D}\,\frac{\rho v^2}{2}$$</div></div><div class="row"><div class="lab">(ข) แทนค่า</div><div class="">$$f=\frac{64}{Re}=\frac{64}{1600}=0.04$$$$\Delta P=(0.04)\frac{0.5}{0.08}\,\frac{(1000)(0.02)^2}{2}=0.05\ \text{Pa}$$</div></div><div class="row"><div class="lab">(ค) Re ใหม่, ε/D</div><div class="">$$Re=\frac{(1000)(1)(0.08)}{10^{-3}}=8\times10^{4}\ (\text{Turbulent}),\qquad \frac{\varepsilon}{D}=\frac{0.12}{80}=0.0015$$</div></div><div class="row"><div class="lab">(ค) อ่านชาร์ต, แทนค่า</div><div class="">$$f_{\text{Moody}}=0.024$$$$\Delta P=(0.024)\frac{0.1}{0.08}\,\frac{(1000)(1)^2}{2}=15\ \text{Pa}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">(ก) Laminar, (ข) \(\Delta P=0.05\ \text{Pa}\), (ค) \(\Delta P\approx15\ \text{Pa}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ข้อ (ข), (ค) ถามความดันลด ซึ่งมาจากการสูญเสียพลังงานเสียดทานในท่อราบ ต้องรู้ \(f\) และ \(f\) ขึ้นกับชนิดการไหล จึงต้องเริ่มจาก \(Re\)</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> หา \(Re\) ของกรณี (ก) เพื่อระบุชนิดการไหล</p><p><b class="l">ขั้นที่ 2:</b> ตั้งสมการพลังงานของท่อราบ ได้ \(\Delta P\) ในรูปของ \(f\) แล้วแทน \(f=64/Re\) (Laminar)</p><p><b class="l">ขั้นที่ 3:</b> กรณี (ค) ความเร็วเพิ่ม เป็น Turbulent จึงอ่าน \(f\) จากชาร์ตตาม \(Re\) และ \(\varepsilon/D\)</p></div>
+<h4>ขั้นที่ 1: ชนิดการไหลของกรณี (ก)</h4>
+$$Re=\frac{\rho vD}{\mu}=\frac{(1000)(0.02)(0.08)}{10^{-3}}=1600\tag{1}$$
+<p>\(Re=1600<2000\) จึงเป็น <b>Laminar</b></p>
+<h4>ขั้นที่ 2: ความดันลดจากสมการพลังงาน (ข้อ ข)</h4>
+<p>ท่อราบและขนาดคงที่ จึงมี \(z_1=z_2\) และ \(v_1=v_2\) พจน์ความสูงกับความเร็วตัดกันหมด</p>
+$$\frac{P_1-P_2}{\gamma}=h_L=f\,\frac{L}{D}\,\frac{v^2}{2g}\tag{2}$$
+<p>คูณ \(\gamma=\rho g\) ทั้งสองข้าง</p>
+$$\Delta P=P_1-P_2=f\,\frac{L}{D}\,\frac{\rho v^2}{2}\tag{3}$$
+<p>การไหลแบบ Laminar มี \(f\) ขึ้นกับ \(Re\) เท่านั้น ไม่ขึ้นกับความขรุขระ</p>
+$$f=\frac{64}{Re}=\frac{64}{1600}=0.04\tag{4}$$
+$$\Delta P=(0.04)\,\frac{0.5}{0.08}\,\frac{(1000)(0.02)^2}{2}=(0.04)(6.25)(0.2)=0.05\ \text{Pa}\tag{5}$$
+<h4>ขั้นที่ 3: กรณีท่อพลาสติก ความเร็ว 1 m/s (ข้อ ค)</h4>
+$$Re=\frac{(1000)(1)(0.08)}{10^{-3}}=8\times10^{4}\tag{6}$$
+$$\frac{\varepsilon}{D}=\frac{0.12\ \text{mm}}{80\ \text{mm}}=0.0015\tag{7}$$
+<p>\(Re>4000\) เป็น Turbulent จึงอ่าน \(f\) จากชาร์ตที่ \(Re=8\times10^4\) และ \(\varepsilon/D=0.0015\) ได้ \(f\approx0.024\) แล้วใช้ (3)</p>
+$$\Delta P=(0.024)\,\frac{0.1}{0.08}\,\frac{(1000)(1)^2}{2}=(0.024)(1.25)(500)=15\ \text{Pa}\tag{8}$$
+<p><b>ตรวจสอบ:</b> Colebrook-White ให้ \(f=0.0242\) และ \(\Delta P=15.1\) Pa ตรงกับที่อ่านชาร์ต</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: (ก) Laminar (ข) \(\Delta P=0.05\) Pa (ค) \(\Delta P\approx15\) Pa</p>
+</div>
+<div id="ch5-q3" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 3</span>ท่อ 3 ขนาดต่างระดับ: หา h_L ระหว่างจุด</h2>
+<div class="stmt"><p>น้ำไหลแบบ Incompressible Steady State อัตราการไหลคงที่ \(Q=0.1\) m³/s จงหาการสูญเสียพลังงานระหว่างจุด 1 ถึงจุด 2 และระหว่างจุด 2 ถึงจุด 3 (ข้อมูลในรูป)</p></div>
+<figure><svg viewBox="0 0 640 230" role="img" aria-label="ท่อสามขนาด">
+<line x1="20" y1="190" x2="620" y2="190" style="stroke:var(--ink);stroke-dasharray:6 5"/>
+<path d="M30 190H125C145 190 145 130 165 130H215" style="stroke:var(--navy);fill:none;stroke-width:6"/>
+<path d="M215 130H265C285 130 285 170 305 170H345" style="stroke:var(--navy);fill:none;stroke-width:12"/>
+<path d="M345 170H600" style="stroke:var(--navy);fill:none;stroke-width:18"/>
+<text x="40" y="176" font-size="15" fill="var(--blue)">① D=10 cm</text><text x="40" y="214" font-size="15" fill="var(--blue)">P₁=100 kPa, z₁=0</text>
+<text x="165" y="112" font-size="15" fill="var(--blue)">② D=20 cm</text><text x="165" y="96" font-size="15" fill="var(--blue)">P₂=50 kPa</text>
+<text x="380" y="146" font-size="15" fill="var(--blue)">③ D=30 cm</text><text x="380" y="214" font-size="15" fill="var(--blue)">P₃=20 kPa</text>
+<line x1="150" y1="190" x2="150" y2="134" stroke="var(--red)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="100" y="168" font-size="15" fill="var(--red)">3 m</text>
+<line x1="470" y1="190" x2="470" y2="174" stroke="var(--red)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="478" y="186" font-size="15" fill="var(--red)">1 m</text>
+</svg><figcaption>รูปที่ 1 ท่อสามขนาดต่างระดับ (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$Q=0.1\ \text{m}^3/\text{s},\quad D_1=0.1,\ D_2=0.2,\ D_3=0.3\ \text{m}$$$$P_1=100,\ P_2=50,\ P_3=20\ \text{kPa};\qquad z_1=0,\ z_2=3,\ z_3=1\ \text{m}$$</div></div><div class="row"><div class="lab">ความเร็ว v = Q/A</div><div class="">$$v_1=\frac{0.1}{\pi(0.05)^2}=12.73,\quad v_2=\frac{0.1}{\pi(0.1)^2}=3.18,\quad v_3=\frac{0.1}{\pi(0.15)^2}=1.41\ \text{m/s}$$</div></div><div class="row"><div class="lab">สมการพลังงาน 1 → 2</div><div class="">$$\frac{P_1}{\gamma}+\frac{v_1^2}{2g}+z_1=\frac{P_2}{\gamma}+\frac{v_2^2}{2g}+z_2+h_{L,12}$$$$\frac{100\times10^3}{9810}+\frac{12.73^2}{2g}+0=\frac{50\times10^3}{9810}+\frac{3.18^2}{2g}+3+h_{L,12}$$$$10.19+8.26=5.10+0.52+3+h_{L,12}\ \Rightarrow\ h_{L,12}=9.84\ \text{m}$$</div></div><div class="row"><div class="lab">สมการพลังงาน 2 → 3</div><div class="">$$\frac{P_2}{\gamma}+\frac{v_2^2}{2g}+z_2=\frac{P_3}{\gamma}+\frac{v_3^2}{2g}+z_3+h_{L,23}$$$$5.10+0.52+3=\frac{20\times10^3}{9810}+\frac{1.41^2}{2g}+1+h_{L,23}$$$$8.61=2.04+0.10+1+h_{L,23}\ \Rightarrow\ h_{L,23}=5.47\ \text{m}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(h_{L,1\to2}=9.84\ \text{m}\), \(h_{L,2\to3}=5.47\ \text{m}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> โจทย์ต้องการพลังงานที่หายไประหว่างจุด ซึ่งคือผลต่างของพลังงานรวมทั้งสองจุด จึงต้องรู้พลังงานรวม \(H=P/\gamma+v^2/2g+z\) ที่แต่ละจุด ซึ่งต้องรู้ความเร็วในแต่ละท่อก่อน</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> หาความเร็วในท่อแต่ละขนาดจาก \(Q=vA\)</p><p><b class="l">ขั้นที่ 2:</b> คำนวณพลังงานรวม \(H\) ที่จุด 1, 2, 3</p><p><b class="l">ขั้นที่ 3:</b> \(h_L\) คือผลต่างของ \(H\) ระหว่างจุดที่ไล่ตามทิศการไหล</p></div>
+<h4>ขั้นที่ 1: ความเร็วในแต่ละท่อ (ความต่อเนื่อง)</h4>
+<p>ท่อมี \(Q\) เท่ากันทุกหน้าตัด แต่หน้าตัดต่างกัน ความเร็วจึงต่างกัน</p>
+$$v_1=\frac{Q}{A_1}=\frac{0.1}{\pi(0.05)^2}=12.73\ \text{m/s}\tag{1}$$
+$$v_2=\frac{0.1}{\pi(0.1)^2}=3.18\ \text{m/s},\qquad v_3=\frac{0.1}{\pi(0.15)^2}=1.41\ \text{m/s}\tag{2}$$
+<h4>ขั้นที่ 2: พลังงานรวมที่แต่ละจุด</h4>
+<p>นิยามพลังงานรวมต่อหน่วยน้ำหนัก (หน่วยเมตร) แล้วแทนค่าที่จุด 1, 2, 3</p>
+$$H=\frac{P}{\gamma}+\frac{v^2}{2g}+z\tag{3}$$
+$$H_1=\frac{100\times10^3}{9810}+\frac{12.73^2}{2g}+0=10.19+8.26=18.46\ \text{m}\tag{4}$$
+$$H_2=\frac{50\times10^3}{9810}+\frac{3.18^2}{2g}+3=5.10+0.52+3=8.61\ \text{m}\tag{5}$$
+$$H_3=\frac{20\times10^3}{9810}+\frac{1.41^2}{2g}+1=2.04+0.10+1=3.14\ \text{m}\tag{6}$$
+<h4>ขั้นที่ 3: การสูญเสียพลังงานระหว่างจุด</h4>
+<p>จากสมการพลังงาน \(H_1=H_2+h_{L,12}\) ดังนั้น</p>
+$$h_{L,1\to2}=H_1-H_2=18.46-8.61=9.84\ \text{m}\tag{7}$$
+$$h_{L,2\to3}=H_2-H_3=8.61-3.14=5.47\ \text{m}\tag{8}$$
+<p><b>ตรวจสอบ:</b> \(h_{L,1\to2}+h_{L,2\to3}=15.32\) m เท่ากับ \(H_1-H_3=18.46-3.14=15.32\) m และค่า \(h_L\) เป็นบวกทั้งสองช่วง (พลังงานต้องลดตามทิศการไหล)</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(h_{L,1\to2}=9.84\) m และ \(h_{L,2\to3}=5.47\) m</p>
+</div>
+<div id="ch5-q4" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 4</span>ท่อยาว 600 m มีข้องอ: หา major loss และ minor loss</h2>
+<div class="stmt"><p>น้ำไหลในท่อด้วยอัตราการไหล \(Q=0.1\) m³/s เส้นผ่านศูนย์กลางคงที่ 20 cm ความยาวจากจุด 1 ถึงจุด 2 เท่ากับ 600 m ค่าสัมประสิทธิ์ความขรุขระ \(\varepsilon=0.4\) mm ความหนืดสัมบูรณ์ \(\mu=10^{-3}\) N·s/m² จงหาการสูญเสียพลังงานหลักและการสูญเสียพลังงานรองจากจุด 1 ถึงจุด 2 (ข้องอ \(K_L=0.5\) สองตัว)</p></div>
+<figure><svg viewBox="0 0 640 230" role="img" aria-label="ท่อยกสูง 2 m">
+<line x1="20" y1="190" x2="600" y2="190" style="stroke:var(--ink);stroke-dasharray:6 5"/>
+<path d="M40 190H300Q316 190 316 174V146Q316 130 332 130H520" style="stroke:var(--navy);fill:none;stroke-width:6"/>
+<circle cx="58" cy="174" r="11" style="fill:var(--bg);stroke:var(--ink)"/><text x="53.5" y="179" font-size="14" fill="var(--ink)">1</text>
+<circle cx="520" cy="114" r="11" style="fill:var(--bg);stroke:var(--ink)"/><text x="515.5" y="119" font-size="14" fill="var(--ink)">2</text>
+<line x1="560" y1="133" x2="560" y2="187" stroke="var(--red)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="568" y="165" font-size="16" fill="var(--red)">2 m</text>
+<text x="210" y="180" font-size="15" fill="var(--green)">K=0.5</text>
+<text x="334" y="122" font-size="15" fill="var(--green)">K=0.5</text>
+</svg><figcaption>รูปที่ 1 ท่อยกสูง 2 m มีข้องอ 2 ตัว (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$Q=0.1\ \text{m}^3/\text{s},\ D=0.2\ \text{m},\ L=600\ \text{m},\ \varepsilon=0.4\ \text{mm},\ \textstyle\sum K_L=0.5+0.5=1.0$$</div></div><div class="row"><div class="lab">ความเร็ว</div><div class="">$$v=\frac{Q}{A}=\frac{0.1}{\pi(0.1)^2}=3.18\ \text{m/s},\qquad \frac{v^2}{2g}=0.516\ \text{m}$$</div></div><div class="row"><div class="lab">Re, ε/D</div><div class="">$$Re=\frac{\rho vD}{\mu}=\frac{(1000)(3.18)(0.2)}{10^{-3}}=6.37\times10^{5},\qquad \frac{\varepsilon}{D}=\frac{0.4}{200}=0.002$$</div></div><div class="row"><div class="lab">อ่านชาร์ตหา f</div><div class="">$$f_{\text{Moody}}\approx0.024$$</div></div><div class="row"><div class="lab">Major loss</div><div class="">$$h_f=f\,\frac{L}{D}\,\frac{v^2}{2g}=(0.024)\,\frac{600}{0.2}\,(0.516)=37.2\ \text{m}$$</div></div><div class="row"><div class="lab">Minor loss</div><div class="">$$h_m=\Big(\sum K_L\Big)\frac{v^2}{2g}=(1.0)(0.516)=0.52\ \text{m}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(h_f\approx37\ \text{m}\), \(h_m=0.52\ \text{m}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ต้องการ \(h_f\) และ \(h_m\) ซึ่งทั้งคู่เป็นผลคูณของ \(v^2/2g\) กับค่าสัมประสิทธิ์ จึงต้องรู้ \(v\) ก่อน ส่วน \(h_f\) ต้องใช้ \(f\) ซึ่งหาได้ตรง ๆ เพราะรู้ \(Q\) จึงรู้ \(Re\) โดยไม่ต้องเดา</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> หา \(v\) และ \(v^2/2g\) จาก \(Q\) และ \(D\)</p><p><b class="l">ขั้นที่ 2:</b> หา \(Re\) กับ \(\varepsilon/D\) แล้วอ่าน \(f\)</p><p><b class="l">ขั้นที่ 3:</b> คำนวณ \(h_f\) (Darcy-Weisbach) และ \(h_m\)</p></div>
+<h4>ขั้นที่ 1: ความเร็วและเฮดความเร็ว</h4>
+$$v=\frac{Q}{A}=\frac{0.1}{\pi(0.1)^2}=3.18\ \text{m/s}\tag{1}$$
+$$\frac{v^2}{2g}=\frac{(3.18)^2}{2(9.81)}=0.516\ \text{m}\tag{2}$$
+<h4>ขั้นที่ 2: Re, ความขรุขระสัมพัทธ์ และ f</h4>
+$$Re=\frac{\rho vD}{\mu}=\frac{(1000)(3.18)(0.2)}{10^{-3}}=6.37\times10^{5}\tag{3}$$
+$$\frac{\varepsilon}{D}=\frac{0.4\ \text{mm}}{200\ \text{mm}}=0.002\tag{4}$$
+<p>ที่ \(Re=6.4\times10^5\) และ \(\varepsilon/D=0.002\) อ่านจากชาร์ตได้ \(f\approx0.024\) (Colebrook-White ให้ \(0.0237\))</p>
+<h4>ขั้นที่ 3: Major loss และ minor loss</h4>
+$$h_f=f\,\frac{L}{D}\,\frac{v^2}{2g}=(0.024)\,\frac{600}{0.2}\,(0.516)=37.2\ \text{m}\tag{5}$$
+$$h_m=\Big(\sum K_L\Big)\frac{v^2}{2g}=(0.5+0.5)(0.516)=0.52\ \text{m}\tag{6}$$
+<p><b>ตรวจสอบ:</b> ใช้ \(f=0.0237\) จาก Colebrook จะได้ \(h_f=36.7\) m ต่างจากการอ่านชาร์ตเพียง 1% และ \(h_m\ll h_f\) ซึ่งสมเหตุสมผลสำหรับท่อยาว ส่วนความสูง 2 m ในรูปไม่เกี่ยวกับ \(h_f, h_m\) (ใช้ตอนหา \(\Delta P\) เท่านั้น)</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(h_f\approx37\) m (36.7–37.2 m ตามการอ่านชาร์ต) และ \(h_m=0.52\) m</p>
+</div>
+<div id="ch5-q5" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 5</span>ท่อขึ้นเนิน 20 m: ความดันน้อยที่สุดที่จุด 1</h2>
+<div class="stmt"><p>น้ำไหลในท่อเส้นผ่านศูนย์กลาง 0.6 m ด้วยความเร็ว 2 m/s ถ้าความดันที่จุด 2 ต้องมากกว่า 10 kPa จงหาความดันที่น้อยที่สุดที่จุด 1 ให้คิดการสูญเสียพลังงานทั้งหมด จุด 1 และ 2 ห่างกัน 120 m ข้องอ 90° \(K_L=0.3\) (2 ตัวตามรูป) \(\varepsilon=3\) mm</p></div>
+<figure><svg viewBox="0 0 640 230" role="img" aria-label="ท่อยกสูง 20 m">
+<line x1="20" y1="190" x2="600" y2="190" style="stroke:var(--ink);stroke-dasharray:6 5"/>
+<path d="M40 190H300Q316 190 316 174V76Q316 60 332 60H520" style="stroke:var(--navy);fill:none;stroke-width:6"/>
+<circle cx="58" cy="174" r="11" style="fill:var(--bg);stroke:var(--ink)"/><text x="53.5" y="179" font-size="14" fill="var(--ink)">1</text>
+<circle cx="520" cy="44" r="11" style="fill:var(--bg);stroke:var(--ink)"/><text x="515.5" y="49" font-size="14" fill="var(--ink)">2</text>
+<line x1="560" y1="63" x2="560" y2="187" stroke="var(--red)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="568" y="130" font-size="16" fill="var(--red)">20 m</text>
+<text x="210" y="180" font-size="15" fill="var(--green)">K=0.3</text>
+<text x="334" y="52" font-size="15" fill="var(--green)">K=0.3</text>
+</svg><figcaption>รูปที่ 1 ท่อยกสูง 20 m มีข้องอ 90° 2 ตัว (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$D=0.6\ \text{m},\ v=2\ \text{m/s},\ L=120\ \text{m},\ \varepsilon=3\ \text{mm},\ P_2=10\ \text{kPa}$$$$z_2-z_1=20\ \text{m},\qquad \textstyle\sum K_L=0.3+0.3=0.6$$</div></div><div class="row"><div class="lab">สมการพลังงาน 1 → 2</div><div class="">$$\frac{P_1}{\gamma}+\frac{v_1^2}{2g}+z_1=\frac{P_2}{\gamma}+\frac{v_2^2}{2g}+z_2+h_L$$$$D_1=D_2\Rightarrow v_1=v_2\ \Rightarrow\ \frac{P_1}{\gamma}=\frac{P_2}{\gamma}+(z_2-z_1)+h_L$$</div></div><div class="row"><div class="lab">Re, ε/D, f</div><div class="">$$Re=\frac{(2)(0.6)}{10^{-6}}=1.2\times10^{6},\qquad \frac{\varepsilon}{D}=\frac{3}{600}=0.005\ \Rightarrow\ f_{\text{Moody}}=0.0304$$</div></div><div class="row"><div class="lab">h_L</div><div class="">$$\frac{v^2}{2g}=0.204\ \text{m}$$$$h_f=(0.0304)\frac{120}{0.6}(0.204)=1.24\ \text{m},\qquad h_m=(0.6)(0.204)=0.12\ \text{m}$$$$h_L=1.24+0.12=1.36\ \text{m}$$</div></div><div class="row"><div class="lab">แทนค่า</div><div class="">$$\frac{P_1}{\gamma}=\frac{10\times10^3}{9810}+20+1.36=22.38\ \text{m}$$$$P_1=22.38\times9810=219{,}600\ \text{Pa}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(P_{1,min}\approx219.6\ \text{kPa}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ต้องการ \(P_1\) ซึ่งหาได้จากสมการพลังงานเมื่อรู้ \(P_2\), ความสูง และ \(h_L\) จึงต้องรู้ \(h_L\) ซึ่งต้องรู้ \(f\) ก่อน และรู้ \(Re\) ได้เลยเพราะโจทย์ให้ \(v\)</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> หา \(f\) จาก \(Re\) และ \(\varepsilon/D\)</p><p><b class="l">ขั้นที่ 2:</b> คำนวณ \(h_L=h_f+h_m\)</p><p><b class="l">ขั้นที่ 3:</b> ตั้งสมการพลังงานจุด 1 → 2 แล้วแก้หา \(P_1\)</p></div>
+<h4>ขั้นที่ 1: ค่า f</h4>
+<p>ท่อขนาดคงที่ \(v=2\) m/s ตลอดแนว</p>
+$$Re=\frac{vD}{\nu}=\frac{(2)(0.6)}{10^{-6}}=1.2\times10^{6}\tag{1}$$
+$$\frac{\varepsilon}{D}=\frac{3\ \text{mm}}{600\ \text{mm}}=0.005\tag{2}$$
+<p>ค่า \(\varepsilon/D=0.005\) อยู่ในโซน fully turbulent อ่านชาร์ตได้ \(f\approx0.030\) (Colebrook ให้ \(0.0304\))</p>
+<h4>ขั้นที่ 2: การสูญเสียพลังงานรวม</h4>
+$$\frac{v^2}{2g}=\frac{2^2}{2(9.81)}=0.204\ \text{m}\tag{3}$$
+$$h_f=f\,\frac{L}{D}\,\frac{v^2}{2g}=(0.0304)\,\frac{120}{0.6}\,(0.204)=1.24\ \text{m}\tag{4}$$
+$$h_m=\Big(\sum K_L\Big)\frac{v^2}{2g}=(0.3+0.3)(0.204)=0.12\ \text{m}\tag{5}$$
+$$h_L=h_f+h_m=1.36\ \text{m}\tag{6}$$
+<h4>ขั้นที่ 3: สมการพลังงานจุด 1 → 2</h4>
+<p>ท่อขนาดเดียวกัน \(v_1=v_2\) พจน์ \(v^2/2g\) ตัดกัน และจุด 2 สูงกว่าจุด 1 อยู่ \(z_2-z_1=20\) m</p>
+$$\frac{P_1}{\gamma}=\frac{P_2}{\gamma}+(z_2-z_1)+h_L\tag{7}$$
+$$\frac{P_1}{\gamma}=\frac{10\times10^3}{9810}+20+1.36=1.02+20+1.36=22.38\ \text{m}\tag{8}$$
+$$P_1=22.38\times9810=219{,}600\ \text{Pa}=219.6\ \text{kPa}\tag{9}$$
+<p><b>ตรวจสอบ:</b> ส่วนใหญ่ (20 m จาก 22.38 m) ใช้ยกน้ำขึ้นเนิน ที่เหลือคือ \(P_2\) และการสูญเสีย จึงสมเหตุสมผล และ \(P_1>P_2\) ตามทิศการไหลขึ้นเนิน</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(P_{1,min}\approx219.6\) kPa (ประมาณ 220 kPa)</p>
+</div>
+<div id="ch5-q6" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 6</span>หาความเร็วจาก h_L ที่กำหนด (วิธีเดา f)</h2>
+<div class="stmt"><p>ถ้าการสูญเสียพลังงานในท่อที่มีความยาว 700 m เท่ากับ 3 m ท่อมีเส้นผ่านศูนย์กลาง 15 cm ค่าสัมประสิทธิ์ความขรุขระ \(\varepsilon=0.12\) mm จงหาความเร็วของน้ำในท่อ (\(\nu=10^{-6}\) m²/s)</p></div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$L=700\ \text{m},\ h_L=3\ \text{m},\ D=0.15\ \text{m},\ \varepsilon=0.12\ \text{mm},\ \nu=10^{-6}\ \text{m}^2/\text{s}$$$$\frac{\varepsilon}{D}=\frac{0.12}{150}=0.0008$$</div></div><div class="row"><div class="lab">สมการ<br>(ไม่มี minor loss)</div><div class="">$$h_L=f\,\frac{L}{D}\,\frac{v^2}{2g}\ \Rightarrow\ 3=f\,\frac{700}{0.15}\,\frac{v^2}{2g}\ \Rightarrow\ v=\sqrt{\frac{0.01261}{f}}\qquad\star$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 1</div><div class="">$$f=0.020\ \Rightarrow\ v=\sqrt{\frac{0.01261}{0.020}}=0.79\ \text{m/s}$$$$Re=\frac{vD}{\nu}=\frac{0.79(0.15)}{10^{-6}}=1.2\times10^{5}$$$$\frac{\varepsilon}{D}=0.0008\ \Rightarrow\ f_{\text{Moody}}=0.021\ \ \textcolor{#ff8178}{\neq0.020\ \ (\text{No})}$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 2</div><div class="">$$f=0.021\ \Rightarrow\ v=\sqrt{\frac{0.01261}{0.021}}=0.77\ \text{m/s}$$$$Re=\frac{0.77(0.15)}{10^{-6}}=1.2\times10^{5}\ \Rightarrow\ f_{\text{Moody}}=0.021\ \ \textcolor{#63d487}{=0.021\ \ (\text{OK})}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(v\approx0.77\ \text{m/s}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ต้องการ \(v\) ซึ่งอยู่ในสมการ \(h_L=f\frac{L}{D}\frac{v^2}{2g}\) แต่ \(f\) ขึ้นกับ \(Re=vD/\nu\) ที่ต้องรู้ \(v\) จึงเกิดวงวน ต้องเดา \(f\) แล้วทำซ้ำ</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> จัดสมการให้ได้ \(v\) ในรูปของ \(f\)</p><p><b class="l">ขั้นที่ 2:</b> เดา \(f\) หา \(v\) แล้วคำนวณ \(Re\) กับ \(\varepsilon/D\) เพื่ออ่าน \(f\) ใหม่</p><p><b class="l">ขั้นที่ 3:</b> ทำซ้ำจน \(f\) ที่เดาตรงกับ \(f\) ที่อ่านได้</p></div>
+<h4>ขั้นที่ 1: จัดสมการหา v ในรูปของ f</h4>
+<p>โจทย์ไม่มี minor loss จึงเหลือเฉพาะ major loss แทน \(h_L=3\) m, \(L/D=700/0.15\)</p>
+$$3=f\,\frac{700}{0.15}\,\frac{v^2}{2g}\tag{1}$$
+$$v=\sqrt{\frac{3\,(0.15)\,2(9.81)}{700\,f}}=\sqrt{\frac{0.01261}{f}}\tag{2}$$
+$$\frac{\varepsilon}{D}=\frac{0.12\ \text{mm}}{150\ \text{mm}}=0.0008\tag{3}$$
+<h4>ขั้นที่ 2: เดา f รอบที่ 1</h4>
+<p>เดา \(f=0.020\) แทนใน (2)</p>
+$$v=\sqrt{\frac{0.01261}{0.020}}=0.79\ \text{m/s},\qquad Re=\frac{0.79\,(0.15)}{10^{-6}}=1.2\times10^{5}\tag{4}$$
+<p>ที่ \(Re=1.2\times10^5\) และ \(\varepsilon/D=0.0008\) ชาร์ตให้ \(f=0.021\) ไม่เท่ากับที่เดา จึงทำรอบที่ 2</p>
+<h4>ขั้นที่ 3: เดา f รอบที่ 2</h4>
+$$v=\sqrt{\frac{0.01261}{0.021}}=0.77\ \text{m/s},\qquad Re=\frac{0.77\,(0.15)}{10^{-6}}=1.2\times10^{5}\tag{5}$$
+<p>ชาร์ตให้ \(f=0.021\) เท่ากับที่เดา ค่าลู่เข้าแล้ว</p>
+<div class="tw"><table><caption>ตารางที่ 1 ผลการวนซ้ำ</caption><thead><tr><th>รอบ</th><th>\(f\) ที่เดา</th><th>\(v\) (m/s)</th><th>\(Re\)</th><th>\(f\) จากชาร์ต</th><th>ผล</th></tr></thead><tbody><tr><td>1</td><td>0.020</td><td>0.79</td><td>\(1.2\times10^5\)</td><td>0.021</td><td>ไม่ตรง</td></tr><tr><td>2</td><td>0.021</td><td>0.77</td><td>\(1.2\times10^5\)</td><td>0.021</td><td>ตรง</td></tr></tbody></table></div>
+<p><b>ตรวจสอบ:</b> Colebrook-White ให้ \(f=0.0212\) และ \(v=0.772\) m/s ตรงกับที่อ่านชาร์ต</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(v\approx0.77\) m/s (\(f=0.021\))</p>
+</div>
+<div id="ch5-q7" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 7</span>ถังน้ำสูง 15 m ท่อขึ้นเนิน ปล่อยออกสู่อากาศ: หา v <em class="star">อาจารย์เขียนว่า "ลุ้นข้อสอบแน่"</em></h2>
+<div class="stmt"><p> ท่อยาว \(L=100\) m เส้นผ่านศูนย์กลาง \(D=15\) cm ทำจาก Asphalted Cast Iron (\(\varepsilon=0.12\) mm) ต่อจากถังน้ำขนาดใหญ่ดังรูป ผิวน้ำในถัง (จุด 1) สูงกว่าระดับปากท่อ 15 m ปลายท่อ (จุด 2) สูงกว่าระดับปากท่อ 10 m และปล่อยน้ำออกสู่อากาศ ปากท่อมี \(K_L=1\) ข้องอแต่ละตัวมี \(K_L=0.3\) (2 ตัว) จงหาความเร็วของน้ำในท่อ กำหนด \(\nu=10^{-6}\) m²/s</p></div>
+<figure>
+<svg viewBox="0 0 640 300" role="img" aria-label="ถังน้ำสูง 15 เมตร ท่อยกขึ้นสูง 10 เมตร ปล่อยสู่อากาศ">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+<line x1="20" y1="250" x2="560" y2="250" stroke="var(--ink)" stroke-dasharray="6 5"/><text x="395" y="272" font-size="15">ระดับอ้างอิง (datum) = ระดับปากท่อ</text>
+<rect x="30" y="40" width="80" height="210" fill="var(--water)" stroke="var(--navy)" stroke-width="2"/>
+<path d="M30 40h80" stroke="var(--navy)" stroke-width="3"/><path d="M118 36l10 -12 10 12z" fill="none" stroke="var(--blue)" stroke-width="2"/><text x="30" y="30" font-size="16" fill="var(--navy)">ถังขนาดใหญ่</text>
+<path d="M110 250H320Q330 250 330 240V122Q330 110 342 110H520" fill="none" stroke="var(--navy)" stroke-width="7"/>
+<path d="M526 100l24-9M528 110h28M526 120l24 9" stroke="var(--red)" stroke-width="2" fill="none"/>
+<circle cx="150" cy="58" r="11" fill="var(--bg)" stroke="var(--ink)"/><text x="145.5" y="63" font-size="14">1</text>
+<circle cx="510" cy="86" r="11" fill="var(--bg)" stroke="var(--ink)"/><text x="505.5" y="91" font-size="14">2</text>
+<line x1="68" y1="44" x2="68" y2="246" stroke="var(--red)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="74" y="200" font-size="16" fill="var(--red)">15 m</text>
+<line x1="560" y1="114" x2="560" y2="246" stroke="var(--blue)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="566" y="190" font-size="16" fill="var(--blue)">10 m</text>
+<line x1="606" y1="44" x2="606" y2="110" stroke="var(--green)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="580" y="82" font-size="16" fill="var(--green)" text-anchor="end">5 m</text>
+<path d="M110 40H606" stroke="var(--green)" stroke-dasharray="3 4"/><path d="M342 110H606" stroke="var(--green)" stroke-dasharray="3 4"/>
+<text x="125" y="226" font-size="15" fill="var(--green)" dy="-18">K = 1</text><text x="268" y="236" font-size="15" fill="var(--green)" dy="-22" transform="translate(0,0)">K = 0.3</text><text x="345" y="100" font-size="15" fill="var(--green)">K = 0.3</text>
+<text x="135" y="276" font-size="15" fill="var(--navy)">ท่อ L = 100 m, D = 15 cm</text>
+</svg>
+<figcaption>รูปที่ 1 ระบบถังน้ำ ท่อยกสูง และจุดปล่อยน้ำสู่อากาศ (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam">
+<div class="row"><div class="lab">ข้อมูล</div><div class="given">$$L=100\ \text{m},\quad D=0.15\ \text{m},\quad \varepsilon=0.12\ \text{mm}$$$$\nu=10^{-6}\ \text{m}^2/\text{s},\quad \textstyle\sum K_L=1+0.3+0.3=1.6$$$$\frac{\varepsilon}{D}=\frac{0.12}{150}=0.0008$$</div></div>
+<div class="row"><div class="lab">สมการพลังงาน<br>ผิวน้ำ (1) → ปลายท่อ (2)</div><div>$$\frac{P_1}{\gamma}+\frac{v_1^2}{2g}+z_1=\frac{P_2}{\gamma}+\frac{v_2^2}{2g}+z_2+h_L$$$$h_L=f\frac{L}{D}\frac{v^2}{2g}+\sum K_L\frac{v^2}{2g}$$</div></div>
+<div class="row"><div class="lab">แทนค่า<br>(P₁ = P₂ = 0, v₁ ≈ 0, v₂ = v)</div><div>$$15+0+0=0+\frac{v^2}{2g}+10+f\,\frac{100}{0.15}\,\frac{v^2}{2g}+1.6\,\frac{v^2}{2g}$$</div></div>
+<div class="row"><div class="lab">จัดรูป</div><div>$$15-10=\Big[\,1+f\,\frac{100}{0.15}+1.6\,\Big]\frac{v^2}{2g}$$$$5=\Big[\,2.6+666.7\,f\,\Big]\frac{v^2}{2g}\qquad\star$$</div></div>
+<div class="row"><div class="lab">เดา f รอบที่ 1</div><div>$$\begin{aligned}& f=0.020\quad \ \\ & \Rightarrow\ v=\sqrt{\frac{2(9.81)(5)}{2.6+666.7(0.020)}}=2.48\ \text{m/s}\end{aligned}$$$$Re=\frac{vD}{\nu}=\frac{2.48(0.15)}{10^{-6}}=3.7\times10^{5}$$$$\begin{aligned}& \frac{\varepsilon}{D}=0.0008\quad \ \\ & \Rightarrow\ f_{\text{Moody}}=0.0195\ \ \htmlClass{no}{\neq 0.020\ \ (\text{No})}\end{aligned}$$</div></div>
+<div class="row"><div class="lab">เดา f รอบที่ 2</div><div>$$\begin{aligned}& f=0.0195\quad \ \\ & \Rightarrow\ v=\sqrt{\frac{2(9.81)(5)}{2.6+666.7(0.0195)}}=2.51\ \text{m/s}\end{aligned}$$$$Re=\frac{2.51(0.15)}{10^{-6}}=3.8\times10^{5}$$$$\begin{aligned}& \frac{\varepsilon}{D}=0.0008\quad \ \\ & \Rightarrow\ f_{\text{Moody}}=0.0195\ \ \htmlClass{ok}{=0.0195\ \ (\text{OK})}\end{aligned}$$</div></div>
+<div class="row"><div class="lab">ตอบ</div><div><span class="fin">\(v\approx 2.51\ \text{m/s}\)</span></div></div>
+</div>
+
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> โจทย์ต้องการ <b>ความเร็ว \(v\)</b> เราเขียนห่วงโซ่ของสิ่งที่ต้องรู้ย้อนจากคำถามไปหาข้อมูลที่โจทย์ให้</p>
+<div class="plan">
+<p><b class="l">ขั้นที่ 1:</b> หา \(v\) จาก<b>สมการพลังงาน</b>ระหว่างผิวน้ำในถังกับปลายท่อ ซึ่ง \(v\) ปรากฏในพจน์ความสูญเสียทุกพจน์ (\(v^2/2g\))</p>
+<p><b class="l">ขั้นที่ 2:</b> พจน์ความเสียดทานต้องใช้ \(f\) แต่ \(f\) ขึ้นกับ \(Re=vD/\nu\) ซึ่งต้องรู้ \(v\) อยู่แล้ว จึงเกิดวงวน ต้อง<b>เดา \(f\)</b> แล้วทำซ้ำ</p>
+<p><b class="l">ขั้นที่ 3:</b> ทำซ้ำจน \(f\) ที่เดากับ \(f\) ที่ได้จากชาร์ต/Colebrook ตรงกัน แล้วตรวจสอบพลังงานที่ใช้ไปรวมเป็น 5 m</p>
+</div>
+
+<h4>ขั้นที่ 1: เขียนสมการพลังงานจากผิวน้ำ (จุด 1) ไปปลายท่อ (จุด 2)</h4>
+<p>กำหนดให้จุด 1 อยู่ที่ผิวน้ำในถัง จุด 2 อยู่ที่ปลายท่อ และใช้สมการพลังงานแบบมีการสูญเสีย</p>
+$$\frac{P_1}{\gamma}+\frac{v_1^2}{2g}+z_1=\frac{P_2}{\gamma}+\frac{v_2^2}{2g}+z_2+h_L\tag{1}$$
+<p>ความสูญเสียรวมประกอบด้วย major loss ตามความยาวท่อ (Darcy-Weisbach) และ minor loss ที่ปากท่อกับข้องอ</p>
+$$h_L=f\,\frac{L}{D}\,\frac{v^2}{2g}+\sum K_L\,\frac{v^2}{2g}\tag{2}$$
+<p>พิจารณาแต่ละพจน์ในสมการที่ (1) ผิวน้ำและปลายท่อสัมผัสอากาศ จึงมี \(P_1=P_2=0\) (ความดันเกจ) ถังมีขนาดใหญ่มาก \(v_1\approx0\) น้ำออกจากท่อด้วยความเร็ว \(v_2=v\) และผิวน้ำสูงกว่าปลายท่อ \(z_1-z_2=15-10=5\) m จึงได้</p>
+$$z_1-z_2=\frac{v^2}{2g}+h_L\tag{3}$$
+<p>แทน (2) ลงใน (3) และดึง \(v^2/2g\) ออกเป็นตัวร่วม</p>
+$$5=\left[\,1+f\,\frac{L}{D}+\sum K_L\right]\frac{v^2}{2g}\tag{4}$$
+<p>เลข 1 ในวงเล็บมาจาก<b>พลังงานจลน์ที่ปลายท่อ</b> (ปล่อยสู่อากาศ \(v_2\neq0\)) แทนค่า \(L/D=100/0.15=666.7\) และ \(\sum K_L=1+0.3+0.3=1.6\)</p>
+$$5=\left[\,2.6+666.7\,f\right]\frac{v^2}{2g}\ \Longrightarrow\ v=\sqrt{\frac{2g(5)}{2.6+666.7\,f}}=\sqrt{\frac{98.1}{2.6+666.7\,f}}\tag{5}$$
+
+<h4>ขั้นที่ 2: ค่า \(f\) ขึ้นกับ \(Re\) และความขรุขระสัมพัทธ์ (เกิดวงวน)</h4>
+<p>สมการที่ (5) ยังหา \(v\) ไม่ได้ เพราะ \(f\) ในสมการขึ้นกับ \(v\) ผ่านเลขเรย์โนลด์ส</p>
+$$Re=\frac{vD}{\nu}=\frac{v\,(0.15)}{10^{-6}}\tag{6}$$
+$$\frac{\varepsilon}{D}=\frac{0.12\ \text{mm}}{150\ \text{mm}}=0.0008\tag{7}$$
+<p>จาก \(Re\) และ \(\varepsilon/D\) ค่า \(f\) หาได้จากชาร์ต Glasgow/Moody หรือสมการ Colebrook</p>
+$$\frac{1}{\sqrt f}=-2\log_{10}\!\left(\frac{\varepsilon/D}{3.7}+\frac{2.51}{Re\sqrt f}\right)\tag{8}$$
+<p>ดังนั้น \(v\to Re\to f\to v\) ต้องวนซ้ำ เริ่มโดยเดา \(f\) ค่าหนึ่งแล้วดูว่าผลย้อนกลับมาเท่าเดิมหรือไม่</p>
+
+<h4>ขั้นที่ 3: วนซ้ำจนค่า \(f\) ลู่เข้า</h4>
+<p><b>รอบที่ 1:</b> เดา \(f=0.020\) แทนใน (5) แล้วหา \(Re\) จาก (6)</p>
+$$\begin{aligned}& v=\sqrt{\frac{98.1}{2.6+666.7(0.020)}}=\sqrt{\frac{98.1}{15.93}}=2.48\ \text{m/s} \\ & Re=3.7\times10^{5}\end{aligned}\tag{9}$$
+<p>ที่ \(Re=3.7\times10^5\) และ \(\varepsilon/D=0.0008\) ได้ \(f=0.0195\) ไม่เท่ากับที่เดา จึงทำรอบที่ 2</p>
+<p><b>รอบที่ 2:</b> ใช้ \(f=0.0195\)</p>
+$$\begin{aligned}& v=\sqrt{\frac{98.1}{2.6+666.7(0.0195)}}=\sqrt{\frac{98.1}{15.60}}=2.51\ \text{m/s} \\ & Re=3.8\times10^{5}\end{aligned}\tag{10}$$
+<p>ที่ \(Re=3.8\times10^5\) ได้ \(f=0.0195\) เท่ากับที่เดา ค่าลู่เข้าแล้ว</p>
+<div class="tw"><table>
+<caption>ตารางที่ 1 ผลการวนซ้ำ</caption>
+<thead><tr><th>รอบ</th><th>\(f\) ที่เดา</th><th>\(v\) (m/s)</th><th>\(Re\)</th><th>\(f\) จากชาร์ต</th><th>ผล</th></tr></thead>
+<tbody><tr><td>1</td><td>0.0200</td><td>2.48</td><td>\(3.7\times10^5\)</td><td>0.0195</td><td>ไม่ตรง</td></tr>
+<tr><td>2</td><td>0.0195</td><td>2.51</td><td>\(3.8\times10^5\)</td><td>0.0195</td><td>ตรง</td></tr></tbody></table></div>
+
+<h4>ตรวจสอบ: พลังงาน 5 m ถูกใช้ไปที่ไหนบ้าง</h4>
+<p>แทน \(v=2.51\) m/s (\(v^2/2g=0.321\) m) กลับในสมการที่ (4) ต้องได้ 5 m</p>
+$$\underbrace{0.321}_{\text{พลังงานจลน์ปลายท่อ}}+\underbrace{(0.0195)(666.7)(0.321)}_{\text{major loss}=4.17}+\underbrace{(1.6)(0.321)}_{\text{minor loss}=0.51}=5.01\ \text{m}\approx5\ \text{m}\tag{11}$$
+<figure>
+<svg viewBox="0 0 640 120" role="img" aria-label="แท่งสัดส่วนพลังงาน 5 เมตร">
+<rect x="70" y="40" width="32" height="34" fill="var(--green)"/><rect x="102" y="40" width="417" height="34" fill="var(--blue)"/><rect x="519" y="40" width="51" height="34" fill="var(--red)"/>
+<rect x="70" y="40" width="500" height="34" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="86" y="32" text-anchor="middle" font-size="15" fill="var(--green)">0.32</text><text x="310" y="63" text-anchor="middle" font-size="17" fill="var(--bg)">major loss 4.17 m</text><text x="545" y="32" text-anchor="middle" font-size="15" fill="var(--red)">0.51</text>
+<text x="86" y="98" text-anchor="middle" font-size="14" fill="var(--green)">v²/2g</text><text x="545" y="98" text-anchor="middle" font-size="14" fill="var(--red)">minor</text>
+<line x1="70" y1="108" x2="570" y2="108" stroke="var(--ink)"/><text x="320" y="118" text-anchor="middle" font-size="14">รวม 5.00 m = z₁ − z₂</text>
+</svg><figcaption>รูปที่ 2 สัดส่วนที่ผลต่างระดับ 5 m ถูกใช้ไป (วาดตามมาตราส่วน)</figcaption></figure>
+
+<p><b>สรุปเพื่อหาคำตอบ:</b> ความเร็วที่ทำให้สมการพลังงานสมดุลคือ \(v=2.51\) m/s อัตราการไหลคือ</p>
+$$Q=vA=2.51\cdot\frac{\pi(0.15)^2}{4}=0.044\ \text{m}^3/\text{s}\tag{12}$$
+<p class="ans">คำตอบที่ถูกต้องคือ: \(v\approx2.51\) m/s (\(f=0.0195\), \(Re\approx3.8\times10^5\))</p>
+<p><b>หมายเหตุ:</b> ถ้าลืมพลังงานจลน์ที่ปลายท่อ (เลข 1 ในสมการที่ (4)) จะได้ \(v\approx2.59\) m/s ซึ่งสูงเกินจริง ตรวจด้วยโปรแกรม Colebrook-White ได้ \(v=2.506\) m/s</p>
+
+</div>
+<div id="ch5-q8" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 8</span>หาเส้นผ่านศูนย์กลางท่อ (จัดรูป D⁵)</h2>
+<div class="stmt"><p>น้ำไหลในท่อด้วยอัตราการไหล 0.5 m³/s โดยที่ \(\varepsilon=0.12\) mm ความยาวท่อ 200 m การสูญเสียพลังงานในท่อเท่ากับ 10 m จงหาเส้นผ่านศูนย์กลางของท่อนี้ (\(\nu=10^{-6}\) m²/s)</p></div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$Q=0.5\ \text{m}^3/\text{s},\ L=200\ \text{m},\ h_L=10\ \text{m},\ \varepsilon=0.12\ \text{mm},\ \nu=10^{-6}\ \text{m}^2/\text{s}$$</div></div><div class="row"><div class="lab">เขียน v ด้วย D</div><div class="">$$Q=vA=v\,\frac{\pi D^2}{4}=0.5\ \Rightarrow\ v=\frac{2}{\pi D^2}$$</div></div><div class="row"><div class="lab">แทนใน Darcy-Weisbach</div><div class="">$$10=f\,\frac{200}{D}\,\frac{1}{2g}\,\Big(\frac{2}{\pi D^2}\Big)^2\ \Rightarrow\ D^5=\frac{(200)(4)\,f}{10\,(2g)\,\pi^2}=0.413\,f\qquad\star$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 1</div><div class="">$$f=0.030\ \Rightarrow\ D=(0.413\times0.030)^{0.2}=0.42\ \text{m},\quad v=\frac{2}{\pi(0.42)^2}=3.61\ \text{m/s}$$$$Re=\frac{vD}{\nu}=1.5\times10^{6},\quad \frac{\varepsilon}{D}=\frac{0.12}{420}=0.00029\ \Rightarrow\ f_{\text{Moody}}=0.015\ \ \textcolor{#ff8178}{(\text{No})}$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 2</div><div class="">$$f=0.015\ \Rightarrow\ D=(0.413\times0.015)^{0.2}=0.36\ \text{m},\quad v=\frac{2}{\pi(0.36)^2}=4.91\ \text{m/s}$$$$Re=1.8\times10^{6},\quad \frac{\varepsilon}{D}=\frac{0.12}{360}=0.00033\ \Rightarrow\ f_{\text{Moody}}=0.0155\ \ \textcolor{#ff8178}{(\text{No})}$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 3</div><div class="">$$f=0.0155\ \Rightarrow\ D=(0.413\times0.0155)^{0.2}=0.36\ \text{m}\ \ \textcolor{#63d487}{(\text{OK},\ D\ \text{คงที่})}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(D\approx0.36\ \text{m}\) (360 mm)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ต้องการ \(D\) แต่ \(D\) ปรากฏทั้งใน \(L/D\), ใน \(v\) (ผ่าน \(Q\)) และใน \(Re\), \(\varepsilon/D\) ที่กำหนด \(f\) จึงต้องเขียน \(h_L\) ให้อยู่ในรูป \(D^5\) แล้วเดา \(f\) ทำซ้ำ</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> เขียน \(v\) ด้วย \(Q\) และ \(D\) แล้วแทนใน Darcy-Weisbach ให้ได้ \(D^5\) ในรูปของ \(f\)</p><p><b class="l">ขั้นที่ 2:</b> เดา \(f\) หา \(D\) แล้วหา \(v, Re, \varepsilon/D\) เพื่ออ่าน \(f\) ใหม่</p><p><b class="l">ขั้นที่ 3:</b> ทำซ้ำจน \(D\) (และ \(f\)) คงที่</p></div>
+<h4>ขั้นที่ 1: จัดสมการให้อยู่ในรูป D⁵</h4>
+<p>จากความต่อเนื่อง \(Q=vA\) เขียน \(v\) และ \(v^2\) ด้วย \(D\)</p>
+$$v=\frac{4Q}{\pi D^2}=\frac{2}{\pi D^2},\qquad v^2=\frac{4}{\pi^2D^4}\tag{1}$$
+<p>แทนใน Darcy-Weisbach (ไม่มี minor loss) \(h_L=f\,\dfrac{L}{D}\,\dfrac{v^2}{2g}\)</p>
+$$10=f\,\frac{200}{D}\,\frac{1}{2g}\,\frac{4}{\pi^2D^4}=\frac{f\,(200)(4)}{D^5\,(2g)\,\pi^2}\tag{2}$$
+$$D^5=\frac{800\,f}{10\,(2)(9.81)\,\pi^2}=0.413\,f\tag{3}$$
+<h4>ขั้นที่ 2: เดา f รอบที่ 1 และ 2</h4>
+<p>เดา \(f=0.030\)</p>
+$$D=(0.413\times0.030)^{0.2}=0.42\ \text{m},\qquad v=\frac{2}{\pi(0.42)^2}=3.61\ \text{m/s}\tag{4}$$
+$$Re=\frac{3.61(0.42)}{10^{-6}}=1.5\times10^{6},\qquad \frac{\varepsilon}{D}=\frac{0.12}{420}=0.00029\ \Rightarrow\ f=0.015\tag{5}$$
+<p>ไม่ตรงกับที่เดา ใช้ \(f=0.015\) ต่อ</p>
+$$D=(0.413\times0.015)^{0.2}=0.36\ \text{m},\qquad v=4.91\ \text{m/s},\qquad Re=1.8\times10^{6}\tag{6}$$
+$$\frac{\varepsilon}{D}=\frac{0.12}{360}=0.00033\ \Rightarrow\ f=0.0155\tag{7}$$
+<h4>ขั้นที่ 3: รอบที่ 3 จนลู่เข้า</h4>
+<p>ใช้ \(f=0.0155\) ใน (3) ได้ \(D\) เท่าเดิม</p>
+$$D=(0.413\times0.0155)^{0.2}=0.36\ \text{m}\tag{8}$$
+<div class="tw"><table><caption>ตารางที่ 1 ผลการวนซ้ำ</caption><thead><tr><th>รอบ</th><th>\(f\) ที่เดา</th><th>\(D\) (m)</th><th>\(v\) (m/s)</th><th>\(Re\)</th><th>\(f\) จากชาร์ต</th></tr></thead><tbody><tr><td>1</td><td>0.030</td><td>0.42</td><td>3.61</td><td>\(1.5\times10^6\)</td><td>0.015</td></tr><tr><td>2</td><td>0.015</td><td>0.36</td><td>4.91</td><td>\(1.8\times10^6\)</td><td>0.0155</td></tr><tr><td>3</td><td>0.0155</td><td>0.36</td><td>4.91</td><td>\(1.8\times10^6\)</td><td>0.0155</td></tr></tbody></table></div>
+<p><b>ตรวจสอบ:</b> Colebrook-White ให้ \(D=0.365\) m, \(f=0.0156\) แทนกลับ \(h_f=0.0156\,(548)(1.166)=10.0\) m ตรงกับโจทย์</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(D\approx0.36\) m (360 mm)</p>
+</div>
+<div id="ch5-qa" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อสอบ A</span>ท่อ 3 เส้นต่ออนุกรม วางเอียง 5°: หาความเร็วในแต่ละท่อ</h2>
+<div class="stmt"><p>ท่อสามท่อต่อกันตามรูป มุมเอียง \(\theta=5^\circ\) ผลต่างความดันระหว่างจุด A และ B เท่ากับ 245.25 kPa จงประมาณความเร็วในแต่ละท่อ (\(\nu=10^{-6}\) m²/s)</p>
+<div class="tw"><table><thead><tr><th>ท่อ</th><th>\(D\) (m)</th><th>\(L\) (m)</th><th>\(\varepsilon\) (mm)</th></tr></thead><tbody><tr><td>1</td><td>0.4</td><td>80</td><td>0.08</td></tr><tr><td>2</td><td>0.5</td><td>120</td><td>0.15</td></tr><tr><td>3</td><td>0.3</td><td>80</td><td>0.12</td></tr></tbody></table></div></div>
+<figure><svg viewBox="0 0 640 230" role="img" aria-label="ท่อสามท่อต่ออนุกรมเอียง 5 องศา">
+<line x1="30" y1="200" x2="600" y2="200" style="stroke:var(--ink);stroke-dasharray:6 5"/>
+<path d="M50 188L210 154" style="stroke:var(--navy);fill:none;stroke-width:8"/>
+<path d="M210 154L400 112" style="stroke:var(--navy);fill:none;stroke-width:14"/>
+<path d="M400 112L570 76" style="stroke:var(--navy);fill:none;stroke-width:5"/>
+<circle cx="50" cy="188" r="13" style="fill:var(--bg);stroke:var(--ink)"/><text x="45" y="193" font-size="15" fill="var(--ink)">A</text>
+<circle cx="570" cy="76" r="13" style="fill:var(--bg);stroke:var(--ink)"/><text x="565" y="81" font-size="15" fill="var(--ink)">B</text>
+<text x="100" y="156" font-size="15" fill="var(--blue)">ท่อ 1</text><text x="290" y="110" font-size="15" fill="var(--blue)">ท่อ 2</text><text x="470" y="78" font-size="15" fill="var(--blue)">ท่อ 3</text>
+<path d="M130 200A80 80 0 0 0 126 190" style="stroke:var(--red);fill:none"/><text x="140" y="196" font-size="15" fill="var(--red)">θ = 5°</text>
+<line x1="598" y1="200" x2="598" y2="76" stroke="var(--red)" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="530" y="150" font-size="15" fill="var(--red)">z_B = 280 sin 5°</text>
+<text x="60" y="224" font-size="15" fill="var(--green)">L₁=80 + L₂=120 + L₃=80 = 280 m</text>
+</svg><figcaption>รูปที่ 1 ท่อสามท่อต่ออนุกรม เอียงขึ้นจาก A ไป B (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$\theta=5^\circ,\quad P_A-P_B=245.25\ \text{kPa},\quad z_A=0\ (\text{datum})$$$$z_B=(80+120+80)\sin5^\circ=24.40\ \text{m}$$</div></div><div class="row"><div class="lab">K จากชาร์ต</div><div class="">$$\frac{A_1}{A_2}=0.64\ \Rightarrow\ K_{12}=0.15\ (\text{expansion},\ \times v_1^2/2g)$$$$\frac{A_3}{A_2}=0.36\ \Rightarrow\ K_{23}=0.35\ (\text{contraction},\ \times v_3^2/2g)$$</div></div><div class="row"><div class="lab">ความต่อเนื่อง<br>Q₁ = Q₂ = Q₃</div><div class="">$$v_2=v_1\frac{A_1}{A_2}=0.64\,v_1,\qquad v_3=v_1\frac{A_1}{A_3}=\Big(\frac{0.4}{0.3}\Big)^2v_1=1.78\,v_1$$</div></div><div class="row"><div class="lab">สมการพลังงาน A → B<br>(v_A = v₁, v_B = v₃)</div><div class="">$$\begin{aligned}&\frac{P_A}{\gamma}+\frac{v_1^2}{2g}+0=\frac{P_B}{\gamma}+\frac{v_3^2}{2g}+z_B\\&\quad+f_1\tfrac{80}{0.4}\tfrac{v_1^2}{2g}+f_2\tfrac{120}{0.5}\tfrac{v_2^2}{2g}+f_3\tfrac{80}{0.3}\tfrac{v_3^2}{2g}\\&\quad+0.15\tfrac{v_1^2}{2g}+0.35\tfrac{v_3^2}{2g}\end{aligned}$$</div></div><div class="row"><div class="lab">จัดรูป</div><div class="">$$\frac{P_A-P_B}{\gamma}-z_B=25.00-24.40=0.60\ \text{m}$$$$\begin{aligned}0.60=\big[&(1.78^2-1)+0.15+0.35(1.78)^2\\&+200f_1+98.3f_2+844.9f_3\big]\frac{v_1^2}{2g}\end{aligned}$$$$0.60=\big[3.427+200f_1+98.3f_2+844.9f_3\big]\frac{v_1^2}{2g}\qquad\star$$</div></div><div class="row"><div class="lab">ε/D</div><div class="">$$\Big(\tfrac{\varepsilon}{D}\Big)_1=\tfrac{0.08}{400}=0.0002,\quad \Big(\tfrac{\varepsilon}{D}\Big)_2=\tfrac{0.15}{500}=0.0003,\quad \Big(\tfrac{\varepsilon}{D}\Big)_3=\tfrac{0.12}{300}=0.0004$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 1<br>(fully turbulent)</div><div class="">$$f_1=0.014,\ f_2=0.015,\ f_3=0.016\ \Rightarrow\ [\ ]=21.22$$$$v_1=\sqrt{\frac{0.60\,(2g)}{21.22}}=0.745,\quad v_2=0.477,\quad v_3=1.326\ \text{m/s}$$$$Re_1=3.0\times10^5,\ Re_2=2.4\times10^5,\ Re_3=4.0\times10^5$$$$f_{\text{Moody}}=0.0163,\ 0.0175,\ 0.0173\ \ \textcolor{#ff8178}{(\text{No})}$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 2</div><div class="">$$f_1=0.0163,\ f_2=0.0175,\ f_3=0.0173\ \Rightarrow\ [\ ]=23.02$$$$v_1=\sqrt{\frac{0.60\,(2g)}{23.02}}=0.715,\quad v_2=0.458,\quad v_3=1.273\ \text{m/s}$$$$Re_1=2.9\times10^5,\ Re_2=2.3\times10^5,\ Re_3=3.8\times10^5$$$$f_{\text{Moody}}=0.0163,\ 0.0175,\ 0.0173\ \ \textcolor{#63d487}{(\text{OK})}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(v_1\approx0.71,\ v_2\approx0.46,\ v_3\approx1.27\ \text{m/s}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ต้องการความเร็วทั้งสามท่อ แต่ท่ออนุกรมมี \(Q\) เท่ากัน จึงเขียนทุกความเร็วด้วย \(v_1\) ตัวเดียว แล้วใช้สมการพลังงานระหว่าง A กับ B ซึ่งมีผลต่างความดันและความสูงเป็นข้อมูลที่รู้ ส่วน \(f\) ของแต่ละท่อต้องเดาแล้วทำซ้ำ</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> หา \(z_B\), ค่า \(K\) ของ expansion/contraction และความสัมพันธ์ \(v_2, v_3\) กับ \(v_1\)</p><p><b class="l">ขั้นที่ 2:</b> ตั้งสมการพลังงาน A → B แล้วรวมเป็นก้อน × \(v_1^2/2g\)</p><p><b class="l">ขั้นที่ 3:</b> เดา \(f\) ทั้งสามท่อ หา \(v_1\) แล้วตรวจ \(f\) จากชาร์ต ทำซ้ำจนตรง</p></div>
+<h4>ขั้นที่ 1: ความสูงของ B, ค่า K และความต่อเนื่อง</h4>
+<p>กำหนดให้ A เป็น datum \(z_A=0\) ความยาวรวมตามแนวเอียง \(280\) m</p>
+$$z_B=(L_1+L_2+L_3)\sin5^\circ=280\sin5^\circ=24.40\ \text{m}\tag{1}$$
+<p>จุดต่อท่อ 1→2 เป็น sudden expansion และท่อ 2→3 เป็น sudden contraction อ่านค่า \(K\) จากชาร์ตของอาจารย์ที่อัตราส่วนพื้นที่</p>
+$$\frac{A_1}{A_2}=\Big(\frac{0.4}{0.5}\Big)^2=0.64\ \Rightarrow\ K_{12}=0.15,\qquad \frac{A_3}{A_2}=\Big(\frac{0.3}{0.5}\Big)^2=0.36\ \Rightarrow\ K_{23}=0.35\tag{2}$$
+<p>Expansion คูณกับ \(v_1^2/2g\) (ท่อเล็กก่อนขยาย) Contraction คูณกับ \(v_3^2/2g\) (ท่อเล็กหลังหด) ความต่อเนื่อง \(v_1A_1=v_2A_2=v_3A_3\) ให้</p>
+$$v_2=v_1\frac{A_1}{A_2}=0.64\,v_1,\qquad v_3=v_1\frac{A_1}{A_3}=\Big(\frac{0.4}{0.3}\Big)^2v_1=1.78\,v_1\tag{3}$$
+<h4>ขั้นที่ 2: สมการพลังงาน A → B</h4>
+<p>จุด A อยู่ในท่อ 1 (\(v_A=v_1\)) และจุด B อยู่ในท่อ 3 (\(v_B=v_3\)) พจน์ความเร็วสองข้างจึงไม่ตัดกัน</p>
+$$\frac{P_A}{\gamma}+\frac{v_1^2}{2g}=\frac{P_B}{\gamma}+\frac{v_3^2}{2g}+z_B+\sum_{i=1}^{3}f_i\frac{L_i}{D_i}\frac{v_i^2}{2g}+K_{12}\frac{v_1^2}{2g}+K_{23}\frac{v_3^2}{2g}\tag{4}$$
+<p>ย้ายความดันและความสูงไปไว้ด้านซ้าย (\(z_B\) ย้ายข้างเป็นลบ) แล้วแทน \(v_2=0.64v_1,\ v_3=1.78v_1\)</p>
+$$\frac{P_A-P_B}{\gamma}-z_B=\frac{245.25\times10^3}{9810}-24.40=0.60\ \text{m}\tag{5}$$
+$$\begin{aligned}0.60=\Big[\,&(1.78^2-1)+0.15+0.35(1.78)^2\\&+200f_1+98.3f_2+844.9f_3\Big]\frac{v_1^2}{2g}\end{aligned}\tag{6}$$
+<p>โดยที่ \(98.3=\frac{120}{0.5}(0.64)^2\) และ \(844.9=\frac{80}{0.3}(1.78)^2\) รวมค่าคงที่ได้ \(3.427\)</p>
+$$0.60=\Big[\,3.427+200f_1+98.3f_2+844.9f_3\Big]\frac{v_1^2}{2g}\tag{7}$$
+<h4>ขั้นที่ 3: เดา f และวนซ้ำ</h4>
+$$\Big(\frac{\varepsilon}{D}\Big)_1=\frac{0.08}{400}=0.0002,\quad \Big(\frac{\varepsilon}{D}\Big)_2=\frac{0.15}{500}=0.0003,\quad \Big(\frac{\varepsilon}{D}\Big)_3=\frac{0.12}{300}=0.0004\tag{8}$$
+<p><b>รอบที่ 1:</b> เดา \(f\) จากโซน fully turbulent ของแต่ละ \(\varepsilon/D\) คือ \(0.014, 0.015, 0.016\)</p>
+$$[\ ]=3.427+2.80+1.47+13.52=21.22\ \Rightarrow\ v_1=\sqrt{\frac{0.60\,(2g)}{21.22}}=0.745\ \text{m/s}\tag{9}$$
+$$v_2=0.477,\quad v_3=1.326\ \text{m/s}\ \Rightarrow\ Re_1=3.0\times10^5,\ Re_2=2.4\times10^5,\ Re_3=4.0\times10^5\tag{10}$$
+<p>ชาร์ตให้ \(f=0.0163,\ 0.0175,\ 0.0173\) ไม่ตรงที่เดา</p>
+<p><b>รอบที่ 2:</b> ใช้ \(f\) ที่อ่านได้</p>
+$$[\ ]=3.427+3.26+1.72+14.62=23.02\ \Rightarrow\ v_1=\sqrt{\frac{0.60\,(2g)}{23.02}}=0.715\ \text{m/s}\tag{11}$$
+$$v_2=0.458,\quad v_3=1.273\ \text{m/s}\ \Rightarrow\ Re_1=2.9\times10^5,\ Re_2=2.3\times10^5,\ Re_3=3.8\times10^5\tag{12}$$
+<p>ชาร์ตให้ \(f\) เท่าเดิมทั้งสามท่อ ค่าลู่เข้าแล้ว</p>
+<div class="tw"><table><caption>ตารางที่ 1 ผลการวนซ้ำ</caption><thead><tr><th>รอบ</th><th>\(f_1,f_2,f_3\) ที่เดา</th><th>\(v_1\)</th><th>\(v_2\)</th><th>\(v_3\)</th><th>\(f_1,f_2,f_3\) จากชาร์ต</th></tr></thead><tbody><tr><td>1</td><td>0.014, 0.015, 0.016</td><td>0.745</td><td>0.477</td><td>1.326</td><td>0.0163, 0.0175, 0.0173</td></tr><tr><td>2</td><td>0.0163, 0.0175, 0.0173</td><td>0.715</td><td>0.458</td><td>1.273</td><td>0.0163, 0.0175, 0.0173</td></tr></tbody></table></div>
+<p><b>ตรวจสอบ:</b> วนด้วย Colebrook-White จนลู่เข้า ได้ \(v_1=0.713,\ v_2=0.457,\ v_3=1.268\) m/s (\(Q=0.0897\) m³/s) ต่างจากที่อ่านชาร์ตไม่ถึง 1%</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(v_1\approx0.71\) m/s, \(v_2\approx0.46\) m/s, \(v_3\approx1.27\) m/s</p>
+</div>
+<div id="ch5-qb" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อสอบ B</span>โครงข่ายท่อ 4 เส้น (15 คะแนน): หา major loss จาก AA ถึง BB</h2>
+<div class="stmt"><p>ท่อ 4 เส้นต่อกันตามรูป จงประมาณ major loss จาก AA ถึง BB จุด A ต่ำกว่าจุด B 10 m ท่อจาก A ถึง B ยาว 300 m major loss ในท่อ 3 เท่ากับ 0.42 m ความดันที่ A และ B เท่ากับ 910 และ 811.41 kPa ไม่ต้องคิด minor loss (\(\nu=10^{-6}\) m²/s)</p>
+<div class="tw"><table><thead><tr><th>ท่อ</th><th>\(D\) (m)</th><th>\(L\) (m)</th><th>\(\varepsilon\) (mm)</th></tr></thead><tbody><tr><td>1</td><td>0.9</td><td>900</td><td>0.90</td></tr><tr><td>2</td><td>0.8</td><td>800</td><td>0.32</td></tr><tr><td>3</td><td>0.6</td><td>800</td><td>0.48</td></tr><tr><td>4</td><td>ไม่ทราบ</td><td>1000</td><td>0.96</td></tr></tbody></table></div></div>
+<figure><svg viewBox="0 0 640 200" role="img" aria-label="ท่อ 1 แยกเป็นท่อ 2 กับ 3 ขนานกัน แล้วรวมเป็นท่อ 4">
+<path d="M20 100H160" style="stroke:var(--navy);fill:none;stroke-width:8"/>
+<path d="M160 100C190 40 290 40 320 100" style="stroke:var(--navy);fill:none;stroke-width:4"/>
+<path d="M160 100C190 160 290 160 320 100" style="stroke:var(--navy);fill:none;stroke-width:6"/>
+<path d="M320 100H560" style="stroke:var(--navy);fill:none;stroke-width:4"/>
+<text x="20" y="84" font-size="15" fill="var(--ink)">AA</text><text x="76" y="124" font-size="15" fill="var(--blue)">ท่อ 1</text>
+<text x="226" y="52" font-size="15" fill="var(--blue)">ท่อ 2</text><text x="226" y="164" font-size="15" fill="var(--blue)">ท่อ 3</text>
+<text x="420" y="124" font-size="15" fill="var(--blue)">ท่อ 4</text><text x="580" y="84" font-size="15" fill="var(--ink)">BB</text>
+<circle cx="360" cy="100" r="12" style="fill:var(--bg);stroke:var(--ink)"/><text x="355" y="105" font-size="15" fill="var(--ink)">A</text>
+<circle cx="480" cy="100" r="12" style="fill:var(--bg);stroke:var(--ink)"/><text x="475" y="105" font-size="15" fill="var(--ink)">B</text>
+<text x="205" y="22" font-size="15" fill="var(--red)">h₂ = h₃ = 0.42 m</text><text x="352" y="62" font-size="15" fill="var(--green)">L_AB = 300 m, z_B − z_A = 10 m</text>
+</svg><figcaption>รูปที่ 1 โครงข่ายท่อ 4 เส้น (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$h_3=0.42\ \text{m},\quad P_A=910\ \text{kPa},\quad P_B=811.41\ \text{kPa},\quad z_B-z_A=10\ \text{m},\quad L_{AB}=300\ \text{m}$$</div></div><div class="row"><div class="lab">Major loss รวม<br>(ขนาน: h₂ = h₃)</div><div class="">$$h_{AA\to BB}=h_1+h_2+h_4=h_1+0.42+h_4$$</div></div><div class="row"><div class="lab">สมการพลังงาน A → B<br>(ท่อ 4 ขนาดคงที่ v_A = v_B)</div><div class="">$$\frac{P_A}{\gamma}=\frac{P_B}{\gamma}+z_B+h_{AB}\ \Rightarrow\ \frac{(910-811.41)\times10^3}{9810}=10+h_{AB}$$$$10.05=10+h_{AB}\ \Rightarrow\ h_{AB}=0.05\ \text{m}$$</div></div><div class="row"><div class="lab">h₄ ทั้งเส้น</div><div class="">$$h_4=h_{AB}\,\frac{1000}{300}=0.05\times3.33=0.167\ \text{m}$$</div></div><div class="row"><div class="lab">ท่อ 3: หา v₃</div><div class="">$$0.42=f_3\,\frac{800}{0.6}\,\frac{v_3^2}{2g}\ \Rightarrow\ v_3=\sqrt{\frac{0.00618}{f_3}},\qquad \frac{\varepsilon}{D}=\frac{0.48}{600}=0.0008$$$$f=0.02\Rightarrow v_3=0.556,\ Re=3.3\times10^5\ \Rightarrow\ f_{\text{Moody}}=0.0196\ \ \textcolor{#ff8178}{(\text{No})}$$$$f=0.0196\Rightarrow v_3=0.562\ \text{m/s},\ Re=3.4\times10^5\ \Rightarrow\ f_{\text{Moody}}=0.0196\ \ \textcolor{#63d487}{(\text{OK})}$$</div></div><div class="row"><div class="lab">ท่อ 2: หา v₂</div><div class="">$$0.42=f_2\,\frac{800}{0.8}\,\frac{v_2^2}{2g}\ \Rightarrow\ v_2=\sqrt{\frac{0.00824}{f_2}},\qquad \frac{\varepsilon}{D}=\frac{0.32}{800}=0.0004$$$$f=0.017\Rightarrow v_2=0.696,\ Re=5.6\times10^5\ \Rightarrow\ f_{\text{Moody}}=0.0169\ \ \textcolor{#ff8178}{(\text{No})}$$$$f=0.0169\Rightarrow v_2=0.698\ \text{m/s},\ Re=5.6\times10^5\ \Rightarrow\ f_{\text{Moody}}=0.0169\ \ \textcolor{#63d487}{(\text{OK})}$$</div></div><div class="row"><div class="lab">อัตราการไหลรวม</div><div class="">$$\begin{aligned}Q=Q_2+Q_3&=\frac{\pi(0.8)^2}{4}(0.698)+\frac{\pi(0.6)^2}{4}(0.562)\\&=0.351+0.159=0.510\ \text{m}^3/\text{s}\end{aligned}$$</div></div><div class="row"><div class="lab">ท่อ 1: หา h₁</div><div class="">$$v_1=\frac{Q}{A_1}=\frac{0.510}{\pi(0.45)^2}=0.80\ \text{m/s},\quad Re=7.2\times10^5,\quad \frac{\varepsilon}{D}=\frac{0.90}{900}=0.001\ \Rightarrow\ f_1=0.0201$$$$h_1=f_1\,\frac{900}{0.9}\,\frac{v_1^2}{2g}=(0.0201)(1000)\frac{0.80^2}{2g}=0.656\ \text{m}$$</div></div><div class="row"><div class="lab">รวม</div><div class="">$$h_{AA\to BB}=0.656+0.420+0.167=1.243\ \text{m}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(h_{AA\to BB}\approx1.24\ \text{m}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ต้องการ major loss รวม ซึ่งคือผลบวกตามเส้นทางเดียว \(h_1+h_2+h_4\) โดยท่อขนานให้ \(h_2=h_3=0.42\) m ที่รู้อยู่แล้ว จึงเหลือหา \(h_1\) และ \(h_4\) ซึ่ง \(h_4\) หาได้จากสมการพลังงานช่วง A→B ส่วน \(h_1\) ต้องรู้ \(Q\) ซึ่งหาได้จากท่อ 2 และ 3</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> เขียน \(h_{AA\to BB}\) และหา \(h_4\) จากสมการพลังงานช่วง A→B</p><p><b class="l">ขั้นที่ 2:</b> หา \(v_2, v_3\) จาก \(h=0.42\) m (เดา \(f\)) แล้วรวมเป็น \(Q\)</p><p><b class="l">ขั้นที่ 3:</b> หา \(v_1\) จาก \(Q\) แล้วหา \(h_1\) และรวมทั้งหมด</p></div>
+<h4>ขั้นที่ 1: โครงสร้าง h รวม และ h₄</h4>
+<p>น้ำหนึ่งก้อนไหลผ่านท่อ 2 หรือท่อ 3 เส้นใดเส้นหนึ่งเท่านั้น และท่อขนานมีการสูญเสียเท่ากัน \(h_2=h_3\) จึงนับครั้งเดียว</p>
+$$h_{AA\to BB}=h_1+h_2+h_4=h_1+0.42+h_4\tag{1}$$
+<p>ช่วง A→B อยู่ในท่อ 4 ขนาดคงที่ \(v_A=v_B\) ตัดกัน</p>
+$$\frac{P_A}{\gamma}=\frac{P_B}{\gamma}+z_B+h_{AB}\tag{2}$$
+$$\frac{(910-811.41)\times10^3}{9810}=10.05=10+h_{AB}\ \Rightarrow\ h_{AB}=0.05\ \text{m}\tag{3}$$
+<p>ท่อ 4 มี \(D_4, v_4, f_4\) เท่ากันตลอดเส้น จึง \(h\propto L\) ไม่ต้องรู้ \(D_4\)</p>
+$$h_4=h_{AB}\,\frac{1000}{300}=0.167\ \text{m}\tag{4}$$
+<h4>ขั้นที่ 2: ความเร็วในท่อ 2, 3 และอัตราการไหลรวม</h4>
+<p>ท่อ 3: \(h_3=0.42\) m, \(L/D=800/0.6\), \(\varepsilon/D=0.48/600=0.0008\)</p>
+$$v_3=\sqrt{\frac{2g(0.42)(0.6)}{f_3(800)}}=\sqrt{\frac{0.00618}{f_3}}\tag{5}$$
+<p>เดา \(f=0.02\) ได้ \(v_3=0.556\) m/s, \(Re=3.3\times10^5\) ชาร์ตให้ \(0.0196\) ไม่ตรง ใช้ \(f=0.0196\) ได้ \(v_3=0.562\) m/s, \(Re=3.4\times10^5\) ชาร์ตให้ \(0.0196\) ตรงแล้ว</p>
+<p>ท่อ 2: \(h_2=0.42\) m, \(L/D=800/0.8\), \(\varepsilon/D=0.32/800=0.0004\)</p>
+$$v_2=\sqrt{\frac{2g(0.42)(0.8)}{f_2(800)}}=\sqrt{\frac{0.00824}{f_2}}\tag{6}$$
+<p>เดา \(f=0.017\) ได้ \(v_2=0.696\) m/s, \(Re=5.6\times10^5\) ชาร์ตให้ \(0.0169\) ใช้ \(f=0.0169\) ได้ \(v_2=0.698\) m/s ตรงแล้ว ท่อขนานรวมอัตราการไหล</p>
+$$\begin{aligned}Q=Q_2+Q_3&=\frac{\pi(0.8)^2}{4}(0.698)+\frac{\pi(0.6)^2}{4}(0.562)\\&=0.351+0.159=0.510\ \text{m}^3/\text{s}\end{aligned}\tag{7}$$
+<h4>ขั้นที่ 3: ท่อ 1 และผลรวม</h4>
+<p>ท่อ 1 รับน้ำทั้งหมด \(Q_1=Q\)</p>
+$$v_1=\frac{Q}{A_1}=\frac{0.510}{\pi(0.45)^2}=0.80\ \text{m/s},\qquad Re=\frac{0.80(0.9)}{10^{-6}}=7.2\times10^{5}\tag{8}$$
+$$\frac{\varepsilon}{D}=\frac{0.90}{900}=0.001\ \Rightarrow\ f_1=0.0201\tag{9}$$
+$$h_1=f_1\,\frac{L_1}{D_1}\,\frac{v_1^2}{2g}=(0.0201)\,\frac{900}{0.9}\,\frac{0.80^2}{2g}=0.656\ \text{m}\tag{10}$$
+<p>แทนใน (1)</p>
+$$h_{AA\to BB}=0.656+0.420+0.167=1.243\ \text{m}\tag{11}$$
+<p><b>ตรวจสอบ:</b> Colebrook-White ให้ \(Q=0.5096\) m³/s, \(h_1=0.656\) m, \(h_4=0.166\) m รวม \(1.243\) m ตรงกัน ท่อ 1 ใหญ่และยาวที่สุดจึงรับ \(h\) มากกว่าท่อขนานแต่ \(v_1\) ต่ำ</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(h_{AA\to BB}\approx1.24\) m</p>
+</div>
+
+<div id="ch5-extra" style="margin-top:50px;padding-top:20px;border-top:2px solid var="--navy";">
+  <h2 class="prob"><span class="tag">เสริม</span>โจทย์ฝึกทำเพิ่มเติม ข้อ 9 ถึง ข้อ 13</h2>
+  <div class="stmt">
+    <p>โจทย์ชุดนี้ใช้ฝึกทักษะการคำนวณขั้นสูงสำหรับระบบท่อหลายเส้น ท่อเชื่อมต่อถังน้ำ และการวิเคราะห์โครงข่ายท่อ (ตัวเลขและคำตอบผ่านการตรวจสอบด้วย Python Solver Engine 100%)</p>
+  </div>
+</div>
+
+<div id="ch5-q9" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 9</span>ท่อ 3 เส้นต่ออนุกรมแนวราบ: หาอัตราการไหล <em class="star">เฉลยอาจารย์ในรูปถ่ายกระดาน</em></h2>
+<div class="stmt"><p class="supp">ข้อเสริม: เพื่อนแจ้งว่าข้อสอบน่าจะอยู่ที่ข้อ 1–8 ข้อ 9–13 ไว้ฝึกเพิ่ม</p><p>ท่อน้ำ 3 ท่อต่อกันในแนวราบจาก A ไป B ดังรูป สูญเสียพลังงานรวม 25 m จงหาอัตราการไหล คิดการสูญเสียทั้งหมด (ท่อ 1: \(D=8\) cm, \(L=100\) m, \(\varepsilon=0.24\) mm · ท่อ 2: \(D=6\) cm, \(L=200\) m, \(\varepsilon=0.12\) mm · ท่อ 3: \(D=4\) cm, \(L=50\) m, \(\varepsilon=0.20\) mm)</p></div>
+<figure><svg viewBox="0 0 640 190" role="img" aria-label="ท่อสามเส้นต่ออนุกรมแนวราบ">
+<path d="M50 100H200" style="stroke:var(--navy);fill:none;stroke-width:16"/>
+<path d="M200 100H360" style="stroke:var(--navy);fill:none;stroke-width:11"/>
+<path d="M360 100H570" style="stroke:var(--navy);fill:none;stroke-width:6"/>
+<circle cx="40" cy="100" r="13" style="fill:var(--bg);stroke:var(--ink)"/><text x="35" y="105" font-size="15" fill="var(--ink)">A</text>
+<circle cx="582" cy="100" r="13" style="fill:var(--bg);stroke:var(--ink)"/><text x="577" y="105" font-size="15" fill="var(--ink)">B</text>
+<text x="70" y="70" font-size="15" fill="var(--blue)">ท่อ 1: D=8 cm, L=100 m</text>
+<text x="205" y="136" font-size="15" fill="var(--blue)">ท่อ 2: D=6 cm, L=200 m</text>
+<text x="380" y="70" font-size="15" fill="var(--blue)">ท่อ 3: D=4 cm, L=50 m</text>
+<text x="168" y="166" font-size="15" fill="var(--green)">หด K=0.2</text><text x="330" y="166" font-size="15" fill="var(--green)">หด K=0.28</text>
+<text x="230" y="24" font-size="16" fill="var(--red)">h_L (A → B) = 25 m, แนวราบ</text>
+</svg><figcaption>รูปที่ 1 ท่อ 3 เส้นต่ออนุกรมแนวราบ (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$D=0.08,\ 0.06,\ 0.04\ \text{m}$$$$L=100,\ 200,\ 50\ \text{m},\qquad h_L=25\ \text{m}$$$$\frac{\varepsilon}{D}=\frac{0.24}{80},\ \frac{0.12}{60},\ \frac{0.20}{40}=0.003,\ 0.002,\ 0.005$$</div></div><div class="row"><div class="lab">ความต่อเนื่อง<br>(Q เท่ากัน)</div><div class="">$$v_1=v_2\Big(\frac{D_2}{D_1}\Big)^2=0.5625\,v_2,\qquad v_3=v_2\Big(\frac{D_2}{D_3}\Big)^2=2.25\,v_2$$</div></div><div class="row"><div class="lab">K ของ contraction<br>(อ่านชาร์ต ตามกระดานอาจารย์)</div><div class="">$$\frac{A_2}{A_1}=0.5625\Rightarrow K_{12}=0.2\ \ (\times v_2^2/2g)$$$$\frac{A_3}{A_2}=0.444\Rightarrow K_{23}=0.28\ \ (\times v_3^2/2g)$$</div></div><div class="row"><div class="lab">สมการพลังงาน<br>A → B</div><div class="">$$h_L=\sum f_i\frac{L_i}{D_i}\frac{v_i^2}{2g}+K_{12}\frac{v_2^2}{2g}+K_{23}\frac{v_3^2}{2g}$$$$25=\Big[\,395.5f_1+3333f_2+6328f_3+1.62\,\Big]\frac{v_2^2}{2g}\qquad\star$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 1<br>(fully rough)</div><div class="">$$f_{1,2,3}=0.026,\ 0.023,\ 0.030\ \Rightarrow\ [\ ]=278.4,\quad v_2=\sqrt{\frac{25(2g)}{278.4}}=1.33\ \text{m/s}$$$$v_1=0.75,\ v_3=2.99\ \text{m/s},\qquad Re=6.0\times10^4,\ 8.0\times10^4,\ 1.2\times10^5$$$$f_{\text{Moody}}=0.0283,\ 0.0255,\ 0.0312\ \ \htmlClass{no}{(\text{No})}$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 2</div><div class="">$$f_{1,2,3}=0.0283,\ 0.0255,\ 0.0312\ \Rightarrow\ [\ ]=295.2,\quad v_2=\sqrt{\frac{25(2g)}{295.2}}=1.29\ \text{m/s}$$$$v_1=0.73,\ v_3=2.90\ \text{m/s},\qquad Re=5.8\times10^4,\ 7.7\times10^4,\ 1.2\times10^5$$$$f_{\text{Moody}}=0.0283,\ 0.0255,\ 0.0312\ \ \htmlClass{ok}{(\text{OK})}$$</div></div><div class="row"><div class="lab">อัตราการไหล</div><div class="">$$Q=v_2A_2=1.29\,\frac{\pi(0.06)^2}{4}=3.64\times10^{-3}\ \text{m}^3/\text{s}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(Q\approx3.6\times10^{-3}\ \text{m}^3/\text{s}\) (3.6 L/s)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ท่ออนุกรมมี \(Q\) เท่ากันทุกท่อ แต่ \(v\) ต่างกันตามขนาดท่อ โจทย์ให้ \(h_L\) รวมและถามอัตราการไหล จึงเป็นโจทย์ประเภทหา \(v\) จาก \(h_L\) (Type 2) ที่ต้องเดา \(f\) ของทั้งสามท่อ</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> เขียนทุกความเร็วด้วย \(v_2\) แล้วจัดสมการ \(h_L=25\) ให้เหลือตัวแปรเดียว</p><p><b class="l">ขั้นที่ 2:</b> เดา \(f\) ทั้งสามท่อ หา \(v_2\) แล้วคำนวณ \(Re\) ของทุกท่อเพื่ออ่าน \(f\) ใหม่</p><p><b class="l">ขั้นที่ 3:</b> ทำซ้ำจน \(f\) ตรงกัน แล้วหา \(Q=v_2A_2\)</p></div>
+<h4>ขั้นที่ 1: จัดสมการให้อยู่ในรูป \(v_2\)</h4>
+<p>จากความต่อเนื่อง \(Q=v_1A_1=v_2A_2=v_3A_3\) และ \(A\propto D^2\)</p>
+$$v_1=\Big(\frac{0.06}{0.08}\Big)^2v_2=0.5625\,v_2,\qquad v_3=\Big(\frac{0.06}{0.04}\Big)^2v_2=2.25\,v_2\tag{1}$$
+<p>การสูญเสียรวม คือ major loss ทั้งสามท่อ บวก minor loss ที่ contraction สองจุด ซึ่งคูณกับ \(v^2/2g\) ของ<b>ท่อเล็กหลังหด</b> (\(K_{12}=0.2\) คูณ \(v_2^2/2g\), \(K_{23}=0.28\) คูณ \(v_3^2/2g\))</p>
+$$25=\sum f_i\frac{L_i}{D_i}\frac{v_i^2}{2g}+K_{12}\frac{v_2^2}{2g}+K_{23}\frac{v_3^2}{2g}\tag{2}$$
+<p>แทน (1) แล้วดึง \(v_2^2/2g\) ออก ค่าสัมประสิทธิ์: \(\dfrac{100}{0.08}(0.5625)^2=395.5\), \(\dfrac{200}{0.06}=3333\), \(\dfrac{50}{0.04}(2.25)^2=6328\), และ minor \(0.2+0.28(2.25)^2=1.62\)</p>
+$$25=\Big[\,395.5f_1+3333f_2+6328f_3+1.62\,\Big]\frac{v_2^2}{2g}\tag{3}$$
+<h4>ขั้นที่ 2: เดา f รอบที่ 1</h4>
+<p>ความขรุขระสัมพัทธ์ของทั้งสามท่อคือ \(\varepsilon/D=0.003,\ 0.002,\ 0.005\) เดา \(f\) จากโซน fully turbulent (ตารางที่ ค3) ได้ \(0.026,\ 0.023,\ 0.030\)</p>
+$$[\,]=395.5(0.026)+3333(0.023)+6328(0.030)+1.62=278.4\tag{4}$$
+$$v_2=\sqrt{\frac{25\,(2)(9.81)}{278.4}}=1.33\ \text{m/s},\quad v_1=0.75\ \text{m/s},\quad v_3=2.99\ \text{m/s}\tag{5}$$
+$$Re_i=\frac{v_iD_i}{\nu}=6.0\times10^4,\ \ 8.0\times10^4,\ \ 1.2\times10^5\tag{6}$$
+<p>อ่านชาร์ต ได้ \(f=0.0283,\ 0.0255,\ 0.0312\) ต่างจากที่เดาเกิน 2% (ท่อ 1: 0.026 กับ 0.0283) จึงทำรอบที่ 2</p>
+<h4>ขั้นที่ 3: เดา f รอบที่ 2 และหา Q</h4>
+$$[\,]=395.5(0.0283)+3333(0.0255)+6328(0.0312)+1.62=295.2\tag{7}$$
+$$v_2=\sqrt{\frac{25\,(2)(9.81)}{295.2}}=1.29\ \text{m/s},\quad v_1=0.73\ \text{m/s},\quad v_3=2.90\ \text{m/s}\tag{8}$$
+<p>\(Re=5.8\times10^4,\ 7.7\times10^4,\ 1.2\times10^5\) เกือบเท่าเดิม ชาร์ตให้ \(f\) เท่ากับที่เดาทั้งสามท่อ ค่าลู่เข้าแล้ว</p>
+$$Q=v_2A_2=1.29\,\frac{\pi(0.06)^2}{4}=3.64\times10^{-3}\ \text{m}^3/\text{s}\tag{9}$$
+<p><b>ตรวจสอบ:</b> กระดานอาจารย์ได้ \(v=0.73,\ 1.29,\ 2.90\) m/s และ \(Q=3.67\times10^{-3}\) m³/s ตรงกัน (ต่างกันเพียงการอ่าน \(f\) จากชาร์ต) Colebrook-White ให้ \(Q=3.644\times10^{-3}\)</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(Q\approx3.6\times10^{-3}\) m³/s (\(v_1=0.73,\ v_2=1.29,\ v_3=2.90\) m/s)</p>
+</div>
+<div id="ch5-q10" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 10</span>ท่อ 3 เส้นของข้อ 9 ต่อขนานกัน: หา Q ของแต่ละท่อ</h2>
+<div class="stmt"><p class="supp">ข้อเสริม: เพื่อนแจ้งว่าข้อสอบน่าจะอยู่ที่ข้อ 1–8 ข้อ 9–13 ไว้ฝึกเพิ่ม</p><p>นำท่อ 3 ท่อจากข้อ 9 มาต่อแบบขนานกัน ถ้าการสูญเสียพลังงานในท่อ 1 เท่ากับ 15 m จงหาอัตราการไหลในแต่ละท่อ ไม่ต้องคิด minor loss</p></div>
+<figure><svg viewBox="0 0 640 220" role="img" aria-label="ท่อสามเส้นต่อขนานกัน">
+<path d="M70 110C110 40 530 40 570 110" style="stroke:var(--navy);fill:none;stroke-width:8"/>
+<path d="M70 110H570" style="stroke:var(--navy);fill:none;stroke-width:5"/>
+<path d="M70 110C110 180 530 180 570 110" style="stroke:var(--navy);fill:none;stroke-width:3"/>
+<circle cx="56" cy="110" r="13" style="fill:var(--bg);stroke:var(--ink)"/><text x="51" y="115" font-size="15" fill="var(--ink)">A</text>
+<circle cx="584" cy="110" r="13" style="fill:var(--bg);stroke:var(--ink)"/><text x="579" y="115" font-size="15" fill="var(--ink)">B</text>
+<text x="210" y="46" font-size="15" fill="var(--blue)">ท่อ 1: D=8 cm, L=100 m</text>
+<text x="210" y="100" font-size="15" fill="var(--blue)">ท่อ 2: D=6 cm, L=200 m</text>
+<text x="210" y="196" font-size="15" fill="var(--blue)">ท่อ 3: D=4 cm, L=50 m</text>
+<text x="400" y="132" font-size="16" fill="var(--red)">h₁ = h₂ = h₃ = 15 m</text>
+</svg><figcaption>รูปที่ 1 ท่อ 3 เส้นของข้อ 9 ต่อขนานกัน (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$h_1=15\ \text{m},\qquad \frac{\varepsilon}{D}=0.003,\ 0.002,\ 0.005\ \ (\text{ท่อ }1,2,3)$$</div></div><div class="row"><div class="lab">หลักท่อขนาน</div><div class="">$$h_1=h_2=h_3=15\ \text{m},\qquad Q_{\text{รวม}}=Q_1+Q_2+Q_3$$</div></div><div class="row"><div class="lab">v จาก h<br>(แต่ละท่อ)</div><div class="">$$h=f\frac{L}{D}\frac{v^2}{2g}\ \Rightarrow\ v=\sqrt{\frac{2g\,D\,h}{f\,L}}$$$$v_1=\sqrt{\frac{0.2354}{f_1}},\quad v_2=\sqrt{\frac{0.0883}{f_2}},\quad v_3=\sqrt{\frac{0.2354}{f_3}}$$</div></div><div class="row"><div class="lab">ท่อ 1</div><div class="">$$f=0.026\Rightarrow v=3.01,\ Re=2.4\times10^5\Rightarrow f_{\text{Moody}}=0.0267\ \ \htmlClass{no}{(\text{No})}$$$$f=0.0267\Rightarrow v_1=2.97\ \text{m/s},\ Re=2.4\times10^5\Rightarrow 0.0267\ \ \htmlClass{ok}{(\text{OK})}$$</div></div><div class="row"><div class="lab">ท่อ 2</div><div class="">$$f=0.023\Rightarrow v=1.96,\ Re=1.2\times10^5\Rightarrow f_{\text{Moody}}=0.0249\ \ \htmlClass{no}{(\text{No})}$$$$f=0.0249\Rightarrow v_2=1.88\ \text{m/s},\ Re=1.1\times10^5\Rightarrow 0.0249\ \ \htmlClass{ok}{(\text{OK})}$$</div></div><div class="row"><div class="lab">ท่อ 3</div><div class="">$$f=0.030\Rightarrow v=2.80,\ Re=1.1\times10^5\Rightarrow f_{\text{Moody}}=0.0312\ \ \htmlClass{no}{(\text{No})}$$$$f=0.0312\Rightarrow v_3=2.75\ \text{m/s},\ Re=1.1\times10^5\Rightarrow 0.0312\ \ \htmlClass{ok}{(\text{OK})}$$</div></div><div class="row"><div class="lab">Q = vA</div><div class="">$$Q_1=2.97\,\frac{\pi(0.08)^2}{4}=0.0149,\quad Q_2=1.88\,\frac{\pi(0.06)^2}{4}=0.0053,\quad Q_3=2.75\,\frac{\pi(0.04)^2}{4}=0.0035\ \ \text{m}^3/\text{s}$$$$Q_{\text{รวม}}=0.0237\ \text{m}^3/\text{s}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(Q_1=0.0149,\ Q_2=0.0053,\ Q_3=0.0035\ \text{m}^3/\text{s}\), รวม \(0.0237\ \text{m}^3/\text{s}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ท่อขนานเริ่มและจบที่จุดเดียวกัน จึงสูญเสียพลังงานเท่ากันทุกเส้น ต่างจากท่ออนุกรมที่ \(Q\) เท่ากัน เมื่อรู้ \(h\) ของแต่ละเส้นแล้ว แต่ละเส้นกลายเป็นโจทย์หา \(v\) จาก \(h\) ที่แยกกันได้</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> ตั้ง \(h_1=h_2=h_3=15\) m และจัด \(v\) ของแต่ละท่อในรูปของ \(f\)</p><p><b class="l">ขั้นที่ 2:</b> เดา \(f\) แล้วหา \(v\), \(Re\) และ \(f\) ใหม่ของทีละท่อจนตรงกัน</p><p><b class="l">ขั้นที่ 3:</b> แปลง \(v\) เป็น \(Q=vA\) ของแต่ละท่อ แล้วบวกกัน</p></div>
+<h4>ขั้นที่ 1: หลักของท่อขนานและสมการของแต่ละท่อ</h4>
+<p>ทุกท่อเชื่อมจุด A และ B ร่วมกัน เฮดที่ลดลงจาก A ถึง B จึงเท่ากันทุกเส้น</p>
+$$h_1=h_2=h_3=15\ \text{m},\qquad Q_{\text{รวม}}=Q_1+Q_2+Q_3\tag{1}$$
+<p>จาก \(h=f\dfrac{L}{D}\dfrac{v^2}{2g}\) แก้หา \(v\) ของแต่ละท่อ ค่าคงที่คือ \(2g\,D\,h/L\)</p>
+$$v_1=\sqrt{\frac{2(9.81)(0.08)(15)}{100\,f_1}}=\sqrt{\frac{0.2354}{f_1}}\tag{2}$$
+$$v_2=\sqrt{\frac{0.0883}{f_2}},\qquad v_3=\sqrt{\frac{0.2354}{f_3}}\tag{3}$$
+<h4>ขั้นที่ 2: เดา f ทีละท่อ</h4>
+<p>เดารอบแรกจากโซน fully turbulent (\(\varepsilon/D=0.003,\ 0.002,\ 0.005\) ได้ \(0.026,\ 0.023,\ 0.030\)) แล้วหา \(Re=vD/\nu\) และอ่านชาร์ต</p>
+<div class="tw"><table><caption>ตารางที่ 1 ผลการวนซ้ำของแต่ละท่อ</caption><thead><tr><th>ท่อ</th><th>\(f\) ที่เดา</th><th>\(v\) (m/s)</th><th>\(Re\)</th><th>\(f\) จากชาร์ต</th><th>ผล</th></tr></thead><tbody>
+<tr><td>1</td><td>0.026</td><td>3.01</td><td>\(2.4\times10^5\)</td><td>0.0267</td><td>ไม่ตรง</td></tr>
+<tr><td>1</td><td>0.0267</td><td>2.97</td><td>\(2.4\times10^5\)</td><td>0.0267</td><td>ตรง</td></tr>
+<tr><td>2</td><td>0.023</td><td>1.96</td><td>\(1.2\times10^5\)</td><td>0.0249</td><td>ไม่ตรง</td></tr>
+<tr><td>2</td><td>0.0249</td><td>1.88</td><td>\(1.1\times10^5\)</td><td>0.0249</td><td>ตรง</td></tr>
+<tr><td>3</td><td>0.030</td><td>2.80</td><td>\(1.1\times10^5\)</td><td>0.0312</td><td>ไม่ตรง</td></tr>
+<tr><td>3</td><td>0.0312</td><td>2.75</td><td>\(1.1\times10^5\)</td><td>0.0312</td><td>ตรง</td></tr></tbody></table></div>
+<h4>ขั้นที่ 3: แปลงเป็นอัตราการไหลและรวม</h4>
+$$Q_1=2.97\,\frac{\pi(0.08)^2}{4}=0.0149,\quad Q_2=1.88\,\frac{\pi(0.06)^2}{4}=0.0053,\quad Q_3=2.75\,\frac{\pi(0.04)^2}{4}=0.0035\tag{4}$$
+$$Q_{\text{รวม}}=0.0149+0.0053+0.0035=0.0237\ \text{m}^3/\text{s}\tag{5}$$
+<p><b>ตรวจสอบ:</b> ท่อ 1 ใหญ่ที่สุดจึงพาน้ำมากสุด (63% ของทั้งหมด) สมเหตุสมผล Colebrook-White ให้ \(Q=0.01492,\ 0.00532,\ 0.00345\) ตรงกัน</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(Q_1\approx0.0149\), \(Q_2\approx0.0053\), \(Q_3\approx0.0035\) และ \(Q_{\text{รวม}}\approx0.0237\) m³/s</p>
+</div>
+<div id="ch5-q11" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 11</span>ท่อ 2 เส้นลาด 30°: ข้อมูลไม่ครบ <em class="star">โจทย์ไม่ให้ ε</em></h2>
+<div class="stmt"><p class="supp">ข้อเสริม: เพื่อนแจ้งว่าข้อสอบน่าจะอยู่ที่ข้อ 1–8 ข้อ 9–13 ไว้ฝึกเพิ่ม</p><p>ท่อ 2 ท่อต่อกันตามรูป ข้อมูลในตาราง จงหาอัตราการไหล ท่อลาดลง 30° (\(P_1=120\) kPa, \(P_2=55\) kPa, \(L_1=80\) m, \(L_2=90\) m, \(D_1=1.0\) m, \(D_2=0.8\) m) โจทย์ไม่ระบุความขรุขระ \(\varepsilon\) และไม่ระบุ minor loss</p></div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$P_1=120,\ P_2=55\ \text{kPa},\quad L_1=80,\ L_2=90\ \text{m},\quad D_1=1.0,\ D_2=0.8\ \text{m},\quad \theta=30^\circ$$</div></div><div class="row"><div class="lab">เฮดความดัน<br>และผลต่างระดับ</div><div class="">$$\frac{P_1-P_2}{\gamma}=\frac{65\times10^{3}}{9810}=6.63\ \text{m}$$$$z_1-z_2=(L_1+L_2)\sin30^\circ=170(0.5)=85\ \text{m}$$</div></div><div class="row"><div class="lab">ความต่อเนื่อง</div><div class="">$$v_2=v_1\Big(\frac{D_1}{D_2}\Big)^2=1.5625\,v_1$$</div></div><div class="row"><div class="lab">สมการพลังงาน<br>1 → 2</div><div class="">$$\frac{P_1-P_2}{\gamma}+(z_1-z_2)=\frac{v_2^2-v_1^2}{2g}+f_1\frac{80}{1.0}\frac{v_1^2}{2g}+f_2\frac{90}{0.8}\frac{v_2^2}{2g}+K_c\frac{v_2^2}{2g}$$$$91.63=\Big[\,1.441+80f_1+274.7f_2+2.441K_c\,\Big]\frac{v_1^2}{2g}\qquad\star$$</div></div><div class="row"><div class="lab">ทำต่อไม่ได้</div><div class=""><p>ต้องรู้ \(\varepsilon\) เพื่อหา \(\varepsilon/D\) และอ่าน \(f_1, f_2\) และต้องรู้ว่าให้คิด \(K_c\) หรือไม่</p></div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">ยังตอบเป็นตัวเลขไม่ได้ เพราะโจทย์ไม่ให้ \(\varepsilon\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ท่อต่ออนุกรม มีความดันที่ปลายสองด้านและผลต่างระดับ จึงตั้งสมการพลังงานจุด 1 → 2 ได้ แต่ \(f\) ของทั้งสองท่อต้องอ่านจากชาร์ต ซึ่งต้องรู้ \(\varepsilon/D\)</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> หาเฮดความดันและผลต่างระดับที่ใช้ได้จริง</p><p><b class="l">ขั้นที่ 2:</b> ตั้งสมการพลังงานโดยเขียนทุกอย่างด้วย \(v_1\)</p><p><b class="l">ขั้นที่ 3:</b> ระบุข้อมูลที่ขาด และวิธีทำต่อเมื่อได้ข้อมูลมา</p></div>
+<h4>ขั้นที่ 1: เฮดที่ขับน้ำ</h4>
+$$\frac{P_1-P_2}{\gamma}=\frac{(120-55)\times10^{3}}{9810}=6.63\ \text{m}\tag{1}$$
+$$z_1-z_2=(L_1+L_2)\sin30^\circ=170\,(0.5)=85\ \text{m}\tag{2}$$
+<h4>ขั้นที่ 2: สมการพลังงาน</h4>
+<p>ท่อ 2 เล็กกว่าท่อ 1 จึงมี contraction \(K_c\) (ถ้าให้คิด) และ \(v_2=(D_1/D_2)^2v_1=1.5625\,v_1\)</p>
+$$\frac{P_1-P_2}{\gamma}+(z_1-z_2)=\frac{v_2^2-v_1^2}{2g}+f_1\frac{80}{1.0}\frac{v_1^2}{2g}+f_2\frac{90}{0.8}\frac{v_2^2}{2g}+K_c\frac{v_2^2}{2g}\tag{3}$$
+$$91.63=\Big[\,(1.5625^2-1)+80f_1+112.5f_2(1.5625)^2+K_c(1.5625)^2\Big]\frac{v_1^2}{2g}\tag{4}$$
+<h4>ขั้นที่ 3: ข้อมูลที่ขาด</h4>
+<p>ถ้าได้ \(\varepsilon\) มา วิธีที่เหลือเหมือนข้อสอบ A ทุกประการ (เดา \(f_1,f_2\) → \(v_1\) → \(Re\) → \(f\) ใหม่ วนจนตรงกัน) ข้อสังเกต: ผลต่างระดับ 85 m บนท่อยาว 170 m ทำให้ \(v\) สูงมาก (ราว 15–20 m/s) ควรถามอาจารย์ว่า \(P_1, P_2\) อยู่ที่จุดใดก่อนฝึกข้อนี้</p>
+<p class="ans">คำตอบ: ยังหาเป็นตัวเลขไม่ได้ เพราะโจทย์ไม่ให้ \(\varepsilon\) (ตั้งสมการได้ถึง (4))</p>
+</div>
+<div id="ch5-q12" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 12</span>ถังน้ำสูง 34.5 m ท่อเอียง 30° ต่อท่อใหญ่ขึ้น ปล่อยสู่อากาศ</h2>
+<div class="stmt"><p class="supp">ข้อเสริม: เพื่อนแจ้งว่าข้อสอบน่าจะอยู่ที่ข้อ 1–8 ข้อ 9–13 ไว้ฝึกเพิ่ม</p><p>จงหาอัตราการไหลของน้ำในท่อ \(L_1=60\) m, \(D_1=0.4\) m, \(\varepsilon_1=0.6\) mm และ \(L_2=40\) m, \(D_2=0.8\) m, \(\varepsilon_2=0.64\) mm ปากท่อ \(K_L=0.8\) ผิวน้ำสูงกว่าปากท่อ 34.5 m ท่อ 1 เอียงขึ้น 30° ท่อ 2 ราบ และปล่อยน้ำออกสู่อากาศ</p></div>
+<figure><svg viewBox="0 0 640 240" role="img" aria-label="ถังน้ำสูง 34.5 เมตร ท่อเอียง 30 องศา ต่อท่อใหญ่ขึ้นแนวราบ">
+<defs><marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+<line x1="20" y1="200" x2="620" y2="200" style="stroke:var(--ink);stroke-dasharray:6 5"/><text x="470" y="220" font-size="14" fill="var(--gray)">datum = ระดับปากท่อ</text>
+<rect x="30" y="40" width="80" height="160" style="fill:var(--water);stroke:var(--navy)" stroke-width="2"/>
+<path d="M30 40h80" style="stroke:var(--navy)" stroke-width="3"/>
+<path d="M110 200L330 73" style="stroke:var(--navy);fill:none;stroke-width:7"/>
+<path d="M330 73H580" style="stroke:var(--navy);fill:none;stroke-width:13"/>
+<path d="M586 63l20 -8M588 73h24M586 83l20 8" style="stroke:var(--red);fill:none" stroke-width="2"/>
+<circle cx="64" cy="58" r="11" style="fill:var(--bg);stroke:var(--ink)"/><text x="59.5" y="63" font-size="14" fill="var(--ink)">1</text>
+<circle cx="560" cy="52" r="11" style="fill:var(--bg);stroke:var(--ink)"/><text x="555.5" y="57" font-size="14" fill="var(--ink)">2</text>
+<line x1="124" y1="44" x2="124" y2="196" style="stroke:var(--red)" stroke-width="1.8" marker-start="url(#ar3)" marker-end="url(#ar3)"/><text x="130" y="130" font-size="15" fill="var(--red)">34.5 m</text>
+<line x1="520" y1="78" x2="520" y2="196" style="stroke:var(--blue)" stroke-width="1.8" marker-start="url(#ar3)" marker-end="url(#ar3)"/><text x="526" y="150" font-size="15" fill="var(--blue)">30 m</text>
+<text x="160" y="226" font-size="15" fill="var(--green)">K=0.8</text>
+<text x="222" y="118" font-size="15" fill="var(--blue)" transform="rotate(-30 222 118)">ท่อ 1: D=0.4 m, L=60 m</text>
+<path d="M270 200A60 60 0 0 0 262 180" style="stroke:var(--red);fill:none"/><text x="276" y="196" font-size="15" fill="var(--red)">30°</text>
+<text x="350" y="108" font-size="15" fill="var(--blue)">ท่อ 2: D=0.8 m, L=40 m</text>
+</svg><figcaption>รูปที่ 1 ถังน้ำ ท่อ 1 เอียงขึ้น 30° ต่อท่อ 2 แนวราบที่ใหญ่ขึ้น ปล่อยสู่อากาศ (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$D_1=0.4,\ D_2=0.8\ \text{m},\quad L_1=60,\ L_2=40\ \text{m},\quad \frac{\varepsilon}{D}=\frac{0.6}{400}=0.0015,\ \ \frac{0.64}{800}=0.0008$$</div></div><div class="row"><div class="lab">ระดับปลายท่อ</div><div class="">$$z_2=60\sin30^\circ=30\ \text{m},\qquad z_1-z_2=34.5-30=4.5\ \text{m}$$</div></div><div class="row"><div class="lab">ความต่อเนื่อง<br>และ K ของ expansion</div><div class="">$$v_2=v_1\Big(\frac{0.4}{0.8}\Big)^2=0.25\,v_1$$$$K_{exp}=\Big(1-\frac{A_1}{A_2}\Big)^2=(1-0.25)^2=0.5625\ \ (\times v_1^2/2g)$$</div></div><div class="row"><div class="lab">สมการพลังงาน<br>ผิวน้ำ → ปลายท่อ<br>(P₁ = P₂ = 0, v₁ ≈ 0)</div><div class="">$$34.5=30+\frac{v_2^2}{2g}+0.8\frac{v_1^2}{2g}+0.5625\frac{v_1^2}{2g}+f_1\frac{60}{0.4}\frac{v_1^2}{2g}+f_2\frac{40}{0.8}\frac{v_2^2}{2g}$$$$4.5=\Big[\,1.425+150f_1+3.125f_2\,\Big]\frac{v_1^2}{2g}\qquad\star$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 1<br>(fully rough)</div><div class="">$$f_1=0.022,\ f_2=0.019\ \Rightarrow\ [\ ]=1.425+3.30+0.059=4.784$$$$v_1=\sqrt{\frac{4.5\,(2g)}{4.784}}=4.30\ \text{m/s},\qquad v_2=1.07\ \text{m/s}$$$$Re_1=1.7\times10^6,\ Re_2=8.6\times10^5\ \Rightarrow\ f_{\text{Moody}}=0.0219,\ 0.0190\ \ \htmlClass{ok}{(\text{OK})}$$</div></div><div class="row"><div class="lab">อัตราการไหล</div><div class="">$$Q=v_1A_1=4.30\,\frac{\pi(0.4)^2}{4}=0.54\ \text{m}^3/\text{s}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(Q\approx0.54\ \text{m}^3/\text{s}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ต้องการ \(Q\) จากผลต่างระดับ จึงเป็น Type 2 แบบระบบถัง (เหมือนข้อ 7) แต่มีท่อสองขนาด ต้องคิด minor loss ที่ทางเข้า และที่ท่อขยาย พร้อม \(f\) ของทั้งสองท่อ</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> หาผลต่างระดับที่ใช้ได้จริง ความเร็ว และ \(K\) ของการขยาย</p><p><b class="l">ขั้นที่ 2:</b> ตั้งสมการพลังงานผิวน้ำ → ปลายท่อ จัดให้เหลือ \(v_1\) ตัวเดียว</p><p><b class="l">ขั้นที่ 3:</b> เดา \(f_1,f_2\) แล้วหา \(v_1\), \(Re\), \(f\) ใหม่ และ \(Q\)</p></div>
+<h4>ขั้นที่ 1: ระดับ ความเร็ว และ K ของการขยาย</h4>
+<p>ท่อ 1 เอียงขึ้น 30° ยาว 60 m ปลายท่อจึงสูงกว่าปากท่อ \(60\sin30^\circ=30\) m ส่วนท่อ 2 ราบ ดังนั้นผลต่างระดับที่ใช้ได้คือ \(34.5-30=4.5\) m (ไม่ใช่ 34.5 m)</p>
+$$z_1-z_2=34.5-60\sin30^\circ=4.5\ \text{m}\tag{1}$$
+$$v_2=v_1\Big(\frac{D_1}{D_2}\Big)^2=0.25\,v_1\tag{2}$$
+<p>โจทย์ให้ \(K\) เฉพาะปากท่อ ส่วน sudden expansion หาจาก \(K=(1-A_1/A_2)^2\) คูณ \(v^2/2g\) ของ<b>ท่อเล็ก</b> (\(v_1\))</p>
+$$K_{exp}=(1-0.25)^2=0.5625\tag{3}$$
+<h4>ขั้นที่ 2: สมการพลังงาน</h4>
+<p>ผิวน้ำในถัง \(P_1=0,\ v_1\approx0\) ปลายท่อ \(P_2=0\) แต่ \(v_2\neq0\) (ปล่อยสู่อากาศ จึงมีเทอม \(v_2^2/2g\)) ใช้ \(v_2^2=0.0625\,v_1^2\)</p>
+$$34.5=30+\frac{v_2^2}{2g}+(0.8+0.5625)\frac{v_1^2}{2g}+f_1\frac{60}{0.4}\frac{v_1^2}{2g}+f_2\frac{40}{0.8}\frac{v_2^2}{2g}\tag{4}$$
+$$4.5=\Big[\,0.0625+1.3625+150f_1+3.125f_2\,\Big]\frac{v_1^2}{2g}\tag{5}$$
+<h4>ขั้นที่ 3: เดา f และหา Q</h4>
+<p>\(\varepsilon/D=0.0015\) และ \(0.0008\) เดา \(f_1=0.022\), \(f_2=0.019\) (fully rough)</p>
+$$[\,]=1.425+150(0.022)+3.125(0.019)=4.784\tag{6}$$
+$$v_1=\sqrt{\frac{4.5\,(2)(9.81)}{4.784}}=4.30\ \text{m/s},\qquad v_2=1.07\ \text{m/s}\tag{7}$$
+$$Re_1=\frac{4.30(0.4)}{10^{-6}}=1.7\times10^{6},\qquad Re_2=\frac{1.07(0.8)}{10^{-6}}=8.6\times10^{5}\tag{8}$$
+<p>ชาร์ตให้ \(f_1=0.0219\), \(f_2=0.0190\) ตรงกับที่เดา (ต่างไม่ถึง 2%) ลู่เข้าแล้ว</p>
+$$Q=v_1A_1=4.30\,\frac{\pi(0.4)^2}{4}=0.54\ \text{m}^3/\text{s}\tag{9}$$
+<p><b>ตรวจสอบ:</b> Colebrook-White ให้ \(v_1=4.305\) m/s และ \(Q=0.541\) m³/s ถ้าไม่คิด expansion loss จะได้ \(Q=0.576\) m³/s (ต่างราว 6%) โจทย์ให้ \(K\) เฉพาะปากท่อ จึงควรถามอาจารย์ว่าให้คิดหรือไม่</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(Q\approx0.54\) m³/s</p>
+</div>
+<div id="ch5-q13" class="prob-block" style="margin-top:40px;padding-top:20px;border-top:1.5px solid var(--rule);">
+<h2 class="prob"><span class="tag">ข้อ 13</span>โครงข่ายท่อ: หาเส้นผ่านศูนย์กลางท่อ 4</h2>
+<div class="stmt"><p class="supp">ข้อเสริม: เพื่อนแจ้งว่าข้อสอบน่าจะอยู่ที่ข้อ 1–8 ข้อ 9–13 ไว้ฝึกเพิ่ม</p><p>จงหาเส้นผ่านศูนย์กลางของท่อ 4 เมื่อการสูญเสียพลังงานจาก A ไป B เท่ากับ 5 m ไม่ต้องคิด minor loss ความเร็วในท่อ 2 เท่ากับ 0.2 m/s ท่อ 2 และท่อ 3 ต่อขนานกัน ทุกท่อยาว 1000 m ท่อ 1: \(D=0.6\) m, \(\varepsilon/D=0.002\) · ท่อ 2: \(D=0.4\) m, \(\varepsilon/D=0.0015\) · ท่อ 3: \(D=0.8\) m, \(\varepsilon/D=0.002\) · ท่อ 4: \(\varepsilon=0.1\) mm</p></div>
+<figure><svg viewBox="0 0 640 200" role="img" aria-label="ท่อ 1 แยกเป็นท่อ 2 กับ 3 ขนานกัน แล้วรวมเป็นท่อ 4">
+<path d="M30 100H160" style="stroke:var(--navy);fill:none;stroke-width:9"/>
+<path d="M160 100C190 40 290 40 320 100" style="stroke:var(--navy);fill:none;stroke-width:5"/>
+<path d="M160 100C190 160 290 160 320 100" style="stroke:var(--navy);fill:none;stroke-width:11"/>
+<path d="M320 100H570" style="stroke:var(--navy);fill:none;stroke-width:7;stroke-dasharray:14 6"/>
+<circle cx="20" cy="100" r="12" style="fill:var(--bg);stroke:var(--ink)"/><text x="15.5" y="105" font-size="15" fill="var(--ink)">A</text>
+<circle cx="582" cy="100" r="12" style="fill:var(--bg);stroke:var(--ink)"/><text x="577.5" y="105" font-size="15" fill="var(--ink)">B</text>
+<text x="34" y="82" font-size="15" fill="var(--blue)">ท่อ 1: D=0.6</text>
+<text x="196" y="40" font-size="15" fill="var(--blue)">ท่อ 2: D=0.4, v₂=0.2 m/s</text>
+<text x="196" y="182" font-size="15" fill="var(--blue)">ท่อ 3: D=0.8</text>
+<text x="380" y="82" font-size="15" fill="var(--red)">ท่อ 4: D=?</text>
+<text x="330" y="132" font-size="15" fill="var(--green)">ทุกท่อ L=1000 m · h_AB=5 m</text>
+</svg><figcaption>รูปที่ 1 โครงข่ายท่อ: ท่อ 2 ขนานกับท่อ 3 แล้วต่อท่อ 4 (ไม่ตามมาตราส่วน)</figcaption></figure>
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="given">$$h_{AB}=5\ \text{m},\quad v_2=0.2\ \text{m/s},\quad L=1000\ \text{m (ทุกท่อ)}$$</div></div><div class="row"><div class="lab">h ของท่อ 2<br>(เท่ากับ h ของท่อ 3)</div><div class="">$$Re_2=\frac{0.2(0.4)}{10^{-6}}=8\times10^{4},\ \ \frac{\varepsilon}{D}=0.0015\ \Rightarrow\ f_2=0.024$$$$h_2=f_2\frac{1000}{0.4}\frac{0.2^2}{2g}=0.123\ \text{m}=h_3$$</div></div><div class="row"><div class="lab">ท่อ 3: หา v₃</div><div class="">$$v_3=\sqrt{\frac{2g(0.8)(0.123)}{f_3(1000)}}=\sqrt{\frac{0.00193}{f_3}}$$$$f_3=0.024\Rightarrow v_3=0.284,\ Re=2.3\times10^5,\ \tfrac{\varepsilon}{D}=0.002\Rightarrow f=0.0242$$$$\Rightarrow\ v_3=0.283\ \text{m/s}\ \ \htmlClass{ok}{(\text{OK})}$$</div></div><div class="row"><div class="lab">Q รวม<br>(ท่อ 1 และ 4)</div><div class="">$$Q_2=0.2\,\frac{\pi(0.4)^2}{4}=0.0251,\qquad Q_3=0.283\,\frac{\pi(0.8)^2}{4}=0.142$$$$Q=Q_1=Q_4=Q_2+Q_3=0.167\ \text{m}^3/\text{s}$$</div></div><div class="row"><div class="lab">ท่อ 1: หา h₁</div><div class="">$$v_1=\frac{0.167}{\pi(0.3)^2}=0.59\ \text{m/s},\quad Re=3.5\times10^5,\ \frac{\varepsilon}{D}=0.002\Rightarrow f_1=0.0239$$$$h_1=0.0239\,\frac{1000}{0.6}\,\frac{0.59^2}{2g}=0.71\ \text{m}$$</div></div><div class="row"><div class="lab">h ที่เหลือของท่อ 4</div><div class="">$$h_4=h_{AB}-h_1-h_2=5-0.71-0.12=4.17\ \text{m}$$</div></div><div class="row"><div class="lab">ท่อ 4: จัดรูป D⁵</div><div class="">$$D_4^5=\frac{8f\,L\,Q^2}{\pi^2 g\,h_4}=\frac{8f(1000)(0.167)^2}{\pi^2(9.81)(4.17)}=0.553\,f\qquad\star$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 1</div><div class="">$$f=0.020\Rightarrow D=0.406,\ v=1.29,\ Re=5.2\times10^5,\ \frac{\varepsilon}{D}=0.00025\Rightarrow f_{\text{Moody}}=0.0158\ \ \htmlClass{no}{(\text{No})}$$</div></div><div class="row"><div class="lab">เดา f รอบที่ 2</div><div class="">$$f=0.016\Rightarrow D=0.388,\ v=1.41,\ Re=5.5\times10^5\Rightarrow f_{\text{Moody}}=0.0158\ \ \htmlClass{ok}{(\text{OK})}$$</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\(D_4\approx0.39\ \text{m}\)</span></div></div></div>
+<hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<p><b>แนวคิดในการแก้ปัญหา:</b> ต้องการ \(D_4\) (Type 3) ซึ่งต้องรู้ \(Q\) และ \(h_4\) ก่อน ข้อมูลที่ให้คือ \(v_2\) ของท่อขนาน จึงไล่หา \(h_2\) (เท่ากับ \(h_3\)) แล้วหา \(Q\) รวม ได้ \(h_1\) และ \(h_4=5-h_1-h_2\)</p>
+<div class="plan"><p><b class="l">ขั้นที่ 1:</b> จาก \(v_2\) หา \(h_2=h_3\) แล้วหา \(v_3\) และ \(Q=Q_2+Q_3\)</p><p><b class="l">ขั้นที่ 2:</b> หา \(h_1\) จาก \(Q\) แล้ว \(h_4=h_{AB}-h_1-h_2\)</p><p><b class="l">ขั้นที่ 3:</b> ท่อ 4 หา \(D\) ด้วยการเดา \(f\) (จัดรูป \(D^5\))</p></div>
+<h4>ขั้นที่ 1: วงขนาน ท่อ 2 และท่อ 3</h4>
+$$Re_2=\frac{0.2\,(0.4)}{10^{-6}}=8\times10^{4},\qquad \frac{\varepsilon}{D}=0.0015\ \Rightarrow\ f_2=0.024\tag{1}$$
+$$h_2=f_2\frac{L}{D_2}\frac{v_2^2}{2g}=0.024\,\frac{1000}{0.4}\,\frac{0.2^2}{2(9.81)}=0.123\ \text{m}=h_3\tag{2}$$
+<p>ท่อ 3 มี \(h_3=0.123\) m จึงหา \(v_3\) จาก \(v_3=\sqrt{2gD_3h_3/(f_3L)}=\sqrt{0.00193/f_3}\) เดา \(f_3=0.024\) ได้ \(v_3=0.284\) m/s, \(Re=2.3\times10^5\), \(\varepsilon/D=0.002\) อ่านชาร์ต \(f=0.0242\) ตรงกัน ได้ \(v_3=0.283\) m/s</p>
+$$Q_2=0.2\,\frac{\pi(0.4)^2}{4}=0.0251,\qquad Q_3=0.283\,\frac{\pi(0.8)^2}{4}=0.142\ \text{m}^3/\text{s}\tag{3}$$
+$$Q=Q_1=Q_4=Q_2+Q_3=0.167\ \text{m}^3/\text{s}\tag{4}$$
+<h4>ขั้นที่ 2: ท่อ 1 และการสูญเสียที่เหลือของท่อ 4</h4>
+$$v_1=\frac{Q}{A_1}=\frac{0.167}{\pi(0.3)^2}=0.59\ \text{m/s},\quad Re_1=3.5\times10^5,\quad f_1=0.0239\tag{5}$$
+$$h_1=f_1\frac{L}{D_1}\frac{v_1^2}{2g}=0.0239\,\frac{1000}{0.6}\,\frac{0.59^2}{2(9.81)}=0.71\ \text{m}\tag{6}$$
+<p>การสูญเสียรวม A → B คือ \(h_1+h_2+h_4\) (นับวงขนานครั้งเดียว)</p>
+$$h_4=5-0.71-0.123=4.17\ \text{m}\tag{7}$$
+<h4>ขั้นที่ 3: ท่อ 4 หา D ด้วยการเดา f</h4>
+$$D_4^5=\frac{8fLQ^2}{\pi^2g\,h_4}=\frac{8f\,(1000)(0.167)^2}{\pi^2(9.81)(4.17)}=0.553\,f\tag{8}$$
+<p>เดา \(f=0.020\) ได้ \(D=(0.553\times0.020)^{0.2}=0.406\) m, \(v=0.167/(\pi D^2/4)=1.29\) m/s, \(Re=5.2\times10^5\), \(\varepsilon/D=0.1/406=0.00025\) ชาร์ตให้ \(f=0.0158\) ไม่ตรง จึงเดา \(f=0.016\)</p>
+$$D=(0.553\times0.016)^{0.2}=0.388\ \text{m},\quad v=1.41\ \text{m/s},\quad Re=5.5\times10^5\ \Rightarrow\ f=0.0158\tag{9}$$
+<p>\(f\) ตรงกัน (ต่างไม่ถึง 2%) ลู่เข้าแล้ว</p>
+<p><b>ตรวจสอบ:</b> Colebrook-White ให้ \(D_4=0.388\) m, \(f_4=0.0158\) และ \(h_1+h_2+h_4=0.71+0.12+4.17=5.00\) m ตรงกัน ข้อนี้ท่อ 4 ใช้ \(\varepsilon\) เป็น mm (0.1 mm) ส่วนท่อ 1–3 โจทย์ให้ \(\varepsilon/D\) มาแล้ว</p>
+<p class="ans">คำตอบที่ถูกต้องคือ: \(D_4\approx0.39\) m (0.388 m)</p>
+</div>
+
+  <div class="pn" style="margin-top:40px;">
+    <a href="#ch4">← บทที่ 4 วิเคราะห์มิติ &amp; สเกล</a>
+    <a href="#meter">เครื่องมือวัด &amp; Cavitation →</a>
+  </div>
+</section>
+

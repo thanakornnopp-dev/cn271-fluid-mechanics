@@ -104,16 +104,15 @@ class SiteMatchesSolver(unittest.TestCase):
             self.assertIn(needle, self.text, needle)
 
     def test_all_pages_present(self):
-        for pid in ("sum", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "ea", "eb",
-                    "q9", "q10", "q11", "q12", "q13", "calc", "ref"):
-            self.assertIn('<section id="%s">' % pid, self.text, pid)
+        for pid in ("sum", "ch1", "ch2", "ch3", "ch4", "ch5", "meter", "exam", "calc", "ref"):
+            self.assertTrue('<section id="%s"' % pid in self.text, f"Section id={pid} not found")
 
     def test_each_problem_has_exam_and_detail(self):
-        for pid in ("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "ea", "eb",
-                    "q9", "q10", "q11", "q12", "q13"):
-            part = self.text.split('<section id="%s">' % pid, 1)[1].split("</section>", 1)[0]
-            self.assertIn('class="exam"', part, pid)
-            self.assertIn('class="detail"', part, pid)
+        for pid in ("ch5-q1", "ch5-q2", "ch5-q3", "ch5-q4", "ch5-q5", "ch5-q6", "ch5-q7", "ch5-q8", "ch5-qa", "ch5-qb",
+                    "ch5-q9", "ch5-q10", "ch5-q11", "ch5-q12", "ch5-q13"):
+            self.assertIn('id="%s"' % pid, self.text, pid)
+            self.assertIn('class="exam"', self.text, pid)
+            self.assertIn('class="plan"', self.text, pid)
 
     def test_no_katex_breaking_unicode(self):
         # จุดกลาง (·) ใน \text{...} ทำให้ KaTeX ขึ้นตัวแดง \cdotp

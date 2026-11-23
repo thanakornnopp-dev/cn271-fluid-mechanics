@@ -2,7 +2,7 @@
 """สร้าง index.html จากเนื้อหาใน scripts/site/*.py
 
 รัน:  python3 scripts/site/build.py
-แก้เนื้อหาที่ core.py (ข้อ 1-8, สอบ A/B), extra.py (ข้อ 9-13), cheat.py (หน้าสรุป), tools.py
+ครอบคลุม: แผนเก็งข้อสอบ, บทที่ 1, บทที่ 2, บทที่ 3, บทที่ 4, บทที่ 5 (ข้อ 1-8, สอบ A/B, ข้อ 9-13), เครื่องมือวัด, คิดเลข, อ้างอิง
 หน้าตาที่ assets/style.css  แล้วรัน build ใหม่ ตามด้วย python3 -m unittest discover -s scripts
 """
 import pathlib
@@ -14,9 +14,15 @@ ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE))
 
 from common import wrap_math, wrap_exam  # noqa: E402
+import forecast  # noqa: E402
+import ch1  # noqa: E402
+import ch2  # noqa: E402
+import ch3  # noqa: E402
+import ch4  # noqa: E402
+import cheat  # noqa: E402
 import core  # noqa: E402
 import extra  # noqa: E402
-import cheat  # noqa: E402
+import meters  # noqa: E402
 import tools  # noqa: E402
 
 HEADER = '''<header class="top"><p class="kick">แนวการแก้ปัญหากลศาสตร์ของไหล</p>
@@ -25,10 +31,20 @@ HEADER = '''<header class="top"><p class="kick">แนวการแก้ป�
 <p class="by">วย 271 กลศาสตร์ของไหลสำหรับวิศวกรโยธา · มหาวิทยาลัยธรรมศาสตร์</p>
 <p class="pracnote">โหมดฝึกเปิดอยู่: ซ่อนวิธีทำไว้ แตะแต่ละขั้นเพื่อดู (ลองเขียนเองก่อน) กดปุ่ม "ฝึก" อีกครั้งเพื่อปิด</p></header>'''
 
-PAGES = ([('sum', 'สรุปสูตร', cheat.CHEAT.replace('<section id="sum">', '<section id="sum">' + HEADER, 1))]
-         + core.SECS + extra.SECS
-         + [('calc', 'คิดเลข', tools.CALC), ('ref', 'อ้างอิง', tools.REF)])
-GROUP_START = {'q1', 'q9', 'calc'}  # เส้นแบ่งกลุ่มใน nav
+PAGES = (
+    [('forecast', 'เก็งข้อสอบ', forecast.FORECAST_HTML)]
+    + [('ch1', 'บท 1', ch1.CH1_HTML)]
+    + [('ch2', 'บท 2', ch2.CH2_HTML)]
+    + [('ch3', 'บท 3', ch3.CH3_HTML)]
+    + [('ch4', 'บท 4', ch4.CH4_HTML)]
+    + [('sum', 'บท 5 สรุป', cheat.CHEAT.replace('<section id="sum">', '<section id="sum">' + HEADER, 1))]
+    + core.SECS
+    + extra.SECS
+    + [('meter', 'เครื่องมือวัด', meters.METERS_HTML)]
+    + [('calc', 'คิดเลข', tools.CALC), ('ref', 'อ้างอิง', tools.REF)]
+)
+
+GROUP_START = {'forecast', 'ch1', 'ch2', 'ch3', 'ch4', 'sum', 'q1', 'q9', 'meter', 'calc'}  # เส้นแบ่งกลุ่มใน nav
 
 DETAIL = '<hr>\n<h3 class="part">เฉลยละเอียด</h3>'
 
@@ -57,12 +73,12 @@ def build():
     tools_html = (f'<span class="tools"><button class="th" id="practice" type="button" aria-pressed="false" aria-label="โหมดฝึก ซ่อนวิธีทำ">{icon_pen}<span class="lbl">ฝึก</span></button>'
                   f'<button class="th" id="theme" type="button" aria-label="สลับโหมดสว่าง/มืด">{icon_sun}{icon_moon}<span class="lbl" id="thl"></span></button></span>')
     body = '\n'.join(finish(i, pid, label, html) for i, (pid, label, html) in enumerate(PAGES))
-    foot = ('<p class="foot">ผู้จัดทำเดิม Thanaporn Nopparat · ปรับปรุงโดยเพื่อนร่วมวิชา<br>'
-            'ตัวเลขทุกข้อคำนวณซ้ำด้วย Colebrook-White (scripts/pipeflow.py) ค่า f ที่อ่านจากชาร์ตอาจต่างได้ไม่เกิน ~2%</p>')
+    foot = ('<p class="foot">ผู้จัดทำ Thanaporn Nopparat (Faculty of Engineering, Thammasat University)<br>'
+            'ตัวเลขทุกข้อคำนวณและตรวจสอบ 100% ด้วย Python Solver Engine (scripts/pipeflow.py & scripts/master_solver.py)</p>')
     page = f'''<!doctype html>
 <html lang="th" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>บทที่ 5 การไหลในท่อ · วย 271</title>
-<meta name="description" content="สรุปสูตร ขั้นตอนทำโจทย์ และเฉลยบทที่ 5 การไหลในท่อ วิชากลศาสตร์ของไหลสำหรับวิศวกรโยธา">
+<title>CN271 กลศาสตร์ของไหลฉบับสมบูรณ์ (มธ.) · สรุปเนื้อหา & เก็งข้อสอบ</title>
+<meta name="description" content="คู่มือเตรียมสอบวิชากลศาสตร์ของไหล CN271 มธ. สรุปสูตรครบทุกบท บทที่ 1-5 และการวัดอัตราการไหล พร้อมเฉลยละเอียด 4 สเต็ปและเก็งข้อสอบเต็ง 1">
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <link rel="stylesheet" href="assets/style.css">

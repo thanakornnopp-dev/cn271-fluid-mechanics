@@ -1,16 +1,409 @@
 <!doctype html>
 <html lang="th" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>บทที่ 5 การไหลในท่อ · วย 271</title>
-<meta name="description" content="สรุปสูตร ขั้นตอนทำโจทย์ และเฉลยบทที่ 5 การไหลในท่อ วิชากลศาสตร์ของไหลสำหรับวิศวกรโยธา">
+<title>CN271 กลศาสตร์ของไหลฉบับสมบูรณ์ (มธ.) · สรุปเนื้อหา & เก็งข้อสอบ</title>
+<meta name="description" content="คู่มือเตรียมสอบวิชากลศาสตร์ของไหล CN271 มธ. สรุปสูตรครบทุกบท บทที่ 1-5 และการวัดอัตราการไหล พร้อมเฉลยละเอียด 4 สเต็ปและเก็งข้อสอบเต็ง 1">
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <link rel="stylesheet" href="assets/style.css">
 <script>(function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script>
 </head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs></svg>
-<nav class="toc" aria-label="สารบัญ"><a href="#sum">สรุปสูตร</a><a href="#q1" class="gap">ข้อ 1</a><a href="#q2">ข้อ 2</a><a href="#q3">ข้อ 3</a><a href="#q4">ข้อ 4</a><a href="#q5">ข้อ 5</a><a href="#q6">ข้อ 6</a><a href="#q7">ข้อ 7</a><a href="#q8">ข้อ 8</a><a href="#ea">สอบ A</a><a href="#eb">สอบ B</a><a href="#q9" class="gap">ข้อ 9</a><a href="#q10">ข้อ 10</a><a href="#q11">ข้อ 11</a><a href="#q12">ข้อ 12</a><a href="#q13">ข้อ 13</a><a href="#calc" class="gap">คิดเลข</a><a href="#ref">อ้างอิง</a><span class="sp"></span><span class="tools"><button class="th" id="practice" type="button" aria-pressed="false" aria-label="โหมดฝึก ซ่อนวิธีทำ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><span class="lbl">ฝึก</span></button><button class="th" id="theme" type="button" aria-label="สลับโหมดสว่าง/มืด"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg><span class="lbl" id="thl"></span></button></span></nav>
+<nav class="toc" aria-label="สารบัญ"><a href="#forecast" class="gap">เก็งข้อสอบ</a><a href="#ch1" class="gap">บท 1</a><a href="#ch2" class="gap">บท 2</a><a href="#ch3" class="gap">บท 3</a><a href="#ch4" class="gap">บท 4</a><a href="#sum" class="gap">บท 5 สรุป</a><a href="#q1" class="gap">ข้อ 1</a><a href="#q2">ข้อ 2</a><a href="#q3">ข้อ 3</a><a href="#q4">ข้อ 4</a><a href="#q5">ข้อ 5</a><a href="#q6">ข้อ 6</a><a href="#q7">ข้อ 7</a><a href="#q8">ข้อ 8</a><a href="#ea">สอบ A</a><a href="#eb">สอบ B</a><a href="#q9" class="gap">ข้อ 9</a><a href="#q10">ข้อ 10</a><a href="#q11">ข้อ 11</a><a href="#q12">ข้อ 12</a><a href="#q13">ข้อ 13</a><a href="#meter" class="gap">เครื่องมือวัด</a><a href="#calc" class="gap">คิดเลข</a><a href="#ref">อ้างอิง</a><span class="sp"></span><span class="tools"><button class="th" id="practice" type="button" aria-pressed="false" aria-label="โหมดฝึก ซ่อนวิธีทำ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><span class="lbl">ฝึก</span></button><button class="th" id="theme" type="button" aria-label="สลับโหมดสว่าง/มืด"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg><span class="lbl" id="thl"></span></button></span></nav>
 <main>
 <noscript><p>เว็บนี้ใช้ JavaScript แสดงสูตรและสลับหน้า กรุณาเปิด JavaScript</p></noscript>
+<section id="forecast">
+<header class="top"><p class="kick">วิเคราะห์และเก็งข้อสอบอัตนัย CN271</p>
+<h1>แผนเก็งข้อสอบ & 5 จุดดักคะแนนมรณะ</h1>
+<p class="sub">สังเคราะห์จากเอกสารตัวอย่างโจทย์จริงปี 2569 และ 2570 ภาควิชาวิศวกรรมโยธา มธ.</p>
+<p class="by">วย 271 กลศาสตร์ของไหลสำหรับวิศวกรโยธา · มหาวิทยาลัยธรรมศาสตร์</p>
+</header>
+
+<h2 class="prob"><span class="tag">เก็งข้อสอบ</span>วิเคราะห์ 4 โซนข้อสอบเต็ง 1 ที่ต้องฝึกทำให้คล่อง 100%</h2>
+<div class="stmt">
+<p>จากการวิเคราะห์สถิติข้อสอบอัตนัยวิชา CN271 และชุดตัวอย่างโจทย์ 2569–2570 ของอาจารย์ผู้สอน ข้อสอบจะเน้นการเขียนวิธีทำเต็มรูป <b>ห้ามลัดขั้นตอนเด็ดขาด (Strict No-Shortcut Policy)</b> โดยแบ่งน้ำหนักคะแนนออกเป็น 4 โซนหลักที่ออกสอบอย่างแน่นอน:</p>
+</div>
+
+<div class="jump">
+<a href="#fc-zones">ก. 4 โซนข้อสอบเต็ง 1</a>
+<a href="#fc-table">ข. ตารางข้อที่ต้องซ้อมทำในชีท</a>
+<a href="#fc-traps">ค. 5 จุดดักคะแนนมรณะ</a>
+<a href="#fc-strat">ง. กลยุทธ์การเขียนตอบในห้องสอบ</a>
+</div>
+
+<h3 id="fc-zones" class="part">ก. 4 โซนข้อสอบเต็ง 1 (High-Yield Exam Zones)</h3>
+<div class="ty"><div class="tyh">Zone 1: สถิตยศาสตร์ของไหลและบานประตู (Fluid Statics & Gates) — ออกชัวร์ 95%</div><div class="tyb">
+<p class="gq"><b>ลักษณะโจทย์:</b> มาโนมิเตอร์ของเหลวหลายชนิดท่อเอียง + แรงดันบนประตูระนาบเอียงหรือระนาบโค้ง</p>
+<ol class="st">
+<li><b>มาโนมิเตอร์ (Manometer):</b> กฎการเดินท่อขึ้นลบ-ลงบวก \(P_2 = P_1 \pm \gamma \Delta h\) สำหรับท่อเอียงมุม \(	heta\) ระยะดิ่งคือ \(\Delta h = L \sin	heta\) <i>(ซ้อมข้อ 9, 13, 17 ในชีทบทที่ 2)</i></li>
+<li><b>แรงดันบนระนาบเรียบและบานพับ (Plane Gates):</b> หา \(F_R = \gamma h_{cg} A\) และ \(y_{cp} = y_{cg} + \dfrac{I_{xx,c}}{y_{cg} A}\) จากนั้นเทคโมเมนต์รอบบานพับ \(\sum M_{	ext{hinge}} = 0\) เพื่อหาน้ำหนักประตูหรือแรงดึงลวด <i>(ซ้อมข้อ 22, 23, 26 ในชีทบทที่ 2)</i></li>
+<li><b>แรงดันบนระนาบโค้ง (Curved Surfaces):</b> แยกคิดแรงแนวราบ \(F_H = \gamma h_{cg,	ext{proj}} A_{	ext{proj}}\) และแรงแนวดิ่ง \(F_V = \gamma 	imes 	ext{Volume}\) แล้วรวมเวกเตอร์ \(F_R = \sqrt{F_H^2 + F_V^2}\) <i>(ซ้อมข้อ 29, 31 ในชีทบทที่ 2)</i></li>
+</ol>
+<div class="bx chk"><b>จุดเน้นอาจารย์:</b> อย่าสับสนระหว่าง \(y_{cp}\) (วัดตามแนวเอียงของบานประตู) กับ \(h_{cp}\) (วัดในแนวดิ่งจากผิวน้ำ)</div>
+</div></div>
+
+<div class="ty"><div class="tyh">Zone 2: แรงโมเมนตัมของสายน้ำ (Linear Momentum Equation) — ออกชัวร์ 90%</div><div class="tyb">
+<p class="gq"><b>ลักษณะโจทย์:</b> ลำน้ำพุ่งชนแผ่นโค้งเบี่ยงทิศทาง (Deflector Vane) หรือแรงกระทำที่ข้องอท่อ</p>
+<ol class="st">
+<li><b>แผ่นโค้งอยู่นิ่ง (\(u = 0\)):</b> อัตราการไหลเชิงมวล \(\dot{m} = ho A v\) แรงกระทำ \(F_x = \dot{m} (v_1 - v_2 \cos	heta)\) ถ้าหักกลับ \(180^\circ\) จะได้ \(F_x = 2 \dot{m} v = 2 ho A v^2\) <i>(ซ้อมข้อ 5 ก บทที่ 3: ตอบ 11.52 kN)</i></li>
+<li><b>แผ่นโค้งเคลื่อนที่ตามน้ำด้วยความเร็ว \(u\):</b> <u>จุดที่นักศึกษาผิดมากที่สุด</u> ต้องใช้ความเร็วสัมพัทธ์ \(v_r = v - u\) และอัตราการไหลเชิงมวลที่กระทบจริง \(\dot{m}_r = ho A (v - u)\) ทำให้แรงลดลงเหลือ \(F_x = 2 ho A (v - u)^2\) <i>(ซ้อมข้อ 5 ข บทที่ 3: ตอบ 6.48 kN)</i></li>
+</ol>
+<div class="bx chk"><b>ตรวจ:</b> แผ่นเคลื่อนที่ตามน้ำ แรงปะทะต้องน้อยกว่าแผ่นอยู่นิ่งเสมอ (\(6.48	ext{ kN} < 11.52	ext{ kN}\))</div>
+</div></div>
+
+<div class="ty"><div class="tyh">Zone 3: การวิเคราะห์มิติและแบบจำลอง (Dimensional Analysis & Similitude) — ออกชัวร์ 95%</div><div class="tyb">
+<p class="gq"><b>ลักษณะโจทย์:</b> ทฤษฎีบท Buckingham \(\Pi\) แสดงครบ 8 สเต็ป + กฎความคล้ายคลึงของแบบจำลอง</p>
+<ol class="st">
+<li><b>Buckingham \(\Pi\) Theorem:</b> ต้องเขียนครบ 8 สเต็ป (ฟังก์ชันนับ \(k\) \(ightarrow\) มิติ \(M, L, T\) ทุกตัว \(ightarrow\) มิติหลัก \(r=3\) \(ightarrow\) เลือกตัวแปรซ้ำ \(r\) ตัว \(ightarrow\) ตั้งสมการเลขชี้กำลัง \(ightarrow\) เทียบหา \(A, B, C\) \(ightarrow\) รวมกลุ่มไร้มิติ \(ightarrow\) ตรวจสอบมิติ \([M^0 L^0 T^0]\)) <i>(ซ้อมข้อ 2 แรงผลักใบพัด บทที่ 4)</i></li>
+<li><b>Froude Similitude (สำหรับแม่น้ำ/คลื่น/เรือ):</b> \(Fr_m = Fr_p \implies \lambda_v = \sqrt{\lambda_L}, \quad \lambda_Q = \lambda_L^{2.5}\) <i>(ซ้อมข้อ 6 บทที่ 4: สเกล 1:80 ได้ \(v_p = 161	ext{ m/s}\))</i></li>
+<li><b>Reynolds Similitude (สำหรับท่อ/อากาศยาน):</b> \(Re_m = Re_p \implies \lambda_v = 1 / \lambda_L\) เมื่อใช้ของไหลชนิดเดียวกัน <i>(ซ้อมข้อ 5 บทที่ 4: สเกล 1:10 ได้ \(v_m = 2.0	ext{ m/s}\))</i></li>
+</ol>
+<div class="bx chk"><b>จุดเน้นอาจารย์:</b> ห้ามเลือกตัวแปรเป้าหมาย (เช่น \(F\) หรือ \(Q\)) เป็นตัวแปรซ้ำเด็ดขาด</div>
+</div></div>
+
+<div class="ty"><div class="tyh">Zone 4: การไหลในท่อและระบบท่อส่งน้ำ (Flow in Pipes & Losses) — ออกชัวร์ 98%</div><div class="tyb">
+<p class="gq"><b>ลักษณะโจทย์:</b> โจทย์ Type II ปล่อยน้ำออกจากถังผ่านข้องอ หรือโจทย์ท่อขนาน/อนุกรม</p>
+<ol class="st">
+<li><b>Type II วนซ้ำหา \(v\) (เน้น "ข้อสอบแน่!"):</b> จัดรูป \(v = \dfrac{C}{\sqrt{\sum K_L + f(L/D)}}\) ตีตารางเดา \(f\) เพียง 2 รอบ ลู่เข้าที่ \(v = 2.51	ext{ m/s}, f = 0.0195\) <i>(ซ้อมข้อ 7 บทที่ 5)</i></li>
+<li><b>Type III วนซ้ำหาขนาดท่อ \(D\):</b> ดึงตัวแปร \(D^5 = 0.41314 f\) วนลูป 3 รอบจนได้ \(D pprox 0.36	ext{ m} = 360	ext{ mm}\) <i>(ซ้อมข้อ 8 บทที่ 5)</i></li>
+<li><b>ระบบท่อขนาน 4 ท่อ:</b> เฮดสูญเสียเท่ากันทุกท่อ \(h_{L1} = h_{L2} = \dots = h_{Ln}\) และ \(Q_{	ext{total}} = \sum Q_i\) <i>(ซ้อมข้อสอบ 15 คะแนน)</i></li>
+</ol>
+<div class="bx chk"><b>ตรวจ:</b> พจน์ปลายท่อเปิดสู่อากาศมี Velocity Head \(\dfrac{v^2}{2g}\) รวมกับ Minor Loss ทางเข้าและข้องอ กลายเป็นตัวคูณ \(2.6\)</div>
+</div></div>
+
+<hr>
+
+<h3 id="fc-table" class="part">ข. ตารางข้อที่ต้องซ้อมทำในชีท 2569/2570</h3>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>บทเรียน</th>
+<th>ข้อในชีท</th>
+<th>หัวข้อโจทย์</th>
+<th>สูตรและตัวแปรหลัก</th>
+<th>คำตอบที่ถูกต้อง 100%</th>
+<th>ระดับความเสี่ยง</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>บทที่ 1</strong></td>
+<td>ข้อ 1 (น.1)</td>
+<td>Shear Stress แผ่นเลื่อนขนาน</td>
+<td>\(	au = \mu \dfrac{V}{h}\)</td>
+<td>\(\mathbf{	au = 116	ext{ N/m}^2}\)</td>
+<td><span class="tag">พื้นฐาน</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 2</strong></td>
+<td>ข้อ 9 (น.3)</td>
+<td>มาโนมิเตอร์ของเหลว 2 ชนิด</td>
+<td>\(P_2 = P_1 \pm \gamma h\)</td>
+<td>\(\mathbf{P_A = -1,962	ext{ Pa}, P_E = 7,455.6	ext{ Pa}}\)</td>
+<td><span class="tag" style="background:#059669;">เต็งหนึ่ง</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 2</strong></td>
+<td>ข้อ 22-23 (น.8)</td>
+<td>แรงดันบนผนังระนาบเรียบ</td>
+<td>\(F_R = \gamma h_{cg} A, \quad y_{cp} = y_{cg} + \dfrac{I_{xx}}{y_{cg}A}\)</td>
+<td>\(\mathbf{F_R = 882.9	ext{ kN}, y_{cp} = 4.0	ext{ m}}\)</td>
+<td><span class="tag" style="background:#059669;">เต็งหนึ่ง</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 2</strong></td>
+<td>ข้อ 26 (น.9)</td>
+<td>บานประตูปิดน้ำเอียงสมดุลบานพับ</td>
+<td>\(\sum M_C = 0 \implies F_R \cdot d_F = W \cdot d_W\)</td>
+<td>\(\mathbf{W = 180.5	ext{ kN}}\)</td>
+<td><span class="tag" style="background:#d97706;">ปราบเซียน</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 2</strong></td>
+<td>ข้อ 29 (น.10)</td>
+<td>แรงดันบนผิวโค้งวงกลม</td>
+<td>\(F_H = \gamma h_{cg} A_{	ext{proj}}, F_V = \gamma \cdot 	ext{Vol}\)</td>
+<td>\(\mathbf{F_R = 657.6	ext{ kN}, 	heta = 57.5^\circ}\)</td>
+<td><span class="tag" style="background:#059669;">เต็งหนึ่ง</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 3</strong></td>
+<td>ข้อ 5 (น.21)</td>
+<td>สายน้ำชนแผ่นโค้ง 180°</td>
+<td>อยู่นิ่ง: \(2ho A v^2\) / เคลื่อนที่: \(2ho A (v-u)^2\)</td>
+<td>\(\mathbf{11.52	ext{ kN}}\) (นิ่ง) / \(\mathbf{6.48	ext{ kN}}\) (เคลื่อนที่)</td>
+<td><span class="tag" style="background:#059669;">เต็งหนึ่ง</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 3</strong></td>
+<td>ข้อ 9 (น.22)</td>
+<td>ท่อกาลักน้ำ (Siphon)</td>
+<td>Bernoulli ระหว่างผิวน้ำกับยอดท่อ</td>
+<td>\(\mathbf{v = 7.67	ext{ m/s}, P_2 = -41.2	ext{ kPa}}\)</td>
+<td><span class="tag">เน้นมโนทัศน์</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 4</strong></td>
+<td>ข้อ 2 (น.23)</td>
+<td>Buckingham \(\Pi\) แรงผลักใบพัด</td>
+<td>\(F = f(D, ho, \mu, \omega)\) บังคับแสดง 8 ขั้น</td>
+<td>\(\mathbf{\Pi_1 = \dfrac{F}{ho \omega^2 D^4}, \Pi_2 = \dfrac{ho \omega D^2}{\mu}}\)</td>
+<td><span class="tag" style="background:#059669;">เต็งหนึ่ง</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 4</strong></td>
+<td>ข้อ 6 (น.23)</td>
+<td>Froude Similitude แม่น้ำ</td>
+<td>\(\lambda_v = \sqrt{\lambda_L} \implies v_p = v_m \sqrt{L_p/L_m}\)</td>
+<td>\(\mathbf{v_p = 161.0	ext{ m/s}}\) (เมื่อ \(v_m = 18\))</td>
+<td><span class="tag" style="background:#059669;">เต็งหนึ่ง</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 5</strong></td>
+<td>ข้อ 7 (น.40)</td>
+<td><strong>ปล่อยน้ำจากถังผ่านข้องอ</strong></td>
+<td>สมการพลังงาน + ตารางวนซ้ำ \(f\) 2 รอบ</td>
+<td>\(\mathbf{v = 2.51	ext{ m/s}, Q = 44.4	ext{ L/s}}\)</td>
+<td><span class="tag" style="background:#dc2626;">ออกแน่ 100%</span></td>
+</tr>
+<tr>
+<td><strong>บทที่ 5</strong></td>
+<td>ข้อ 8 (น.40)</td>
+<td>ออกแบบขนาดท่อ \(D\) (Type III)</td>
+<td>ดึงตัวแปร \(D^5 = 0.41314 f\) วนลูป 3 รอบ</td>
+<td>\(\mathbf{D pprox 0.366	ext{ m} pprox 360	ext{ mm}}\)</td>
+<td><span class="tag" style="background:#d97706;">ปราบเซียน</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h3 id="fc-traps" class="part">ค. 5 จุดดักคะแนนมรณะ (Deadly Exam Traps)</h3>
+<div class="bx chk" style="border-left-color:var(--red);margin-bottom:14px;">
+<b>Trap 1: การลืม Velocity Head ปลายท่อในโจทย์ Type II</b>
+<div>เมื่อท่อปล่อยน้ำออกสู่อากาศอิสระ พลังงานจลน์ที่พุ่งออกไปคือ \(\dfrac{v^2}{2g}\) ซึ่งจะรวมเข้ากับ Minor Losses หน้าวงเล็บ \(\dfrac{v^2}{2g}\) จึงต้องมีเลข \(1.0\) เสมอ เช่นในข้อ 7 กลายเป็น \([1.0_{	ext{exit}} + 1.0_{	ext{entrance}} + 2(0.3)_{	ext{elbows}} + f(100/0.15)] = [2.6 + 666.67 f]\) ถ้าลืม \(1.0\) ของปลายท่อ ตัวเลขความเร็วจะผิดทันที</div>
+</div>
+
+<div class="bx chk" style="border-left-color:var(--red);margin-bottom:14px;">
+<b>Trap 2: การแปลงหน่วยมิลลิเมตรและความขรุขระสัมพัทธ์</b>
+<div>ความขรุขระ \(arepsilon = 0.12	ext{ mm} = 0.00012	ext{ m}\) และท่อ \(D = 15	ext{ cm} = 0.15	ext{ m}\) เมื่อนำมาหารกันต้องใช้หน่วยเดียวกัน \(\dfrac{arepsilon}{D} = \dfrac{0.12}{150} = 0.0008\) ถ้าใช้หน่วยผิดจะเปิดชาร์ต Moody ผิดเส้นอย่างสิ้นเชิง</div>
+</div>
+
+<div class="bx chk" style="border-left-color:var(--red);margin-bottom:14px;">
+<b>Trap 3: ความเร็วสัมพัทธ์ในสมการโมเมนตัม</b>
+<div>เมื่อใบพัดหรือแผ่นโค้งเคลื่อนที่ตามน้ำด้วยความเร็ว \(u\) สายน้ำที่กระทบจริงจะมีความเร็วสัมพัทธ์ลดลงเป็น \(v_r = v - u\) และมวลน้ำที่พุ่งเข้าปะทะต่อวินาทีก็ลดลงเป็น \(\dot{m}_r = ho A (v - u)\) ห้ามใช้ \(ho A v\) เพราะน้ำส่วนหนึ่งจะวิ่งตามแผ่นไปทันที</div>
+</div>
+
+<div class="bx chk" style="border-left-color:var(--red);margin-bottom:14px;">
+<b>Trap 4: การวัดระยะ \(y_{cp}\) และ \(h_{cp}\) ของบานประตู</b>
+<div>\(y_{cp}\) วัดตามความยาวของระนาบเอียง ส่วน \(h_{cp}\) วัดในแนวดิ่งจากระดับผิวน้ำอิสระ โดยมีสูตรเชื่อมกันคือ \(h_{cp} = y_{cp} \sin	heta\) เมื่อนำไปเทคโมเมนต์รอบบานพับ ต้องใช้แขนของแรงที่ตั้งฉากกับแนวแรงจริง ๆ เสมอ</div>
+</div>
+
+<div class="bx chk" style="border-left-color:var(--red);">
+<b>Trap 5: การเลือก Repeating Variables ในทฤษฎีบท Buckingham \(\Pi\)</b>
+<div>ตัวแปรซ้ำ 3 ตัวที่เลือกต้องประกอบด้วย: (1) ตัวแปรเรขาคณิต เช่น \(D\), (2) ตัวแปรของไหล เช่น \(ho\), (3) ตัวแปรจลนศาสตร์ เช่น \(\omega\) หรือ \(V\) และ<u>ห้ามเลือกตัวแปรเป้าหมายที่โจทย์ต้องการหา</u> (เช่น ห้ามเลือก \(F\) หรือ \(Q\) เป็นตัวแปรซ้ำ)</div>
+</div>
+
+<hr>
+
+<h3 id="fc-strat" class="part">ง. กลยุทธ์การเขียนตอบในห้องสอบเพื่อโกยคะแนนเต็ม</h3>
+<ol class="st">
+<li><b>บรรทัดแรก:</b> เขียนสมการ Governing Equation เต็มรูปก่อนเสมอ (เช่น Navier-Stokes, Reynolds, Bernoulli, Energy Equation)</li>
+<li><b>บรรทัดสอง:</b> แสดงการขีดฆ่าพจน์ที่เป็นศูนย์พร้อมกำกับเหตุผล (เช่น \(P_1 = P_2 = 0	ext{ atm}\), \(v_1 pprox 0	ext{ ถังใหญ่}\))</li>
+<li><b>บรรทัดสาม:</b> จัดรูปดึงตัวแปรเป้าหมายค้างไว้ทางซ้ายมือ แล้วค่อยแทนค่าตัวเลขพร้อมหน่วยในบรรทัดถัดไป</li>
+<li><b>กรณี Trial & Error:</b> ตีตาราง 5 ช่อง (รอบ | \(f\) สมมติ | ค่าที่คำนวณได้ | \(Re\) | \(f\) ใหม่) แสดงเพียง 2 รอบจนค่าลู่เข้า จะได้คะแนนเต็ม 100%</li>
+</ol>
+<div class="pn"><span></span><a href="#ch1">บท 1 →</a></div></section>
+<section id="ch1">
+<header class="top"><p class="kick">เนื้อหาและเฉลยละเอียดตามระเบียบอาจารย์</p>
+<h1>บทที่ 1 คุณสมบัติของไหล</h1>
+<p class="sub">ความหนืด (Viscosity) · ความเค้นเฉือน (Shear Stress) · กฎของนิวตัน</p>
+<p class="by">วย 271 กลศาสตร์ของไหลสำหรับวิศวกรโยธา · มหาวิทยาลัยธรรมศาสตร์</p>
+</header>
+
+<h2 class="prob"><span class="tag">บทที่ 1</span>ตัวอย่างข้อ 1 (หน้า 1): แผ่นเลื่อนขนานและความเค้นเฉือน</h2>
+<div class="stmt">
+<p><b>โจทย์:</b> ของไหล A อยู่ระหว่างแผ่นเรียบดังรูป ถ้า Dynamic viscosity (\(\mu\)) ของของไหล A เท่ากับ \(0.29	ext{ kg}\cdot	ext{m}^{-1}	ext{s}^{-1}\) จงหาค่า Shear stress (\(	au\)) ที่ต้องการ เพื่อให้แผ่นด้านบนเคลื่อนที่ด้วยความเร็ว \(V = 3.2	ext{ m/s}\) โดยมีระยะห่างระหว่างแผ่น \(h = 8	ext{ mm}\)</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ข้อมูล</div><div class="">\mu = 0.29\text{ kg}\cdot\text{m}^{-1}\text{s}^{-1} = 0.29\text{ Pa}\cdot\text{s}, \quad V = 3.2\text{ m/s}, \quad h = 8\text{ mm} = 0.008\text{ m}</div></div><div class="row"><div class="lab">สูตร</div><div class="">\tau = \mu \dfrac{dv}{dy} \approx \mu \dfrac{V}{h}</div></div><div class="row"><div class="lab">แทนค่า</div><div class="">\tau = 0.29\text{ Pa}\cdot\text{s} \times \left( \dfrac{3.2\text{ m/s}}{0.008\text{ m}} \right) = 0.29 \times 400\text{ s}^{-1}</div></div><div class="row"><div class="lab">ผลลัพธ์</div><div class="">\tau = 116\text{ N/m}^2</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\tau = 116\text{ N/m}^2\text{ (Pa)}</span></div></div></div>
+<div class="detail"><hr>
+<h3 class="part">เฉลยละเอียด</h3>
+<div class="detail">
+<p><b>1. กฎความหนืดของนิวตัน (Newton's Law of Viscosity):</b><br>
+สำหรับของไหลนิวโทเนียน (Newtonian Fluid) ความเค้นเฉือนแปรผันตรงกับอัตราการเปลี่ยนรูปหรือความลาดความเร็ว (Velocity Gradient) เมื่อระยะห่างระหว่างแผ่น \(h\) มีค่าน้อย การกระจายความเร็วระหว่างแผ่นจะถือเป็นเส้นตรง (Linear Velocity Profile):
+$$\dfrac{dv}{dy} = \dfrac{V - 0}{h - 0} = \dfrac{V}{h} = \dfrac{3.2}{0.008} = 400	ext{ s}^{-1}$$</p>
+
+<p><b>2. การตรวจสอบหน่วย:</b><br>
+$$[	au] = [\mu] 	imes \left[\dfrac{V}{h}ight] = (	ext{kg}\cdot	ext{m}^{-1}	ext{s}^{-1}) 	imes (	ext{s}^{-1}) = 	ext{kg}\cdot	ext{m}^{-1}	ext{s}^{-2} = 	ext{N/m}^2 = 	ext{Pa}$$</p>
+<div class="bx chk"><b>จุดที่คนมักผิด:</b> ลืมแปลง \(h = 8	ext{ mm}\) เป็น \(0.008	ext{ m}\) หากลืมแปลง ค่าจะผิดไป 1,000 เท่า</div>
+</div>
+</div><div class="pn"><a href="#forecast">← เก็งข้อสอบ</a><a href="#ch2">บท 2 →</a></div></section>
+<section id="ch2">
+<header class="top"><p class="kick">เนื้อหาและเฉลยละเอียดตามระเบียบอาจารย์</p>
+<h1>บทที่ 2 สถิตยศาสตร์ของไหลและบานประตู</h1>
+<p class="sub">มาโนมิเตอร์ · แรงดันบนระนาบเรียบและจุดศูนย์กลางแรงกด · สมดุลบานพับ · แรงดันบนผิวโค้ง</p>
+<p class="by">วย 271 กลศาสตร์ของไหลสำหรับวิศวกรโยธา · มหาวิทยาลัยธรรมศาสตร์</p>
+</header>
+
+<h2 class="prob"><span class="tag">บทที่ 2</span>สรุปสูตรและข้อสอบเต็งหนึ่งสถิตยศาสตร์ของไหล (39 ข้อ)</h2>
+<div class="stmt">
+<p>บทที่ 2 เป็นบทที่มีน้ำหนักคะแนนสูงมากในข้อสอบ มักออกข้อสอบ 2 ข้อใหญ่: <b>(1) ข้อสอบคำนวณมาโนมิเตอร์หลายของไหลท่อเอียง</b> และ <b>(2) แรงดันบนประตูระนาบเอียงหรือระนาบโค้งพร้อมเทคโมเมนต์รอบบานพับ</b></p>
+</div>
+
+<div class="jump">
+<a href="#ch2-mano">1. มาโนมิเตอร์ (ข้อ 9)</a>
+<a href="#ch2-plane">2. แรงดันบนผนังระนาบเรียบ (ข้อ 22)</a>
+<a href="#ch2-hinge">3. บานประตูปิดน้ำเอียงสมดุลบานพับ (ข้อ 26)</a>
+<a href="#ch2-curved">4. แรงดันบนผิวโค้งวงกลม (ข้อ 29)</a>
+</div>
+
+<hr>
+
+<!-- 1. MANOMETER EX 9 -->
+<h3 id="ch2-mano" class="part">1. ตัวอย่างข้อ 9 (หน้า 3): มาโนมิเตอร์ของเหลว 2 ชนิด</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> จงหาความดันเกจที่จุด A, B, C, D, E ไม่ต้องคิดความดันบรรยากาศ กำหนด \(S.G._1 = 1.0\), \(S.G._2 = 0.8\), จุด B อยู่ที่ผิวน้ำเปิด, จุด A อยู่เหนือผิวน้ำ \(0.2	ext{ m}\) ในท่อปิด, จุด C อยู่ต่ำกว่าผิวน้ำ \(0.2	ext{ m}\), จุด D อยู่ระดับเดียวกับ C, จุด E อยู่ก้นถังต่ำลงไปอีก \(0.7	ext{ m}\) ในของเหลว 2</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">จุด B</div><div class="">P_B = 0\text{ Pa (ผิวน้ำอิสระเปิดสู่อากาศ)}</div></div><div class="row"><div class="lab">จุด A</div><div class="">P_A = P_B - \gamma_1 \Delta h_{BA} = 0 - (9,810\text{ N/m}^3 \times 0.2\text{ m}) = -1,962\text{ Pa}</div></div><div class="row"><div class="lab">จุด C</div><div class="">P_C = P_B + \gamma_1 \Delta h_{BC} = 0 + (9,810\text{ N/m}^3 \times 0.2\text{ m}) = +1,962\text{ Pa}</div></div><div class="row"><div class="lab">จุด D</div><div class="">P_D = P_C = +1,962\text{ Pa (ระดับเดียวกันในของเหลวชนิดเดียวกันต่อเนื่อง)}</div></div><div class="row"><div class="lab">จุด E</div><div class="">P_E = P_D + \gamma_2 \Delta h_{DE} = 1,962 + (0.8 \times 9,810\text{ N/m}^3 \times 0.7\text{ m}) = 1,962 + 5,493.6 = +7,455.6\text{ Pa}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">P_A = -1,962\text{ Pa}, \quad P_B = 0\text{ Pa}, \quad P_C = P_D = 1,962\text{ Pa}, \quad P_E = 7,455.6\text{ Pa}</span></div></div></div>
+
+<hr>
+
+<!-- 2. PLANE GATE EX 22 -->
+<h3 id="ch2-plane" class="part">2. ตัวอย่างข้อ 22 (หน้า 8): ผนังระนาบเรียบและจุดศูนย์กลางแรงกด</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> จงหาแรงที่กระทำกับผนังแนวดิ่งที่มีความกว้าง (เข้าไปในกระดาษ) \(b = 5	ext{ m}\) สูง \(h = 6	ext{ m}\) โดยมีระดับน้ำอยู่ที่ขอบบนของผนังพอดี และหาตำแหน่งที่แรงกระทำ (\(y_{cp}\))</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">พื้นที่</div><div class="">A = b \times h = 5\text{ m} \times 6\text{ m} = 30\text{ m}^2</div></div><div class="row"><div class="lab">เซนทรอยด์</div><div class="">h_{cg} = \dfrac{h}{2} = \dfrac{6}{2} = 3.0\text{ m}</div></div><div class="row"><div class="lab">แรงลัพธ์</div><div class="">F_R = \gamma h_{cg} A = 9,810\text{ N/m}^3 \times 3.0\text{ m} \times 30\text{ m}^2 = 882,900\text{ N} = 882.9\text{ kN}</div></div><div class="row"><div class="lab">ความเฉื่อย</div><div class="">I_{xx,c} = \dfrac{b h^3}{12} = \dfrac{5 \times 6^3}{12} = 90\text{ m}^4</div></div><div class="row"><div class="lab">จุดศูนย์กลาง</div><div class="">y_{cp} = y_{cg} + \dfrac{I_{xx,c}}{y_{cg} A} = 3.0 + \dfrac{90}{3.0 \times 30} = 3.0 + 1.0 = 4.0\text{ m}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">F_R = 882.9\text{ kN}, \quad y_{cp} = 4.0\text{ m}\text{ จากผิวน้ำ (หรือ } 2.0\text{ m จากก้นบาน)}</span></div></div></div>
+
+<hr>
+
+<!-- 3. TILTED GATE HINGE EX 26 -->
+<h3 id="ch2-hinge" class="part">3. ตัวอย่างข้อ 26 (หน้า 9): บานประตูปิดน้ำเอียงสมดุลรอบบานพับ (ข้อสอบอัตนัยปราบเซียน)</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> ประตู CD กว้าง \(1.8	ext{ m}\) ยาว \(2.0	ext{ m}\) สมมติวัสดุเนื้อเดียวกัน ไม่คิดแรงเสียดทานที่จุดหมุนบานพับ C บานประตูเอียงลาดชัน \(4:3:5\) (\(\sin	heta = 0.8, \cos	heta = 0.6\)) จงหาน้ำหนักประตู \(W\) ที่จะทำให้ประตูปิดพอดี เมื่อระดับน้ำในอ่างสูง \(2.0	ext{ m}\) เหนือจุด C</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">เรขาคณิต</div><div class="">A = 1.8 \times 2.0 = 3.6\text{ m}^2, \quad y_C = \dfrac{2.0}{\sin\theta} = \dfrac{2.0}{0.8} = 2.5\text{ m}</div></div><div class="row"><div class="lab">เซนทรอยด์</div><div class="">y_{cg} = y_C + \dfrac{L}{2} = 2.5 + 1.0 = 3.5\text{ m}, \quad h_{cg} = y_{cg} \sin\theta = 3.5 \times 0.8 = 2.8\text{ m}</div></div><div class="row"><div class="lab">แรงดันน้ำ</div><div class="">F_R = \gamma h_{cg} A = 9,810 \times 2.8 \times 3.6 = 98,884.8\text{ N} = 98.88\text{ kN}</div></div><div class="row"><div class="lab">จุดกดแรง</div><div class="">I_{xx,c} = \dfrac{1.8 \times 2^3}{12} = 1.2\text{ m}^4 \implies y_{cp} = 3.5 + \dfrac{1.2}{3.5 \times 3.6} = 3.5952\text{ m}</div></div><div class="row"><div class="lab">แขนแรง F</div><div class="">d_F = y_{cp} - y_C = 3.5952 - 2.5 = 1.0952\text{ m}</div></div><div class="row"><div class="lab">แขนน้ำหนัก W</div><div class="">d_W = \left(\dfrac{L}{2}\right) \cos\theta = 1.0 \times 0.6 = 0.6\text{ m}</div></div><div class="row"><div class="lab">สมดุลโมเมนต์</div><div class="">\sum M_C = 0 \implies F_R \cdot d_F = W \cdot d_W \implies 98,884.8 \times 1.0952 = W \times 0.6</div></div><div class="row"><div class="lab">แก้หา W</div><div class="">W = \dfrac{108,298.6}{0.6} = 180,498\text{ N} = 180.5\text{ kN}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">W = 180.5\text{ kN}</span></div></div></div>
+
+<hr>
+
+<!-- 4. CURVED SURFACE EX 29 -->
+<h3 id="ch2-curved" class="part">4. ตัวอย่างข้อ 29 (หน้า 10): แรงดันบนผิวโค้งวงกลม</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> จงหาแรงที่กระทำต่อส่วนโค้ง AB และตำแหน่งที่แรงกระทำ ส่วนโค้งเป็น \(1/4\) ของวงกลมรัศมี \(R = 6	ext{ m}\) ความกว้าง \(b = 2	ext{ m}\) ผิวน้ำอยู่ที่ระดับขอบบน A พอดี</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">แรงแนวราบ</div><div class="">F_H = \gamma h_{cg,\text{proj}} A_{\text{proj}} = 9,810 \times \left(\dfrac{6}{2}\right) \times (6 \times 2) = 353,160\text{ N} = 353.16\text{ kN}</div></div><div class="row"><div class="lab">ตำแหน่ง FH</div><div class="">y_{cp} = \dfrac{2}{3}(6) = 4.0\text{ m}\text{ จากผิวน้ำ}</div></div><div class="row"><div class="lab">ปริมาตรน้ำ</div><div class="">\text{Vol} = \left(\dfrac{\pi R^2}{4}\right) b = \left(\dfrac{\pi \times 6^2}{4}\right) \times 2 = 18\pi = 56.55\text{ m}^3</div></div><div class="row"><div class="lab">แรงแนวดิ่ง</div><div class="">F_V = \gamma \times \text{Vol} = 9,810 \times 56.55 = 554,742\text{ N} = 554.74\text{ kN}</div></div><div class="row"><div class="lab">ตำแหน่ง FV</div><div class="">x_{cg} = \dfrac{4R}{3\pi} = \dfrac{4(6)}{3\pi} = 2.546\text{ m}\text{ จากผนังดิ่ง}</div></div><div class="row"><div class="lab">แรงลัพธ์ FR</div><div class="">F_R = \sqrt{F_H^2 + F_V^2} = \sqrt{353.16^2 + 554.74^2} = 657.6\text{ kN}</div></div><div class="row"><div class="lab">มุมทิศทาง</div><div class="">\theta = \tan^{-1}\left(\dfrac{F_V}{F_H}\right) = \tan^{-1}\left(\dfrac{554.74}{353.16}\right) = 57.52^\circ\text{ กับแนวราบ}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">F_R = 657.6\text{ kN}, \quad \theta = 57.52^\circ\text{ (แนวแรงพุ่งผ่านจุดศูนย์กลางความโค้ง } O\text{)}</span></div></div></div>
+<div class="pn"><a href="#ch1">← บท 1</a><a href="#ch3">บท 3 →</a></div></section>
+<section id="ch3">
+<header class="top"><p class="kick">เนื้อหาและเฉลยละเอียดตามระเบียบอาจารย์</p>
+<h1>บทที่ 3 จลนศาสตร์และสมการโมเมนตัม</h1>
+<p class="sub">สมการความต่อเนื่อง · สมการโมเมนตัมเชิงเส้น · ลำน้ำพุ่งชนแผ่นโค้ง · ท่อกาลักน้ำ</p>
+<p class="by">วย 271 กลศาสตร์ของไหลสำหรับวิศวกรโยธา · มหาวิทยาลัยธรรมศาสตร์</p>
+</header>
+
+<h2 class="prob"><span class="tag">บทที่ 3</span>ข้อสอบเต็งหนึ่งสมการโมเมนตัมและพลังงาน (10 ข้อ)</h2>
+<div class="stmt">
+<p>บทที่ 3 ข้อสอบอัตนัยจะเน้นมากที่ <b>แรงปะทะของลำน้ำ (Jet on Vane)</b> เปรียบเทียบกรณีแผ่นอยู่นิ่งกับกรณีแผ่นเคลื่อนที่ตามน้ำ และ <b>ท่อกาลักน้ำ (Siphon)</b> ที่จุดยอดมีความดันติดลบ (ความดันสุญญากาศ)</p>
+</div>
+
+<div class="jump">
+<a href="#ch3-jet">1. ลำน้ำพุ่งชนแผ่นโค้ง 180° (ข้อ 5)</a>
+<a href="#ch3-siphon">2. ท่อกาลักน้ำ Siphon (ข้อ 9)</a>
+</div>
+
+<hr>
+
+<!-- 1. JET ON VANE EX 5 -->
+<h3 id="ch3-jet" class="part">1. ตัวอย่างข้อ 5 (หน้า 21): ลำน้ำพุ่งชนแผ่นโค้ง 180° (เต็งหนึ่งออกสอบ)</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> น้ำพุ่งชนแผ่นโค้งตามรูป น้ำมีความเร็ว \(v = 24	ext{ m/s}\) พื้นที่ของสายน้ำ \(A = 0.010	ext{ m}^2\) แผ่นโค้งมีผิวเรียบ น้ำมีความเร็วคงที่<br>
+(ก) จงหาแรงกระทำสุทธิต่อแผ่นโค้ง เมื่อแผ่นโค้งอยู่นิ่ง (\(u = 0\))<br>
+(ข) จงหาแรงกระทำสุทธิต่อแผ่นโค้ง เมื่อแผ่นโค้งเคลื่อนที่ไปในทิศทางเดียวกับน้ำด้วยความเร็ว \(u = 6	ext{ m/s}\)</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ: (ก) กรณีแผ่นโค้งอยู่นิ่ง (u = 0)</h3>
+<div class="exam"><div class="row"><div class="lab">อัตราไหลมวล</div><div class="">\dot{m} = \rho A v = 1,000\text{ kg/m}^3 \times 0.010\text{ m}^2 \times 24\text{ m/s} = 240\text{ kg/s}</div></div><div class="row"><div class="lab">ความเร็วแกน x</div><div class="">v_{1x} = +24\text{ m/s}, \quad v_{2x} = -24\text{ m/s (เลี้ยวกลับ } 180^\circ)</div></div><div class="row"><div class="lab">สมการโมเมนตัม</div><div class="">F_x = \dot{m} (v_{1x} - v_{2x}) = 240\text{ kg/s} \times [24 - (-24)]\text{ m/s} = 240 \times 48 = 11,520\text{ N}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">F_x = 11,520\text{ N} = 11.52\text{ kN}\text{ (ทิศไปทางขวา)}</span></div></div></div>
+
+<h3 class="part">เฉลยวิธีทำ: (ข) กรณีแผ่นโค้งเคลื่อนที่ตามน้ำด้วย u = 6 m/s (จุดดักคะแนน!)</h3>
+<div class="exam"><div class="row"><div class="lab">ความเร็วสัมพัทธ์</div><div class="">v_r = v - u = 24\text{ m/s} - 6\text{ m/s} = 18\text{ m/s}</div></div><div class="row"><div class="lab">มวลกระทบจริง</div><div class="">\dot{m}_r = \rho A (v - u) = 1,000 \times 0.010 \times 18 = 180\text{ kg/s}</div></div><div class="row"><div class="lab">แรงกระทำแผ่น</div><div class="">F_x = \dot{m}_r [v_r - (-v_r)] = 2 \dot{m}_r v_r = 2 \times 180 \times 18 = 6,480\text{ N}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">F_x = 6,480\text{ N} = 6.48\text{ kN}\text{ (ทิศไปทางขวา)}</span></div></div></div>
+
+<div class="detail">
+<div class="bx chk"><b>ข้อเปรียบเทียบในห้องสอบ:</b> เมื่อแผ่นเคลื่อนที่ตามน้ำ แรงปะทะจะลดลงจาก \(11.52	ext{ kN}\) เหลือเพียง \(6.48	ext{ kN}\) เนื่องจากความเร็วสัมพัทธ์ลดลง และปริมาณมวลน้ำที่ปะทะต่อวินาทีลดลงตามไปด้วย</div>
+</div>
+
+<hr>
+
+<!-- 2. SIPHON EX 9 -->
+<h3 id="ch3-siphon" class="part">2. ตัวอย่างข้อ 9 (หน้า 22): ท่อกาลักน้ำ (Siphon) และความดันสุญญากาศ</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> ท่อ Siphon ปล่อยน้ำมัน (\(S.G. = 0.84\)) ออกจากถังขนาดใหญ่ดังรูป ยอดกาลักน้ำจุด 2 สูงกว่าผิวน้ำ \(2	ext{ m}\), ปลายท่อจุด 3 พ่นออกสู่อากาศต่ำกว่าผิวน้ำ \(3	ext{ m}\), ขนาดท่อ \(D = 5	ext{ cm}\) จงหาความดันที่จุด 2</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">สมการพลังงาน 1-3</div><div class="">\dfrac{P_1}{\gamma} + z_1 + \dfrac{v_1^2}{2g} = \dfrac{P_3}{\gamma} + z_3 + \dfrac{v_3^2}{2g}</div></div><div class="row"><div class="lab">ตัดพจน์ศูนย์</div><div class="">P_1 = P_3 = 0\text{ (atm)}, \quad v_1 \approx 0\text{ (ถังใหญ่)}, \quad z_1 - z_3 = 3\text{ m}</div></div><div class="row"><div class="lab">ความเร็วปลายท่อ</div><div class="">v_3 = \sqrt{2g(z_1 - z_3)} = \sqrt{2(9.81)(3)} = 7.672\text{ m/s} \implies v_2 = v_3 = 7.672\text{ m/s}</div></div><div class="row"><div class="lab">สมการพลังงาน 1-2</div><div class="">\dfrac{P_1}{\gamma} + z_1 + \dfrac{v_1^2}{2g} = \dfrac{P_2}{\gamma} + z_2 + \dfrac{v_2^2}{2g}</div></div><div class="row"><div class="lab">แทนค่าจุดยอด</div><div class="">0 + 0 + 0 = \dfrac{P_2}{\gamma} + 2\text{ m} + \dfrac{7.672^2}{2(9.81)} = \dfrac{P_2}{\gamma} + 2 + 3 = \dfrac{P_2}{\gamma} + 5\text{ m}</div></div><div class="row"><div class="lab">ความดันยอดท่อ</div><div class="">\dfrac{P_2}{\gamma} = -5\text{ m} \implies P_2 = -(0.84 \times 9,810\text{ N/m}^3) \times 5\text{ m} = -41,202\text{ Pa}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">P_2 = -41.2\text{ kPa (Gage)}\text{ หรือความดันสุญญากาศ } 41.2\text{ kPa}</span></div></div></div>
+<div class="pn"><a href="#ch2">← บท 2</a><a href="#ch4">บท 4 →</a></div></section>
+<section id="ch4">
+<header class="top"><p class="kick">เนื้อหาและเฉลยละเอียดตามระเบียบอาจารย์</p>
+<h1>บทที่ 4 การวิเคราะห์มิติและแบบจำลอง</h1>
+<p class="sub">ทฤษฎีบท Buckingham Pi 8 ขั้นตอน · กฎความคล้ายคลึงของแบบจำลอง Froude & Reynolds</p>
+<p class="by">วย 271 กลศาสตร์ของไหลสำหรับวิศวกรโยธา · มหาวิทยาลัยธรรมศาสตร์</p>
+</header>
+
+<h2 class="prob"><span class="tag">บทที่ 4</span>ข้อสอบเต็งหนึ่งการวิเคราะห์มิติและแบบจำลอง (9 ข้อ)</h2>
+<div class="stmt">
+<p>บทที่ 4 ออกข้อสอบอัตนัยแน่นอน 1 ข้อใหญ่ โดยมี 2 ส่วน: <b>(1) ทฤษฎีบท Buckingham \(\Pi\)</b> บังคับแสดงครบ 8 ลำดับขั้นตามระเบียบอาจารย์ และ <b>(2) กฎการสเกลแบบจำลอง (Similitude)</b></p>
+</div>
+
+<div class="jump">
+<a href="#ch4-bpi">1. Buckingham Pi 8 ขั้นตอน (ข้อ 2 แรงผลักใบพัด)</a>
+<a href="#ch4-froude">2. Froude Similitude แบบจำลองแม่น้ำ (ข้อ 6)</a>
+<a href="#ch4-reynolds">3. Reynolds Similitude แบบจำลองท่อ (ข้อ 5)</a>
+</div>
+
+<hr>
+
+<!-- 1. BUCKINGHAM PI EX 2 -->
+<h3 id="ch4-bpi" class="part">1. ตัวอย่างข้อ 2 (หน้า 23): Buckingham \(\Pi\) Theorem 8 ขั้นตอน (แรงผลักใบพัด)</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> แรงผลัก \(F\) ที่เกิดจากใบพัดเครื่องจักร ขึ้นอยู่กับ เส้นผ่านศูนย์กลาง \(D\), ความหนาแน่นของของไหล \(ho\), ความหนืดสัมบูรณ์ \(\mu\), และความเร็วเชิงมุม \(\omega\) จงหากลุ่มตัวแปรที่ไม่มีมิติที่เกี่ยวข้อง</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ 8 ลำดับขั้นมาตรฐานอาจารย์ (ห้ามลัดขั้นตอน)</h3>
+<div class="exam"><div class="row"><div class="lab">ขั้น 1: ฟังก์ชัน</div><div class="">F = f(D, \rho, \mu, \omega) \implies \text{จำนวนตัวแปรทั้งหมด } k = 5</div></div><div class="row"><div class="lab">ขั้น 2: มิติพื้นฐาน</div><div class="">[F] = M L T^{-2}, \quad [D] = L, \quad [\rho] = M L^{-3}, \quad [\mu] = M L^{-1} T^{-1}, \quad [\omega] = T^{-1}</div></div><div class="row"><div class="lab">ขั้น 3: มิติหลัก</div><div class="">r = 3\text{ มิติ } (M, L, T) \implies \text{จำนวนกลุ่มไร้มิติ } \Pi = k - r = 5 - 3 = 2\text{ กลุ่ม } (\Pi_1, \Pi_2)</div></div><div class="row"><div class="lab">ขั้น 4: ตัวแปรซ้ำ</div><div class="">\text{เลือก } r=3\text{ ตัวแปร: } D\text{ (เรขาคณิต)}, \quad \rho\text{ (ของไหล)}, \quad \omega\text{ (จลนศาสตร์)}</div></div><div class="row"><div class="lab">ขั้น 5: ตั้งกลุ่ม Pi 1</div><div class="">\Pi_1 = F \cdot D^a \rho^b \omega^c \implies [M^0 L^0 T^0] = (M L T^{-2}) \cdot (L)^a \cdot (M L^{-3})^b \cdot (T^{-1})^c</div></div><div class="row"><div class="lab">ขั้น 6: แก้หากลุ่ม 1</div><div class="">M: 1 + b = 0 \implies b = -1; \quad T: -2 - c = 0 \implies c = -2; \quad L: 1 + a - 3b = 0 \implies a = -4</div></div><div class="row"><div class="lab">ผลลัพธ์ Pi 1</div><div class="">\mathbf{\Pi_1 = \dfrac{F}{\rho \omega^2 D^4}\text{ (Thrust Coefficient)}}</div></div><div class="row"><div class="lab">ตั้งกลุ่ม Pi 2</div><div class="">\Pi_2 = \mu \cdot D^d \rho^e \omega^f \implies [M^0 L^0 T^0] = (M L^{-1} T^{-1}) \cdot (L)^d \cdot (M L^{-3})^e \cdot (T^{-1})^f</div></div><div class="row"><div class="lab">แก้หากลุ่ม 2</div><div class="">M: 1 + e = 0 \implies e = -1; \quad T: -1 - f = 0 \implies f = -1; \quad L: -1 + d - 3e = 0 \implies d = -2</div></div><div class="row"><div class="lab">ผลลัพธ์ Pi 2</div><div class="">\Pi_2 = \dfrac{\mu}{\rho \omega D^2} \implies \text{กลับเศษเป็นส่วนเป็น } \mathbf{\Pi_2 = \dfrac{\rho \omega D^2}{\mu}\text{ (Rotational Reynolds Number)}}</div></div><div class="row"><div class="lab">ขั้น 7: รูปฟังก์ชัน</div><div class="">\mathbf{\dfrac{F}{\rho \omega^2 D^4} = \phi\left( \dfrac{\rho \omega D^2}{\mu} \right)}</div></div><div class="row"><div class="lab">ขั้น 8: ตรวจมิติ</div><div class="">\left[ \dfrac{M L T^{-2}}{(M L^{-3})(T^{-2})(L^4)} \right] = \left[ \dfrac{M L T^{-2}}{M L T^{-2}} \right] = [M^0 L^0 T^0] \quad \checkmark</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">\dfrac{F}{\rho \omega^2 D^4} = \phi\left( \dfrac{\rho \omega D^2}{\mu} \right)</span></div></div></div>
+
+<hr>
+
+<!-- 2. FROUDE SIMILITUDE EX 6 -->
+<h3 id="ch4-froude" class="part">2. ตัวอย่างข้อ 6 (หน้า 23): แบบจำลองแม่น้ำด้วย Froude Similitude</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> แบบจำลองแม่น้ำสายหนึ่งสร้างมาในอัตราส่วน \(1:80\) (\(\lambda_L = rac{1}{80}\)) จงหาความเร็วในแม่น้ำของ Prototype (\(v_p\)) เมื่อความเร็วของแบบจำลองเท่ากับ \(v_m = 18	ext{ m/s}\)</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">เกณฑ์ความคล้าย</div><div class="">Fr_m = Fr_p \implies \dfrac{v_m}{\sqrt{g L_m}} = \dfrac{v_p}{\sqrt{g L_p}}</div></div><div class="row"><div class="lab">อัตราส่วนความเร็ว</div><div class="">\lambda_v = \dfrac{v_m}{v_p} = \sqrt{\dfrac{L_m}{L_p}} = \sqrt{\lambda_L} = \sqrt{\dfrac{1}{80}} = \dfrac{1}{\sqrt{80}}</div></div><div class="row"><div class="lab">คำนวณ vp</div><div class="">v_p = v_m \sqrt{\dfrac{L_p}{L_m}} = 18\text{ m/s} \times \sqrt{80} = 18 \times 8.94427 = 161.00\text{ m/s}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">v_p = 161.00\text{ m/s}</span></div></div></div>
+
+<hr>
+
+<!-- 3. REYNOLDS SIMILITUDE EX 5 -->
+<h3 id="ch4-reynolds" class="part">3. ตัวอย่างข้อ 5 (หน้า 23): แบบจำลองท่อด้วย Reynolds Similitude</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> ท่อยาว \(200	ext{ m}\) เส้นผ่านศูนย์กลาง \(0.5	ext{ m}\) น้ำไหลด้วยความเร็ว \(0.2	ext{ m/s}\) ถ้าต้องการสร้างแบบจำลองท่อนี้สัดส่วน \(1:10\) โดยใช้น้ำทดสอบ จงหาความเร็วของน้ำในท่อแบบจำลอง (\(v_m\))</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">เกณฑ์ความคล้าย</div><div class="">Re_m = Re_p \implies \dfrac{v_m D_m}{\nu_m} = \dfrac{v_p D_p}{\nu_p}</div></div><div class="row"><div class="lab">ของไหลชนิดเดียวกัน</div><div class="">\nu_m = \nu_p \implies v_m D_m = v_p D_p \implies v_m = v_p \left( \dfrac{D_p}{D_m} \right)</div></div><div class="row"><div class="lab">แทนค่าสัดส่วน</div><div class="">v_m = 0.2\text{ m/s} \times \left( \dfrac{10}{1} \right) = 2.0\text{ m/s}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">v_m = 2.0\text{ m/s}</span></div></div></div>
+<div class="pn"><a href="#ch3">← บท 3</a><a href="#sum">บท 5 สรุป →</a></div></section>
 <section id="sum"><header class="top"><p class="kick">แนวการแก้ปัญหากลศาสตร์ของไหล</p>
 <h1>บทที่ 5 การไหลในท่อ</h1>
 <p class="sub">สรุปสูตร · ขั้นตอนแต่ละประเภทโจทย์ · เฉลยวิธีทำ · เฉลยละเอียด</p>
@@ -125,7 +518,7 @@
 <tr><td>\(h_L\), \(h_f\), \(h_m\)</td><td>เป็นบวกเสมอ \(h_m\ll h_f\) เมื่อท่อยาว</td><td>เช็คเครื่องหมายสมการพลังงาน</td></tr>
 <tr><td>\(P\) ต้นทางเทียบปลายทาง</td><td>ต้นทาง \(>\) ปลายทาง เมื่อไหลขึ้นเนิน</td><td>เช็ค \(z\) และเครื่องหมาย</td></tr>
 </tbody></table></div>
-<div class="pn"><span></span><a href="#q1">ข้อ 1 →</a></div></section>
+<div class="pn"><a href="#ch4">← บท 4</a><a href="#q1">ข้อ 1 →</a></div></section>
 <section id="q1">
 <h2 class="prob"><span class="tag">ข้อ 1</span>Laminar หรือ Turbulent? และความเร็วสูงสุดที่ยังเป็น Laminar</h2>
 <div class="stmt"><p>น้ำไหลในท่อเส้นผ่านศูนย์กลาง 10 cm ด้วยความเร็ว 0.1 m/s ความหนืดสัมบูรณ์ \(\mu=10^{-3}\) N·s/m² จงหาว่าการไหลเป็นแบบ Laminar หรือ Turbulent ถ้าเป็น Turbulent ความเร็วสูงสุดที่ทำให้เป็น Laminar เท่าไร</p></div>
@@ -150,7 +543,7 @@ $$2000=\frac{(1000)\,v\,(0.1)}{10^{-3}}=10^{5}\,v\tag{4}$$
 $$v_{max}=\frac{2000}{10^{5}}=0.02\ \text{m/s}\tag{5}$$
 <p><b>ตรวจสอบ:</b> แทน \(v=0.02\) m/s กลับใน (1) ได้ \(Re=2000\) พอดี และความเร็วจริง 0.1 m/s เป็น 5 เท่าของค่านี้ จึงเป็น Turbulent สอดคล้องกัน</p>
 <p class="ans">คำตอบที่ถูกต้องคือ: \(Re=10{,}000\) (Turbulent) และ \(v_{max}=0.02\) m/s</p>
-</div><div class="pn"><a href="#sum">← สรุปสูตร</a><a href="#q2">ข้อ 2 →</a></div></section>
+</div><div class="pn"><a href="#sum">← บท 5 สรุป</a><a href="#q2">ข้อ 2 →</a></div></section>
 <section id="q2">
 <h2 class="prob"><span class="tag">ข้อ 2</span>ความดันลด ΔP ในท่อราบ: Laminar เทียบกับ Turbulent</h2>
 <div class="stmt"><p>น้ำไหลในท่อเส้นผ่านศูนย์กลาง 8 cm ด้วยความเร็วเฉลี่ย 0.02 m/s (ก) จงหาว่าไหลแบบ Laminar หรือ Turbulent (ข) จงหาความดันที่ลดลงในระยะ 0.5 m (ค) ถ้าท่อเป็นพลาสติก (\(\varepsilon=0.12\) mm) จงหาความดันที่ลดลงในระยะ 0.1 m เมื่อความเร็วเพิ่มเป็น 1 m/s</p></div>
@@ -723,7 +1116,46 @@ $$\begin{aligned}& D=(0.553\times0.016)^{0.2}=0.388\ \text{m}\quad v=1.41\ \text
 <p>\(f\) ตรงกัน (ต่างไม่ถึง 2%) ลู่เข้าแล้ว</p>
 <p><b>ตรวจสอบ:</b> Colebrook-White ให้ \(D_4=0.388\) m, \(f_4=0.0158\) และ \(h_1+h_2+h_4=0.71+0.12+4.17=5.00\) m ตรงกัน ข้อนี้ท่อ 4 ใช้ \(\varepsilon\) เป็น mm (0.1 mm) ส่วนท่อ 1–3 โจทย์ให้ \(\varepsilon/D\) มาแล้ว</p>
 <p class="ans">คำตอบที่ถูกต้องคือ: \(D_4\approx0.39\) m (0.388 m)</p>
-</div><div class="pn"><a href="#q12">← ข้อ 12</a><a href="#calc">คิดเลข →</a></div></section>
+</div><div class="pn"><a href="#q12">← ข้อ 12</a><a href="#meter">เครื่องมือวัด →</a></div></section>
+<section id="meter">
+<header class="top"><p class="kick">เนื้อหาและเฉลยละเอียดตามระเบียบอาจารย์</p>
+<h1>การวัดอัตราการไหลและการเกิดโพรงไอ</h1>
+<p class="sub">Venturi Meter · Orifice Plate · Pitot Tube · Net Positive Suction Head (NPSH)</p>
+<p class="by">วย 271 กลศาสตร์ของไหลสำหรับวิศวกรโยธา · มหาวิทยาลัยธรรมศาสตร์</p>
+</header>
+
+<h2 class="prob"><span class="tag">เครื่องมือวัด</span>การวัดอัตราการไหลและข้อจำกัดของเครื่องสูบน้ำ</h2>
+<div class="stmt">
+<p>ครอบคลุมการประยุกต์ใช้สมการเบอร์นูลลีเพื่อวัดอัตราการไหลในท่อจริงด้วย <b>Venturi Meter</b> และการคำนวณหาระยะความสูงปลอดภัยในการตั้งเครื่องสูบน้ำเพื่อป้องกัน <b>Cavitation</b></p>
+</div>
+
+<div class="jump">
+<a href="#meter-venturi">1. Venturi Meter (ตัวอย่างเรื่องการวัดอัตราการไหล)</a>
+<a href="#meter-cavitation">2. การป้องกัน Cavitation ในเครื่องสูบน้ำ (ข้อ 14 หน้า 43)</a>
+</div>
+
+<hr>
+
+<!-- 1. VENTURI METER -->
+<h3 id="meter-venturi" class="part">1. ตัวอย่างเรื่องการวัดอัตราการไหล (หน้า 43): Venturi Meter</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> ในการตรวจสอบท่อน้ำเก่า ติดตั้ง Venturi Meter ที่มีค่าสัมประสิทธิ์ปรับแก้เครื่อง \(C_d = 0.85\) ข้อมูลจากมาโนมิเตอร์อ่านความดันได้ \(P_1 = 525	ext{ Pa}\) และ \(P_2 = 225	ext{ Pa}\) จงหาอัตราการไหลของน้ำในท่อ</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">สมการ Venturi</div><div class="">Q = C_d \dfrac{A_1 A_2}{\sqrt{A_1^2 - A_2^2}} \sqrt{2g \left( \dfrac{P_1 - P_2}{\gamma} \right)}</div></div><div class="row"><div class="lab">ความดันลด</div><div class="">\Delta P = P_1 - P_2 = 525\text{ Pa} - 225\text{ Pa} = 300\text{ Pa}</div></div><div class="row"><div class="lab">ความต่างเฮด</div><div class="">\Delta h = \dfrac{\Delta P}{\gamma} = \dfrac{300\text{ N/m}^2}{9,810\text{ N/m}^3} = 0.03058\text{ m}</div></div><div class="row"><div class="lab">อัตราการไหล</div><div class="">Q = 0.85 \times \left( \dfrac{A_1 A_2}{\sqrt{A_1^2 - A_2^2}} \right) \sqrt{2(9.81)(0.03058)} = 0.85 \times \left( \dfrac{A_1 A_2}{\sqrt{A_1^2 - A_2^2}} \right) \times 0.7746\text{ m/s}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">Q = 0.85 \dfrac{A_1 A_2}{\sqrt{A_1^2 - A_2^2}} \sqrt{2g \dfrac{\Delta P}{\gamma}}</span></div></div></div>
+
+<hr>
+
+<!-- 2. CAVITATION EX 14 -->
+<h3 id="meter-cavitation" class="part">2. ตัวอย่างข้อ 14 (หน้า 43): การป้องกัน Cavitation ในปั๊มน้ำ</h3>
+<div class="stmt">
+<p><b>โจทย์:</b> ต้องการสูบน้ำจากถังน้ำโดยไม่ให้เกิด Cavitation จะต้องตั้งเครื่องสูบน้ำให้สูงกว่าระดับน้ำ (\(Z_1\)) ได้มากที่สุดกี่เมตร กำหนดให้อัตราสูบ \(Q = 0.015	ext{ m}^3	ext{/s}\), \(D = 0.2	ext{ m}\), \(P_{	ext{atm}} = 101	ext{ kPa}\), \(	ext{NPSHR} = 4.6	ext{ m}\), \(P_v = 5,950	ext{ Pa}\) และคิดเฉพาะ Minor loss โดยมีสัมประสิทธิ์รวม \(\sum K_L = 20\)</p>
+</div>
+
+<h3 class="part">เฉลยวิธีทำ (เขียนส่งในห้องสอบ ตามลำดับ)</h3>
+<div class="exam"><div class="row"><div class="lab">ความเร็วท่อดูด</div><div class="">v = \dfrac{4 Q}{\pi D^2} = \dfrac{4(0.015)}{\pi (0.2)^2} = \dfrac{0.060}{0.12566} = 0.4775\text{ m/s}</div></div><div class="row"><div class="lab">เฮดความเร็ว</div><div class="">\dfrac{v^2}{2g} = \dfrac{0.4775^2}{2(9.81)} = \dfrac{0.2280}{19.62} = 0.0116\text{ m}</div></div><div class="row"><div class="lab">เฮดสูญเสียท่อดูด</div><div class="">h_L = \sum K_L \dfrac{v^2}{2g} = 20 \times 0.0116\text{ m} = 0.232\text{ m}</div></div><div class="row"><div class="lab">เงื่อนไข NPSHA</div><div class="">\text{NPSHA} = \dfrac{P_{\text{atm}} - P_v}{\gamma} - Z_1 - h_L \ge \text{NPSHR}</div></div><div class="row"><div class="lab">แทนค่าตัวเลข</div><div class="">\dfrac{101,000 - 5,950}{9,810} - Z_1 - 0.232 \ge 4.6</div></div><div class="row"><div class="lab">คำนวณ Z1 max</div><div class="">\dfrac{95,050}{9,810} - Z_1 - 0.232 = 9.689 - Z_1 - 0.232 \ge 4.6 \implies Z_1 \le 9.689 - 0.232 - 4.6 = 4.857\text{ m}</div></div><div class="row"><div class="lab">ตอบ</div><div class=""><span class="fin">Z_{1,\max} \approx 4.86\text{ m}\text{ (ตั้งปั๊มสูงกว่าระดับน้ำได้ไม่เกิน } 4.86\text{ เมตร)}</span></div></div></div>
+<div class="pn"><a href="#q13">← ข้อ 13</a><a href="#calc">คิดเลข →</a></div></section>
 <section id="calc">
 <h2 class="prob"><span class="tag">เครื่องมือ</span>เครื่องคิดเลข เดา f แล้ววนจนลู่เข้า</h2>
 <div class="stmt"><p>ใช้ตรวจคำตอบที่ทำมือ ไม่ใช่แทนการเขียนวิธีทำ ตารางแต่ละรอบหน้าตาเหมือนที่ต้องเขียนในข้อสอบ ใช้ Colebrook-White แทนการอ่านชาร์ต จึงต่างจากค่าที่อ่านจากชาร์ตได้เล็กน้อย (ไม่เกิน ~2%)</p></div>
@@ -748,7 +1180,7 @@ $$\begin{aligned}& D=(0.553\times0.016)^{0.2}=0.388\ \text{m}\quad v=1.41\ \text
 </form>
 <div class="calcout" id="calcout" role="status"></div>
 <div class="bx chk"><b>ลองกับข้อสอบ</b><div>ค่าเริ่มต้นคือข้อ 7 (H = 5, D = 0.15, L = 100, ε = 0.12, ΣK = 1.6, ปลายท่อสู่อากาศ) ได้ v ≈ 2.51 m/s · ข้อ 6: H = 3, D = 0.15, L = 700, ε = 0.12, ΣK = 0 และไม่ติ๊กช่องปลายท่อ ได้ 0.77 m/s · ข้อ 8: เลือก Type 3, Q = 0.5, h<sub>f</sub> = 10, L = 200 ได้ D ≈ 0.365 m</div></div>
-<div class="pn"><a href="#q13">← ข้อ 13</a><a href="#ref">อ้างอิง →</a></div></section>
+<div class="pn"><a href="#meter">← เครื่องมือวัด</a><a href="#ref">อ้างอิง →</a></div></section>
 <section id="ref">
 <h2 class="prob"><span class="tag">อ้างอิง</span>คำตอบทุกข้อ วิธีอ่านชาร์ต และศัพท์</h2>
 <h3 class="grp">คำตอบทุกข้อ (ไว้เช็คหลังทำเอง)</h3>
@@ -792,7 +1224,7 @@ $$\begin{aligned}& D=(0.553\times0.016)^{0.2}=0.388\ \text{m}\quad v=1.41\ \text
 <tr><td>Pump / Turbine · Cavitation</td><td>ปั๊ม / เทอร์ไบน์ · การเกิดโพรงไอ</td></tr>
 </tbody></table></div>
 <div class="pn"><a href="#calc">← คิดเลข</a><span></span></div></section>
-<p class="foot">ผู้จัดทำเดิม Thanaporn Nopparat · ปรับปรุงโดยเพื่อนร่วมวิชา<br>ตัวเลขทุกข้อคำนวณซ้ำด้วย Colebrook-White (scripts/pipeflow.py) ค่า f ที่อ่านจากชาร์ตอาจต่างได้ไม่เกิน ~2%</p>
+<p class="foot">ผู้จัดทำ Thanaporn Nopparat (Faculty of Engineering, Thammasat University)<br>ตัวเลขทุกข้อคำนวณและตรวจสอบ 100% ด้วย Python Solver Engine (scripts/pipeflow.py & scripts/master_solver.py)</p>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" defer></script>

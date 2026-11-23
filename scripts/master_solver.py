@@ -106,3 +106,53 @@ class FluidSolver:
             calc_v_p = v_m / lambda_v
             return {"lambda_L": lambda_L, "lambda_v": lambda_v, "v_p": calc_v_p}
         return {"lambda_L": lambda_L, "lambda_v": lambda_v}
+
+    @staticmethod
+    def fluid_acceleration_field(x: float = 2.0, y: float = 1.0, z: float = 3.0, t: float = 0.5) -> dict:
+        """
+        Calculates velocity and acceleration for field:
+        V = (10*x^2) i - (15*x*y) j + (32*t) k
+        """
+        # Velocity components
+        u = 10.0 * (x ** 2)
+        v = -15.0 * x * y
+        w = 32.0 * t
+        v_mag = math.sqrt(u**2 + v**2 + w**2)
+
+        # Derivatives
+        du_dx = 20.0 * x
+        du_dy = 0.0
+        du_dz = 0.0
+        du_dt = 0.0
+
+        dv_dx = -15.0 * y
+        dv_dy = -15.0 * x
+        dv_dz = 0.0
+        dv_dt = 0.0
+
+        dw_dx = 0.0
+        dw_dy = 0.0
+        dw_dz = 0.0
+        dw_dt = 32.0
+
+        # Acceleration components (Material Derivative)
+        a_x = u * du_dx + v * du_dy + w * du_dz + du_dt
+        a_y = u * dv_dx + v * dv_dy + w * dv_dz + dv_dt
+        a_z = u * dw_dx + v * dw_dy + w * dw_dz + dw_dt
+        a_mag = math.sqrt(a_x**2 + a_y**2 + a_z**2)
+
+        return {
+            "u": u,
+            "v": v,
+            "w": w,
+            "v_mag": v_mag,
+            "a_x": a_x,
+            "a_y": a_y,
+            "a_z": a_z,
+            "a_mag": a_mag,
+            "du_dx": du_dx,
+            "dv_dx": dv_dx,
+            "dv_dy": dv_dy,
+            "dw_dt": dw_dt
+        }
+

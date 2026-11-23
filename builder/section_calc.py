@@ -24,6 +24,7 @@ def get_section_calc():
           <option value="mano">บทที่ 2: มาโนมิเตอร์และผลต่างความดัน (ΔP = γ Δh)</option>
           <option value="gate">บทที่ 2: แรงดันบนผนังระนาบเรียบและจุดศูนย์กลางแรงกด (FR &amp; y_cp)</option>
           <option value="jet">บทที่ 3: แรงกระแทกของลำน้ำพุ่งชนแผ่นโค้ง 180° (Jet on Vane)</option>
+          <option value="accel">บทที่ 3: ความเร็วและความเร่งของอนุภาคของไหล (V &amp; a Field)</option>
           <option value="scale">บทที่ 4: การสเกลแบบจำลอง Froude &amp; Reynolds Similitude</option>
           <option value="v" selected>บทที่ 5: ท่อ Type II วนรอบหาความเร็วและอัตราไหล (v, Q)</option>
           <option value="D">บทที่ 5: ท่อ Type III วนรอบออกแบบขนาดเส้นผ่านศูนย์กลาง (D)</option>
@@ -108,6 +109,28 @@ def get_section_calc():
     <div data-m="jet">
       <label>มุมหักเลี้ยวของแผ่น (องศา, ตัวยูใส่ 180):
         <input type="number" step="any" name="jt_theta" value="180">
+      </label>
+    </div>
+
+    <!-- Mode: accel -->
+    <div data-m="accel">
+      <label>ตำแหน่ง X (m):
+        <input type="number" step="any" name="ac_x" value="2.0" placeholder="เช่น 2.0">
+      </label>
+    </div>
+    <div data-m="accel">
+      <label>ตำแหน่ง Y (m):
+        <input type="number" step="any" name="ac_y" value="1.0" placeholder="เช่น 1.0">
+      </label>
+    </div>
+    <div data-m="accel">
+      <label>ตำแหน่ง Z (m):
+        <input type="number" step="any" name="ac_z" value="3.0" placeholder="เช่น 3.0">
+      </label>
+    </div>
+    <div data-m="accel">
+      <label>เวลา t (s):
+        <input type="number" step="any" name="ac_t" value="0.5" placeholder="เช่น 0.5">
       </label>
     </div>
 

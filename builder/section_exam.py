@@ -40,10 +40,12 @@ def get_section_exam():
       </div>
 
       <div class="f-card">
-        <h4>2. สมการโมเมนตัมเชิงเส้น (90%)</h4>
-        <p>• <b>ลำน้ำพุ่งชนแผ่นโค้ง 180°:</b><br>
+        <h4>2. จลนศาสตร์ &amp; โมเมนตัม (95%)</h4>
+        <p>• <b>ความเร่งของไหล (Acceleration Field):</b><br>
+        - \(a_i = u\frac{\partial v_i}{\partial x} + v\frac{\partial v_i}{\partial y} + w\frac{\partial v_i}{\partial z} + \frac{\partial v_i}{\partial t}\) (Convective + Local)<br>
+        • <b>ลำน้ำพุ่งชนแผ่นโค้ง 180°:</b><br>
         - แผ่นอยู่นิ่ง: \(F_x = 2\rho A v^2\)<br>
-        - แผ่นเคลื่อนที่ตามน้ำ \(u\): ใช้ความเร็วสัมพัทธ์ \(v_r = v - u\) และมวลน้ำปะทะ \(\dot{m}_{\text{rel}} = \rho A (v - u)\) ได้ \(F_x = 2\rho A (v - u)^2\)<br>
+        - แผ่นเคลื่อนที่ตามน้ำ \(u\): ใช้ความเร็วสัมพัทธ์ \(v_r = v - u\) ได้ \(F_x = 2\rho A (v - u)^2\)<br>
         • <b>ท่อกาลักน้ำ:</b> ความดันยอดท่อติดลบ</p>
       </div>
 
@@ -164,8 +166,36 @@ def get_section_exam():
       </div>
     </div>
 
-    <!-- Exam Q4 -->
-    <h3 class="grp" id="meq4" style="margin-top:30px;">ข้อ 4: แรงกระแทกของลำน้ำพุ่งชนแผ่นโค้ง 180° (บทที่ 3)</h3>
+    <!-- Exam Q4: Acceleration -->
+    <h3 class="grp" id="meq4" style="margin-top:30px;">ข้อ 4: ความเร็วและความเร่งของอนุภาคของไหล (Kinematics &amp; Acceleration Field)</h3>
+    <div class="stmt">
+      <p>เวกเตอร์ความเร็วของไหล \(\vec{V}(x,y,z,t) = 10x^2\vec{i} - 15xy\vec{j} + 32t\vec{k}\ \text{[m/s]}\) จงหาความเร็วและความเร่งของโมเลกุลของไหลที่ \(X = 2\text{ m},\ Y = 1\text{ m},\ Z = 3\text{ m}\) และ \(t = 0.5\text{ s}\)</p>
+    </div>
+    <div class="exam">
+      <div class="row">
+        <div class="lab">Step 1: ความเร็ว (u, v, w)</div>
+        <div class="given">$$\begin{aligned} & u = 10(2)^2 = 40\ \text{m/s},\quad v = -15(2)(1) = -30\ \text{m/s},\quad w = 32(0.5) = 16\ \text{m/s} \\ & \vec{V} = 40\vec{i} - 30\vec{j} + 16\vec{k}\ \text{m/s},\quad |\vec{V}| = \sqrt{40^2 + (-30)^2 + 16^2} = 52.50\ \text{m/s} \end{aligned}$$</div>
+      </div>
+      <div class="row">
+        <div class="lab">Step 2: ความเร่ง \(a_x\)</div>
+        <div>$$a_x = u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y} + w \frac{\partial u}{\partial z} + \frac{\partial u}{\partial t} = 40(20 \times 2) + 0 + 0 + 0 = 40(40) = 1600\ \text{m/s}^2$$</div>
+      </div>
+      <div class="row">
+        <div class="lab">Step 3: ความเร่ง \(a_y\)</div>
+        <div>$$a_y = u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} + w \frac{\partial v}{\partial z} + \frac{\partial v}{\partial t} = 40(-15 \times 1) + (-30)(-15 \times 2) + 0 = -600 + 900 = 300\ \text{m/s}^2$$</div>
+      </div>
+      <div class="row">
+        <div class="lab">Step 4: ความเร่ง \(a_z\)</div>
+        <div>$$a_z = u \frac{\partial w}{\partial x} + v \frac{\partial w}{\partial y} + w \frac{\partial w}{\partial z} + \frac{\partial w}{\partial t} = 0 + 0 + 0 + 32 = 32\ \text{m/s}^2$$</div>
+      </div>
+      <div class="row">
+        <div class="lab">คำตอบสุดท้าย</div>
+        <div><span class="fin">\(\vec{V} = 40\vec{i} - 30\vec{j} + 16\vec{k}\ \text{m/s},\quad \vec{a} = 1600\vec{i} + 300\vec{j} + 32\vec{k}\ \text{m/s}^2\ (|\vec{a}| \approx 1,628.20\ \text{m/s}^2)\)</span></div>
+      </div>
+    </div>
+
+    <!-- Exam Q5 -->
+    <h3 class="grp" id="meq5" style="margin-top:30px;">ข้อ 5: แรงกระแทกของลำน้ำพุ่งชนแผ่นโค้ง 180° (บทที่ 3)</h3>
     <div class="stmt">
       <p>น้ำพุ่งด้วยความเร็ว \(v = 24\text{ m/s}\) พื้นที่ \(A = 0.010\text{ m}^2\) ชนแผ่นโค้ง \(180^\circ\) จงหาแรง \(R_x\) เมื่อ (ก) แผ่นอยู่นิ่ง และ (ข) แผ่นเคลื่อนที่ตามน้ำด้วย \(u = 6\text{ m/s}\)</p>
     </div>
@@ -184,8 +214,8 @@ def get_section_exam():
       </div>
     </div>
 
-    <!-- Exam Q5 -->
-    <h3 class="grp" id="meq5" style="margin-top:30px;">ข้อ 5: การวิเคราะห์มิติและแบบจำลอง Froude Similitude (บทที่ 4)</h3>
+    <!-- Exam Q6 -->
+    <h3 class="grp" id="meq6" style="margin-top:30px;">ข้อ 6: การวิเคราะห์มิติและแบบจำลอง Froude Similitude (บทที่ 4)</h3>
     <div class="stmt">
       <p>แบบจำลองแม่น้ำสเกล \(\lambda_L = 1:80\) วัดความเร็วในแบบจำลองได้ \(v_m = 18\text{ m/s}\) จงหาความเร็วในแม่น้ำจริงตามกฎความคล้ายคลึงของ Froude</p>
     </div>
@@ -204,8 +234,8 @@ def get_section_exam():
       </div>
     </div>
 
-    <!-- Exam Q6 -->
-    <h3 class="grp" id="meq6" style="margin-top:30px;">ข้อ 6: การไหลในท่อวนรอบ Type II (บทที่ 5)</h3>
+    <!-- Exam Q7 -->
+    <h3 class="grp" id="meq7" style="margin-top:30px;">ข้อ 7: การไหลในท่อวนรอบ Type II (บทที่ 5)</h3>
     <div class="stmt">
       <p>ปล่อยน้ำจากถังเปิดผ่านท่อเหล็กยาว \(L = 150\text{ m}\), \(D = 0.15\text{ m}\), ความขรุขระ \(\varepsilon = 0.15\text{ mm}\) ต่างระดับ \(H = 20\text{ m}\) อุปกรณ์มี \(\sum K_L = 1.5\) จงหาอัตราการไหล \(Q\) โดยวิธีวนรอบ</p>
     </div>

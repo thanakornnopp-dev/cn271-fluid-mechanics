@@ -66,6 +66,18 @@ class TestFullCourse(unittest.TestCase):
         moving = FluidSolver.jet_on_curved_vane(v=24.0, area=0.010, u=6.0)
         self.assertAlmostEqual(moving["f_x"] / 1000.0, 6.48, places=2)
 
+    def test_ch3_fluid_acceleration(self):
+        # V = 10x^2 i - 15xy j + 32t k at (x=2, y=1, z=3, t=0.5)
+        res = FluidSolver.fluid_acceleration_field(x=2.0, y=1.0, z=3.0, t=0.5)
+        self.assertAlmostEqual(res["u"], 40.0, places=2)
+        self.assertAlmostEqual(res["v"], -30.0, places=2)
+        self.assertAlmostEqual(res["w"], 16.0, places=2)
+        self.assertAlmostEqual(res["v_mag"], 52.50, delta=0.01)
+        self.assertAlmostEqual(res["a_x"], 1600.0, places=1)
+        self.assertAlmostEqual(res["a_y"], 300.0, places=1)
+        self.assertAlmostEqual(res["a_z"], 32.0, places=1)
+        self.assertAlmostEqual(res["a_mag"], 1628.20, delta=0.01)
+
     def test_ch3_siphon_p9(self):
         # dz = 3m => v3 = sqrt(2 * 9.81 * 3) = 7.672 m/s
         # P2/gamma = -5m => P2 = - (0.84 * 9810) * 5 = -41.2 kPa

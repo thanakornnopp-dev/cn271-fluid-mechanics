@@ -75,13 +75,13 @@ def get_section_sum():
           <td class="td-name">จลนศาสตร์ &amp; โมเมนตัม<small>Kinematics &amp; Momentum</small></td>
           <td class="td-eq">
             <div class="eq-row">
-              <div class="eq-pill">\(F_x = \dot{m}(v_{1x} - v_{2x}) = 2\rho A v^2\) (นิ่ง)</div>
-              <div class="eq-pill">\(F_x = 2\rho A (v - u)^2\) (เคลื่อนที่ตามน้ำ \(u\))</div>
+              <div class="eq-pill">\(a_x = u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z} + \frac{\partial u}{\partial t}\)</div>
+              <div class="eq-pill">\(F_x = 2\rho A v^2\) (นิ่ง) / \(2\rho A (v - u)^2\) (ตามน้ำ \(u\))</div>
               <div class="eq-subnote">Siphon: \(\dfrac{P_1}{\gamma} + z_1 + \dfrac{v_1^2}{2g} = \dfrac{P_2}{\gamma} + z_2 + \dfrac{v_2^2}{2g}\)</div>
             </div>
           </td>
-          <td class="td-vars">แรงกระทำต่อใบพัด \(F_x\), ความดันสุญญากาศที่ยอดท่อ \(P_2\)</td>
-          <td class="td-tools">ข้อ 5 (สายน้ำชนแผ่นโค้ง 180°), ข้อ 9 (กาลักน้ำ Siphon)</td>
+          <td class="td-vars">ความเร่ง \(\vec{a}\), แรงกระทำ \(F_x\), ความดันสุญญากาศ \(P_2\)</td>
+          <td class="td-tools">ข้อ 1 (ความเร่งของไหล), ข้อ 5 (ชนแผ่นโค้ง 180°), ข้อ 9 (กาลักน้ำ Siphon)</td>
         </tr>
         <tr>
           <td class="td-num"><b>4</b></td>
@@ -147,11 +147,11 @@ def get_section_sum():
 
     <div class="formula-card">
       <div class="formula-card-head">
-        <span class="formula-card-title">3. ลำน้ำพุ่งชนแผ่นโค้ง 180°</span>
+        <span class="formula-card-title">3. ความเร่งของอนุภาคของไหล &amp; แรงปะทะลำน้ำ</span>
         <span class="badge-sm">บทที่ 3</span>
       </div>
-      <div>$$F_x = 2 \rho A v^2\ \text{(นิ่ง)},\quad F_x = 2 \rho A (v - u)^2\ \text{(วิ่งตามน้ำ)}$$</div>
-      <p style="font-size:13.5px;color:var(--gray);margin:0;">ถ้าแผ่นเคลื่อนที่ตามน้ำ ความเร็วสัมพัทธ์ลดเหลือ \(v - u\) และมวลน้ำกระทบลดลงด้วย</p>
+      <div>$$a_i = u \frac{\partial v_i}{\partial x} + v \frac{\partial v_i}{\partial y} + w \frac{\partial v_i}{\partial z} + \frac{\partial v_i}{\partial t},\quad F_x = 2 \rho A (v - u)^2$$</div>
+      <p style="font-size:13.5px;color:var(--gray);margin:0;">ความเร่งพา (Convective) เกิดจากเปลี่ยนพิกัด + ความเร่งเฉพาะที่ (Local) \(\partial/\partial t\) เกิดจากเวลาเปลี่ยน</p>
     </div>
 
     <div class="formula-card">

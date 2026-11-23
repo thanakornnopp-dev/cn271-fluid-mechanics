@@ -114,6 +114,41 @@
           ["มุมการหักเลี้ยวของลำน้ำ", jTheta, "องศา"],
           ["แรงดันสุทธิต่อแผ่น (Rx)", fmt(Rx / 1000, 4), "kN (" + fmt(Rx, 5) + " N)"]
         ];
+      } else if (mode === "accel") {
+        var axX = val("ac_x"), axY = val("ac_y"), axZ = val("ac_z"), axT = val("ac_t");
+        var uVal = 10.0 * Math.pow(axX, 2);
+        var vVal = -15.0 * axX * axY;
+        var wVal = 32.0 * axT;
+        var vMag = Math.sqrt(uVal * uVal + vVal * vVal + wVal * wVal);
+
+        var du_dx = 20.0 * axX;
+        var du_dy = 0.0, du_dz = 0.0, du_dt = 0.0;
+
+        var dv_dx = -15.0 * axY;
+        var dv_dy = -15.0 * axX;
+        var dv_dz = 0.0, dv_dt = 0.0;
+
+        var dw_dx = 0.0, dw_dy = 0.0, dw_dz = 0.0;
+        var dw_dt = 32.0;
+
+        var axVal = uVal * du_dx + vVal * du_dy + wVal * du_dz + du_dt;
+        var ayVal = uVal * dv_dx + vVal * dv_dy + wVal * dv_dz + dv_dt;
+        var azVal = uVal * dw_dx + vVal * dw_dy + wVal * dw_dz + dw_dt;
+        var aMag = Math.sqrt(axVal * axVal + ayVal * ayVal + azVal * azVal);
+
+        resHtml = "V = " + fmt(uVal, 3) + "i + (" + fmt(vVal, 3) + ")j + " + fmt(wVal, 3) + "k m/s (|V| = " + fmt(vMag, 4) + " m/s)<br>" +
+                  "a = " + fmt(axVal, 4) + "i + " + fmt(ayVal, 4) + "j + " + fmt(azVal, 4) + "k m/s² (|a| = " + fmt(aMag, 5) + " m/s²)";
+
+        tableRows = [
+          ["ความเร็วแกน x (u = 10x²)", fmt(uVal, 4), "m/s"],
+          ["ความเร็วแกน y (v = -15xy)", fmt(vVal, 4), "m/s"],
+          ["ความเร็วแกน z (w = 32t)", fmt(wVal, 4), "m/s"],
+          ["ขนาดความเร็วรวม (|V|)", fmt(vMag, 4), "m/s  (√(u² + v² + w²))"],
+          ["ความเร่ง ax [u(∂u/∂x) + ...]", fmt(axVal, 4), "m/s²  (" + fmt(uVal, 3) + " × " + fmt(du_dx, 3) + ")"],
+          ["ความเร่ง ay [u(∂v/∂x) + v(∂v/∂y)]", fmt(ayVal, 4), "m/s²  (" + fmt(uVal * dv_dx, 3) + " + " + fmt(vVal * dv_dy, 3) + ")"],
+          ["ความเร่ง az [∂w/∂t (Local Acc.)]", fmt(azVal, 4), "m/s²  (ความเร่งเฉพาะที่)"],
+          ["ขนาดความเร่งลัพธ์ (|a|)", fmt(aMag, 5), "m/s²  (√(ax² + ay² + az²))"]
+        ];
       } else if (mode === "scale") {
         var scType = form.elements.sc_type.value;
         var scale = val("sc_scale"), vm = val("sc_vm");
